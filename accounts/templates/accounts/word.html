@@ -1,0 +1,425 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+
+{% block title %}OfficeEase - Word Course{% endblock %}
+
+{% block extra_css %}
+<style>
+    .lesson-scroll::-webkit-scrollbar { width: 4px; }
+    .lesson-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+    .active-lesson { border-left: 4px solid #2563eb !important; background-color: #eff6ff !important; color: #1e40af !important; font-weight: 700; }
+    .accordion-content { transition: max-height 0.3s ease-out; overflow: hidden; max-height: 0; }
+    .accordion-content.open { max-height: 500px; padding-bottom: 1rem; }
+</style>
+{% endblock %}
+
+{% block content %}
+<main class="max-w-7xl mx-auto mt-8 px-4 lg:px-10 pb-20">
+    <div class="flex flex-col lg:flex-row gap-8">
+       <aside class="lg:w-1/3">
+    <div class="bg-slate-50 border border-slate-200 rounded-[2rem] p-6 sticky top-5 shadow-sm">
+        <div class="mb-6 flex justify-between items-end">
+            <h2 class="text-2xl font-black italic text-[#2b579a]" data-translate="word_course_progress">Course Progress</h2>
+            <span id="overall-progress" class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                0 of {{ modules|length }} Modules complete
+            </span>
+        </div>
+
+        <div class="space-y-4">
+            {% for module in modules %}
+            <div class="border border-blue-200 rounded-2xl overflow-hidden bg-white shadow-sm">
+                <div class="p-4 bg-blue-600 text-white flex justify-between items-center cursor-pointer" 
+                     onclick="document.getElementById('mod-{{ forloop.counter }}').classList.toggle('hidden')">
+                    <div>
+                        <p class="text-[10px] uppercase font-bold opacity-80">Module {{ forloop.counter }}</p>
+                        <span class="text-sm font-bold">{{ module.title }}</span>
+                    </div>
+                    <span class="text-[10px] bg-blue-500 px-2 py-1 rounded">
+                        <span id="mod-prog-{{ forloop.counter }}">0</span> of {{ module.lessons.all|length }} <span data-translate="word_steps">steps</span>
+                    </span>                </div>
+
+                <div id="mod-{{ forloop.counter }}" class="p-2 space-y-1">
+                    {% for lesson in module.lessons.all %}
+                   <button onclick="jumpToLessonById('{{ lesson.id }}')" id="btn-{{ lesson.id }}" 
+        class="w-full text-left p-4 rounded-xl text-xs flex items-center gap-3 transition-all font-medium text-slate-500 hover:bg-slate-50">
+    <i class="fa-regular fa-circle" id="check-{{ lesson.id }}"></i> 
+    {{ lesson.label }}. {{ lesson.title }}
+</button>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</aside>
+
+        <section class="lg:w-2/3">
+            <div class="bg-white border border-slate-200 rounded-[2.5rem] p-8 lg:p-12 shadow-2xl relative overflow-hidden">
+                
+                <div id="feedback-correct" class="hidden absolute inset-0 bg-emerald-500/95 z-50 flex flex-col items-center justify-center text-white p-10 text-center">
+                    <i class="fa-solid fa-circle-check text-7xl mb-4"></i>
+                    <h2 class="text-4xl font-black mb-2 text-white">Excellent!</h2>
+                    <button onclick="moveToNextLesson()" class="bg-white text-emerald-600 px-10 py-4 rounded-xl font-black uppercase tracking-widest">Continue</button>
+                </div>
+
+                <div id="feedback-wrong" class="hidden absolute inset-0 bg-red-500/95 z-50 flex flex-col items-center justify-center text-white p-10 text-center">
+                    <i class="fa-solid fa-circle-xmark text-7xl mb-4"></i>
+                    <h2 class="text-4xl font-black mb-2 text-white" data-translate="ide_feedback_try_again">Try Again</h2>
+                    <p id="error-details" class="mb-8 font-medium text-lg text-white"></p>
+                    <button onclick="closeFeedback()" class="bg-white text-red-600 px-10 py-4 rounded-xl font-black uppercase tracking-widest" data-translate="ide_feedback_review">Review</button>
+                </div>
+
+                <div class="mb-10">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="w-2 h-2 bg-blue-600 rounded-full"></span>
+                        <span id="module-label" class="text-[10px] font-black uppercase text-blue-600 tracking-widest italic"></span>
+                    </div>
+                    <h1 id="lesson-title" class="text-5xl font-black text-slate-900 leading-tight"></h1>
+                </div>
+
+                <div id="lesson-theory" class="text-slate-600 mb-10 text-lg leading-relaxed"></div>
+                <!-- Word IDE Section -->
+                <div class="mb-12 bg-white rounded-2xl border border-slate-200 shadow-lg overflow-hidden">
+                    <div class="bg-blue-600 text-white p-4 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-file-word text-2xl"></i>
+                            <h3 class="text-lg font-bold" data-translate="ide_word_title">Word Practice IDE</h3>
+                        </div>
+                        <div class="flex items-center gap-2 text-sm">
+                            <span class="bg-blue-500 px-3 py-1 rounded-full" data-translate="ide_practice_mode">Practice Mode</span>
+                        </div>
+                    </div>
+
+                    <!-- Toolbar -->
+                    <div class="bg-slate-50 border-b border-slate-200 p-3">
+                        <div class="flex flex-wrap items-center gap-2">
+                            <!-- Font Controls -->
+                            <select id="font-family" class="px-3 py-1 border border-slate-300 rounded text-sm">
+                                <option value="Arial">Arial</option>
+                                <option value="Times New Roman">Times New Roman</option>
+                                <option value="Calibri">Calibri</option>
+                                <option value="Verdana">Verdana</option>
+                            </select>
+                            <select id="font-size" class="px-3 py-1 border border-slate-300 rounded text-sm w-16">
+                                <option value="8">8</option>
+                                <option value="10">10</option>
+                                <option value="12" selected>12</option>
+                                <option value="14">14</option>
+                                <option value="16">16</option>
+                                <option value="18">18</option>
+                                <option value="24">24</option>
+                                <option value="36">36</option>
+                            </select>
+
+                            <!-- Formatting Buttons -->
+                            <div class="flex items-center gap-1 border-l border-slate-300 pl-2 ml-2">
+                                <button id="bold-btn" class="p-2 hover:bg-slate-200 rounded" title="Bold">
+                                    <i class="fa-solid fa-bold"></i>
+                                </button>
+                                <button id="italic-btn" class="p-2 hover:bg-slate-200 rounded" title="Italic">
+                                    <i class="fa-solid fa-italic"></i>
+                                </button>
+                                <button id="underline-btn" class="p-2 hover:bg-slate-200 rounded" title="Underline">
+                                    <i class="fa-solid fa-underline"></i>
+                                </button>
+                            </div>
+
+                            <!-- Alignment -->
+                            <div class="flex items-center gap-1 border-l border-slate-300 pl-2 ml-2">
+                                <button id="align-left" class="p-2 hover:bg-slate-200 rounded" title="Align Left">
+                                    <i class="fa-solid fa-align-left"></i>
+                                </button>
+                                <button id="align-center" class="p-2 hover:bg-slate-200 rounded" title="Align Center">
+                                    <i class="fa-solid fa-align-center"></i>
+                                </button>
+                                <button id="align-right" class="p-2 hover:bg-slate-200 rounded" title="Align Right">
+                                    <i class="fa-solid fa-align-right"></i>
+                                </button>
+                                <button id="align-justify" class="p-2 hover:bg-slate-200 rounded" title="Justify">
+                                    <i class="fa-solid fa-align-justify"></i>
+                                </button>
+                            </div>
+
+                            <!-- Lists and Indent -->
+                            <div class="flex items-center gap-1 border-l border-slate-300 pl-2 ml-2">
+                                <button id="bullet-list" class="p-2 hover:bg-slate-200 rounded" title="Bullet List">
+                                    <i class="fa-solid fa-list-ul"></i>
+                                </button>
+                                <button id="number-list" class="p-2 hover:bg-slate-200 rounded" title="Numbered List">
+                                    <i class="fa-solid fa-list-ol"></i>
+                                </button>
+                                <button id="indent" class="p-2 hover:bg-slate-200 rounded" title="Increase Indent">
+                                    <i class="fa-solid fa-indent"></i>
+                                </button>
+                                <button id="outdent" class="p-2 hover:bg-slate-200 rounded" title="Decrease Indent">
+                                    <i class="fa-solid fa-outdent"></i>
+                                </button>
+                            </div>
+
+                            <!-- Colors -->
+                            <div class="flex items-center gap-1 border-l border-slate-300 pl-2 ml-2">
+                                <input type="color" id="text-color" class="w-8 h-8 border border-slate-300 rounded cursor-pointer" title="Text Color">
+                                <input type="color" id="bg-color" class="w-8 h-8 border border-slate-300 rounded cursor-pointer" title="Background Color" value="#ffffff">
+                            </div>
+
+                            <!-- Actions -->
+                            <div class="flex items-center gap-1 border-l border-slate-300 pl-2 ml-2">
+                                <button id="clear-doc" class="px-3 py-1 bg-red-500 text-white rounded text-sm hover:bg-red-600" title="Clear Document">
+                                    <span data-translate="ide_word_clear">Clear</span>
+                                </button>
+                                <button id="save-doc" class="px-3 py-1 bg-green-500 text-white rounded text-sm hover:bg-green-600" title="Save Document">
+                                    <span data-translate="ide_word_save">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Document Area -->
+                    <div class="relative">
+                        <div id="word-editor" contenteditable="true" class="min-h-[500px] p-6 focus:outline-none text-sm leading-relaxed bg-white"
+                             style="font-family: Calibri; font-size: 12pt; line-height: 1.5;">
+                            <p><br></p>
+                        </div>
+
+                        <!-- Page indicators -->
+                        <div class="absolute bottom-4 right-4 bg-slate-100 px-3 py-1 rounded text-xs text-slate-600">
+                            Page 1 of 1
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Resources Iframe -->
+               
+
+                <div class="bg-blue-50 rounded-3xl p-8 border border-blue-100 shadow-sm">
+                    <div id="quiz-container" class="space-y-3 mb-8"></div>
+                    <button onclick="checkAllAnswers()" class="w-full bg-slate-900 text-white py-5 rounded-2xl font-black text-lg hover:bg-blue-600 transition-all" data-translate="ide_submit_answers">
+                        Submit Answers
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+{% endblock %}
+{% block footer %}
+    {% endblock %}
+
+{% block extra_js %}
+<script>
+    // Word IDE Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const editor = document.getElementById('word-editor');
+        const fontFamily = document.getElementById('font-family');
+        const fontSize = document.getElementById('font-size');
+        const textColor = document.getElementById('text-color');
+        const bgColor = document.getElementById('bg-color');
+        const clearBtn = document.getElementById('clear-doc');
+        const saveBtn = document.getElementById('save-doc');
+
+        // Font family change
+        fontFamily.addEventListener('change', function() {
+            document.execCommand('fontName', false, this.value);
+            editor.focus();
+        });
+
+        // Font size change
+        fontSize.addEventListener('change', function() {
+            document.execCommand('fontSize', false, this.value);
+            editor.focus();
+        });
+
+        // Text color change
+        textColor.addEventListener('input', function() {
+            document.execCommand('foreColor', false, this.value);
+            editor.focus();
+        });
+
+        // Background color change
+        bgColor.addEventListener('input', function() {
+            document.execCommand('backColor', false, this.value);
+            editor.focus();
+        });
+
+        // Formatting buttons
+        document.getElementById('bold-btn').addEventListener('click', function() {
+            document.execCommand('bold');
+            editor.focus();
+            updateButtonStates();
+        });
+
+        document.getElementById('italic-btn').addEventListener('click', function() {
+            document.execCommand('italic');
+            editor.focus();
+            updateButtonStates();
+        });
+
+        document.getElementById('underline-btn').addEventListener('click', function() {
+            document.execCommand('underline');
+            editor.focus();
+            updateButtonStates();
+        });
+
+        // Alignment buttons
+        document.getElementById('align-left').addEventListener('click', function() {
+            document.execCommand('justifyLeft');
+            editor.focus();
+            updateButtonStates();
+        });
+
+        document.getElementById('align-center').addEventListener('click', function() {
+            document.execCommand('justifyCenter');
+            editor.focus();
+            updateButtonStates();
+        });
+
+        document.getElementById('align-right').addEventListener('click', function() {
+            document.execCommand('justifyRight');
+            editor.focus();
+            updateButtonStates();
+        });
+
+        document.getElementById('align-justify').addEventListener('click', function() {
+            document.execCommand('justifyFull');
+            editor.focus();
+            updateButtonStates();
+        });
+
+        // List buttons
+        document.getElementById('bullet-list').addEventListener('click', function() {
+            document.execCommand('insertUnorderedList');
+            editor.focus();
+        });
+
+        document.getElementById('number-list').addEventListener('click', function() {
+            document.execCommand('insertOrderedList');
+            editor.focus();
+        });
+
+        // Indent buttons
+        document.getElementById('indent').addEventListener('click', function() {
+            document.execCommand('indent');
+            editor.focus();
+        });
+
+        document.getElementById('outdent').addEventListener('click', function() {
+            document.execCommand('outdent');
+            editor.focus();
+        });
+
+        // Clear document
+        clearBtn.addEventListener('click', function() {
+            if (confirm('Are you sure you want to clear the document? This action cannot be undone.')) {
+                editor.innerHTML = '<p><br></p>';
+                editor.focus();
+            }
+        });
+
+        // Save document
+        saveBtn.addEventListener('click', function() {
+            const content = editor.innerHTML;
+            const blob = new Blob([content], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'word-document.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
+
+        // Update button states based on current selection
+        function updateButtonStates() {
+            const buttons = ['bold-btn', 'italic-btn', 'underline-btn', 'align-left', 'align-center', 'align-right', 'align-justify'];
+            buttons.forEach(btnId => {
+                const btn = document.getElementById(btnId);
+                const command = btnId.replace('-btn', '').replace('align-', 'justify');
+                if (document.queryCommandState(command)) {
+                    btn.classList.add('bg-blue-100', 'text-blue-600');
+                } else {
+                    btn.classList.remove('bg-blue-100', 'text-blue-600');
+                }
+            });
+        }
+
+        // Listen for selection changes
+        editor.addEventListener('keyup', updateButtonStates);
+        editor.addEventListener('mouseup', updateButtonStates);
+        editor.addEventListener('focus', updateButtonStates);
+
+        // Initialize with a starting paragraph
+        if (editor.innerHTML.trim() === '<p><br></p>' || editor.innerHTML.trim() === '') {
+            editor.innerHTML = '<p>Welcome to the Word Practice IDE! Start typing here to practice your Microsoft Word skills.</p><p><br></p>';
+        }
+
+        // Auto-save to localStorage
+        let autoSaveTimer;
+        editor.addEventListener('input', function() {
+            clearTimeout(autoSaveTimer);
+            autoSaveTimer = setTimeout(() => {
+                const lessonId = currentIdx >= 0 ? dbLessons[currentIdx].id : 'default';
+                localStorage.setItem(`word-doc-${lessonId}`, editor.innerHTML);
+            }, 1000);
+        });
+
+        // Load saved content when lesson changes
+        function loadSavedContent(lessonId) {
+            const saved = localStorage.getItem(`word-doc-${lessonId}`);
+            if (saved) {
+                editor.innerHTML = saved;
+            } else {
+                editor.innerHTML = '<p>Welcome to the Word Practice IDE! Start typing here to practice your Microsoft Word skills.</p><p><br></p>';
+            }
+        }
+
+        // Override the loadLesson function to include IDE content loading
+        const originalLoadLesson = window.loadLesson;
+        window.loadLesson = function(idx) {
+            originalLoadLesson(idx);
+            if (dbLessons[idx]) {
+                loadSavedContent(dbLessons[idx].id);
+            }
+        };
+    });
+</script>
+
+<script>
+    // Organize lessons into a flat array for the logic, 
+    // but keep track of which module they belong to
+    const dbLessons = [
+        {% for module in modules %}
+            {% for lesson in module.lessons.all %}
+            {
+                id: "{{ lesson.id }}",
+                moduleIndex: {{ forloop.parentloop.counter }},
+                label: "{{ lesson.label|escapejs }}",
+                title: "{{ lesson.title|escapejs }}",
+                theory: "{{ lesson.theory|safe|escapejs }}",
+                embed_url: "{{ lesson.embed_url|escapejs }}",
+                questions: [
+                    {% for q in lesson.questions.all %}
+                    { 
+                        q: "{{ q.question_text|escapejs }}", 
+                        opts: ["{{ q.option_1|escapejs }}", "{{ q.option_2|escapejs }}"], 
+                        ans: "{{ q.correct_answer|escapejs }}" 
+                    }{% if not forloop.last %},{% endif %}
+                    {% endfor %}
+                ]
+            }{% if not forloop.last or not forloop.parentloop.last %},{% endif %}
+            {% endfor %}
+        {% endfor %}
+    ];
+</script>
+
+<script src="{% static 'accounts/course_logic.js' %}"></script>
+
+<script>
+    // Initialize first lesson
+    if (dbLessons.length > 0) {
+        loadLesson(0);
+    } else {
+        document.getElementById('lesson-title').innerText = "No Lessons Added Yet";
+    }
+</script>
+{% endblock %}

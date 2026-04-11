@@ -1,0 +1,193 @@
+/* =============================================
+   Microsoft Word Help & Learning – styles.css
+   ============================================= */
+
+:root {
+  --ms-blue: #0067b8;
+  --ms-blue-dark: #005a9e;
+  --ms-blue-hero: #106ebe;
+  --ms-orange: #d83b01;
+  --ms-gray-bg: #f5f5f5;
+  --ms-border: #d2d2d2;
+}
+
+/* Base font */
+body {
+  font-family: 'Segoe UI', 'Source Sans 3', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Promo Banner ─── */
+.promo-banner {
+  background: #fff4ce;
+  position: relative;
+}
+
+.unlock-btn {
+  background: var(--ms-blue);
+  transition: background 0.2s;
+}
+.unlock-btn:hover {
+  background: var(--ms-blue-dark);
+}
+
+/* ─── Navigation ─── */
+.nav-link {
+  border-radius: 2px;
+  transition: color 0.15s;
+}
+
+.copilot-btn {
+  border-color: var(--ms-blue);
+  color: var(--ms-blue);
+  transition: background 0.15s, color 0.15s;
+}
+.copilot-btn:hover {
+  background: var(--ms-blue);
+  color: #fff;
+}
+
+/* ─── Hero Section ─── */
+.hero-section {
+  background: linear-gradient(135deg, var(--ms-blue-hero) 0%, #0a4a7a 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.hero-section input {
+  border-radius: 2px 0 0 2px;
+}
+
+.search-arrow {
+  background: var(--ms-blue-dark);
+  border-radius: 0 2px 2px 0;
+  transition: background 0.2s;
+}
+.search-arrow:hover {
+  background: #004578;
+}
+
+/* ─── Category Nav ─── */
+.cat-nav {
+  background: #fff;
+  position: relative;
+}
+
+.cat-item {
+  transition: color 0.15s;
+  position: relative;
+}
+
+.cat-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--ms-blue);
+  transform: scaleX(0);
+  transition: transform 0.2s;
+}
+
+.cat-item:hover::after {
+  transform: scaleX(1);
+}
+
+/* ─── Buy Button ─── */
+.buy-btn {
+  background: var(--ms-blue);
+  color: white;
+  transition: background 0.2s;
+  border-radius: 2px;
+}
+.buy-btn:hover {
+  background: var(--ms-blue-dark);
+  text-decoration: none;
+}
+
+/* ─── Explore Cards ─── */
+.explore-card {
+  border: 1px solid var(--ms-border);
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  border-radius: 3px;
+}
+
+.explore-card:hover {
+  border-color: var(--ms-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,103,184,0.12);
+}
+
+/* ─── Trending Topics Links ─── */
+section a[href]:not(.nav-link):not(.cat-item) {
+  transition: color 0.15s;
+}
+section a[href]:hover {
+  text-decoration: underline;
+}
+
+/* ─── Editor Section ─── */
+.editor-section {
+  background: #f0f6fc;
+  border-top: 1px solid #d0e4f5;
+  border-bottom: 1px solid #d0e4f5;
+}
+
+/* ─── Play Button ─── */
+.play-btn {
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.play-btn:hover {
+  opacity: 0.85;
+}
+
+/* ─── AI Video Card ─── */
+.ai-video-card {
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+.ai-video-card:hover {
+  box-shadow: 0 8px 32px rgba(0,103,184,0.18);
+}
+
+/* ─── Footer ─── */
+footer a {
+  transition: color 0.15s;
+}
+
+/* ─── Scroll reveal animation ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Responsive tweaks ─── */
+@media (max-width: 640px) {
+  .cat-nav .cat-item span {
+    font-size: 10px;
+  }
+
+  .hero-section h1 {
+    font-size: 1.8rem;
+  }
+
+  .explore-card {
+    padding: 0.75rem;
+  }
+}

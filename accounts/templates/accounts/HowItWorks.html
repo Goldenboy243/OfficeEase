@@ -1,0 +1,359 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="hero-bg grid-texture relative overflow-hidden pt-20 pb-24 mt-6">
+  <!-- Decorative blobs -->
+  <div class="absolute -top-10 -right-10 w-80 h-80 bg-emerald-100 rounded-full blur-[80px] opacity-60 pointer-events-none"></div>
+  <div class="absolute bottom-0 left-1/4 w-60 h-60 bg-teal-100 rounded-full blur-[80px] opacity-40 pointer-events-none"></div>
+
+  <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+    <!-- eyebrow -->
+    <div class="reveal reveal-1 inline-flex items-center gap-2.5 px-4 py-1.5 bg-white border border-emerald-100 rounded-full mb-6 shadow-sm">
+      <span class="relative flex h-2 w-2">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
+      </span>
+      <span class="text-[10px] font-black text-emerald-700 uppercase tracking-[0.2em]" data-translate="hiw_eyebrow">How It Works</span>
+    </div>
+
+    <h1 class="reveal reveal-2 text-5xl lg:text-7xl font-black text-slate-900 leading-[1.05] mb-6 tracking-tight">
+      <span data-translate="hiw_hero_title1">Learn Microsoft Office <br/></span>
+      <span class="text-emerald-600 italic" data-translate="hiw_hero_title2">Step by Step.</span>
+    </h1>
+
+    <p class="reveal reveal-3 text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed" data-translate="hiw_hero_desc">
+      Our interactive learning platform guides you through practical exercises, real-world projects,
+      and instant feedback to master Word, Excel, and PowerPoint with confidence.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     LEARNING PROCESS
+══════════════════════════════════════ -->
+
+<section class="max-w-6xl mx-auto px-6 py-20">
+  <div class="text-center mb-16">
+    <h2 class="text-4xl lg:text-5xl font-black text-slate-900 tracking-tight mb-6" data-translate="hiw_journey_title">
+      Your Learning Journey
+    </h2>
+    <p class="text-lg text-slate-500 max-w-2xl mx-auto" data-translate="hiw_journey_desc">
+      Follow our proven 4-step process designed to take you from beginner to expert
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+    <!-- Step 1 -->
+    <div class="text-center group">
+      <div class="relative mb-6">
+        <div class="w-20 h-20 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:scale-110 transition-transform">
+          <span class="text-2xl font-black text-white">1</span>
+        </div>
+        <div class="absolute -top-2 -right-2 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+          <i class="fa-solid fa-book-open text-blue-600 text-sm"></i>
+        </div>
+      </div>
+      <h3 class="text-xl font-bold text-slate-900 mb-3" data-translate="hiw_step1_title">Learn Theory</h3>
+      <p class="text-slate-500 leading-relaxed" data-translate="hiw_step1_desc">
+        Start with clear, concise lessons that explain concepts in simple language with practical examples.
+      </p>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="text-center group">
+      <div class="relative mb-6">
+        <div class="w-20 h-20 bg-emerald-600 rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:scale-110 transition-transform">
+          <span class="text-2xl font-black text-white">2</span>
+        </div>
+        <div class="absolute -top-2 -right-2 w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center">
+          <i class="fa-solid fa-laptop-code text-emerald-600 text-sm"></i>
+        </div>
+      </div>
+      <h3 class="text-xl font-bold text-slate-900 mb-3" data-translate="hiw_step2_title">Practice Hands-On</h3>
+      <p class="text-slate-500 leading-relaxed" data-translate="hiw_step2_desc">
+        Apply what you've learned in our interactive environment with guided exercises and real-time feedback.
+      </p>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="text-center group">
+      <div class="relative mb-6">
+        <div class="w-20 h-20 bg-orange-600 rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:scale-110 transition-transform">
+          <span class="text-2xl font-black text-white">3</span>
+        </div>
+        <div class="absolute -top-2 -right-2 w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
+          <i class="fa-solid fa-brain text-orange-600 text-sm"></i>
+        </div>
+      </div>
+      <h3 class="text-xl font-bold text-slate-900 mb-3" data-translate="hiw_step3_title">Test Knowledge</h3>
+      <p class="text-slate-500 leading-relaxed" data-translate="hiw_step3_desc">
+        Reinforce learning with quizzes that check your understanding and provide instant explanations.
+      </p>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="text-center group">
+      <div class="relative mb-6">
+        <div class="w-20 h-20 bg-purple-600 rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:scale-110 transition-transform">
+          <span class="text-2xl font-black text-white">4</span>
+        </div>
+        <div class="absolute -top-2 -right-2 w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+          <i class="fa-solid fa-rocket text-purple-600 text-sm"></i>
+        </div>
+      </div>
+      <h3 class="text-xl font-bold text-slate-900 mb-3" data-translate="hiw_step4_title">Build Projects</h3>
+      <p class="text-slate-500 leading-relaxed" data-translate="hiw_step4_desc">
+        Create real-world documents, spreadsheets, and presentations that you can use in your career.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FEATURES SECTION
+══════════════════════════════════════ -->
+
+<section class="bg-slate-50 py-20">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl lg:text-5xl font-black text-slate-900 tracking-tight mb-6" data-translate="hiw_features_title">
+        Why Choose OfficeEase?
+      </h2>
+      <p class="text-lg text-slate-500 max-w-2xl mx-auto" data-translate="hiw_features_desc">
+        Our platform combines the best of traditional learning with modern technology
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- Feature 1 -->
+      <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100">
+        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+          <i class="fa-solid fa-globe text-blue-600 text-xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-slate-900 mb-3" data-translate="hiw_feat1_title">Local Language Support</h3>
+        <p class="text-slate-500 leading-relaxed" data-translate="hiw_feat1_desc">
+          Learn in your preferred language with culturally relevant examples and explanations.
+        </p>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100">
+        <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mb-6">
+          <i class="fa-solid fa-clock text-emerald-600 text-xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-slate-900 mb-3" data-translate="hiw_feat2_title">Learn at Your Pace</h3>
+        <p class="text-slate-500 leading-relaxed" data-translate="hiw_feat2_desc">
+          No deadlines or pressure. Study when it fits your schedule with lifetime access to all content.
+        </p>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100">
+        <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-6">
+          <i class="fa-solid fa-mobile-screen-button text-orange-600 text-xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-slate-900 mb-3" data-translate="hiw_feat3_title">Mobile Friendly</h3>
+        <p class="text-slate-500 leading-relaxed" data-translate="hiw_feat3_desc">
+          Access your learning materials on any device - desktop, tablet, or smartphone.
+        </p>
+      </div>
+
+      <!-- Feature 4 -->
+      <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100">
+        <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+          <i class="fa-solid fa-chart-line text-purple-600 text-xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-slate-900 mb-3" data-translate="hiw_feat4_title">Track Progress</h3>
+        <p class="text-slate-500 leading-relaxed" data-translate="hiw_feat4_desc">
+          Monitor your learning journey with detailed progress tracking and achievement badges.
+        </p>
+      </div>
+
+      <!-- Feature 5 -->
+      <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100">
+        <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mb-6">
+          <i class="fa-solid fa-users text-red-600 text-xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-slate-900 mb-3" data-translate="hiw_feat5_title">Community Support</h3>
+        <p class="text-slate-500 leading-relaxed" data-translate="hiw_feat5_desc">
+          Join a community of learners and get help from instructors and fellow students.
+        </p>
+      </div>
+
+      <!-- Feature 6 -->
+      <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100">
+        <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center mb-6">
+          <i class="fa-solid fa-certificate text-indigo-600 text-xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-slate-900 mb-3" data-translate="hiw_feat6_title">Earn Certificates</h3>
+        <p class="text-slate-500 leading-relaxed" data-translate="hiw_feat6_desc">
+          Get recognized for your skills with completion certificates for each course module.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     MODULE PREVIEW
+══════════════════════════════════════ -->
+
+<section class="max-w-6xl mx-auto px-6 py-20">
+  <div class="text-center mb-16">
+    <h2 class="text-4xl lg:text-5xl font-black text-slate-900 tracking-tight mb-6" data-translate="hiw_learn_title">
+      What You'll Learn
+    </h2>
+    <p class="text-lg text-slate-500 max-w-2xl mx-auto" data-translate="hiw_learn_desc">
+      Comprehensive modules covering all essential Microsoft Office skills
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+    <!-- Word Module -->
+    <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100">
+      <div class="h-48 bg-gradient-to-br from-blue-600 to-blue-800 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="absolute top-6 left-6">
+          <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-lg">
+            <i class="fa-solid fa-file-word text-blue-600 text-xl"></i>
+          </div>
+        </div>
+        <div class="absolute bottom-6 left-6 right-6">
+          <h3 class="text-xl font-bold text-white mb-2" data-translate="nav_word">Microsoft Word</h3>
+          <p class="text-blue-100 text-sm" data-translate="hiw_word_desc">Professional document creation</p>
+        </div>
+      </div>
+      <div class="p-6">
+        <ul class="space-y-3 text-sm text-slate-600">
+          <li class="flex items-center gap-3">
+            <i class="fa-solid fa-check text-emerald-500 text-xs"></i>
+            <span data-translate="hiw_word_li1">Document formatting and styles</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <i class="fa-solid fa-check text-emerald-500 text-xs"></i>
+            <span data-translate="hiw_word_li2">Advanced layout techniques</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <i class="fa-solid fa-check text-emerald-500 text-xs"></i>
+            <span data-translate="hiw_word_li3">Mail merge and automation</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <i class="fa-solid fa-check text-emerald-500 text-xs"></i>
+            <span data-translate="hiw_word_li4">Professional resume design</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Excel Module -->
+    <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100">
+      <div class="h-48 bg-gradient-to-br from-emerald-600 to-emerald-800 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="absolute top-6 left-6">
+          <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-lg">
+            <i class="fa-solid fa-file-excel text-emerald-600 text-xl"></i>
+          </div>
+        </div>
+        <div class="absolute bottom-6 left-6 right-6">
+          <h3 class="text-xl font-bold text-white mb-2" data-translate="nav_excel">Microsoft Excel</h3>
+          <p class="text-emerald-100 text-sm" data-translate="hiw_excel_desc">Data analysis and automation</p>
+        </div>
+      </div>
+      <div class="p-6">
+        <ul class="space-y-3 text-sm text-slate-600">
+          <li class="flex items-center gap-3">
+            <i class="fa-solid fa-check text-emerald-500 text-xs"></i>
+            <span data-translate="hiw_excel_li1">Formulas and functions</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <i class="fa-solid fa-check text-emerald-500 text-xs"></i>
+            <span data-translate="hiw_excel_li2">Data visualization with charts</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <i class="fa-solid fa-check text-emerald-500 text-xs"></i>
+            <span data-translate="hiw_excel_li3">Pivot tables and analysis</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <i class="fa-solid fa-check text-emerald-500 text-xs"></i>
+            <span data-translate="hiw_excel_li4">Automated reporting</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PowerPoint Module -->
+    <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100">
+      <div class="h-48 bg-gradient-to-br from-orange-600 to-orange-800 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="absolute top-6 left-6">
+          <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-lg">
+            <i class="fa-solid fa-file-powerpoint text-orange-600 text-xl"></i>
+          </div>
+        </div>
+        <div class="absolute bottom-6 left-6 right-6">
+          <h3 class="text-xl font-bold text-white mb-2" data-translate="nav_powerpoint">Microsoft PowerPoint</h3>
+          <p class="text-orange-100 text-sm" data-translate="hiw_ppt_desc">Compelling presentations</p>
+        </div>
+      </div>
+      <div class="p-6">
+        <ul class="space-y-3 text-sm text-slate-600">
+          <li class="flex items-center gap-3">
+            <i class="fa-solid fa-check text-emerald-500 text-xs"></i>
+            <span data-translate="hiw_ppt_li1">Slide design and layouts</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <i class="fa-solid fa-check text-emerald-500 text-xs"></i>
+            <span data-translate="hiw_ppt_li2">Animation and transitions</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <i class="fa-solid fa-check text-emerald-500 text-xs"></i>
+            <span data-translate="hiw_ppt_li3">Visual storytelling techniques</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <i class="fa-solid fa-check text-emerald-500 text-xs"></i>
+            <span data-translate="hiw_ppt_li4">Presentation delivery skills</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     CALL TO ACTION
+══════════════════════════════════════ -->
+
+<section class="bg-gradient-to-br from-blue-600 to-indigo-800 text-white py-20">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <h2 class="text-4xl lg:text-5xl font-black mb-6" data-translate="hiw_cta_title">
+      Ready to Start Your Journey?
+    </h2>
+    <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto" data-translate="hiw_cta_desc">
+      Join thousands of learners who have mastered Microsoft Office with our proven method.
+      Start learning today with our free trial.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      {% if user.is_authenticated %}
+      <a href="{% url 'word_course' %}" class="px-8 py-4 bg-white text-blue-600 font-bold rounded-xl hover:bg-blue-50 transition-colors">
+        <span data-translate="hiw_btn_start">Start Learning Now</span>
+      </a>
+      {% else %}
+      <a href="{% url 'auth' %}#signup" class="px-8 py-4 bg-white text-blue-600 font-bold rounded-xl hover:bg-blue-50 transition-colors">
+        <span data-translate="hiw_btn_signup">Sign Up Free</span>
+      </a>
+      <a href="{% url 'word_course' %}" class="px-8 py-4 border-2 border-white text-white font-bold rounded-xl hover:bg-white/10 transition-colors">
+        <span data-translate="hiw_btn_demo">Try Demo Course</span>
+      </a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% endblock %}

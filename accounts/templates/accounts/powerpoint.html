@@ -1,0 +1,392 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+
+{% block title %}OfficeEase - PowerPoint Course{% endblock %}
+
+{% block extra_css %}
+<style>
+    .lesson-scroll::-webkit-scrollbar { width: 4px; }
+    .lesson-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+    .active-lesson { border-left: 4px solid #f97316 !important; background-color: #fff7ed !important; color: #92400e !important; font-weight: 700; }
+    .accordion-content { transition: max-height 0.3s ease-out; overflow: hidden; max-height: 0; }
+    .accordion-content.open { max-height: 500px; padding-bottom: 1rem; }
+    .slide-canvas { background: white; border: 2px solid #e5e7eb; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+    .slide-notes { background: #f9fafb; border-top: 1px solid #e5e7eb; font-family: monospace; font-size: 12px; }
+</style>
+{% endblock %}
+
+{% block content %}
+<main class="max-w-7xl mx-auto mt-8 px-4 lg:px-10 pb-20">
+    <div class="flex flex-col lg:flex-row gap-8">
+       <aside class="lg:w-1/3">
+    <div class="bg-slate-50 border border-slate-200 rounded-[2rem] p-6 sticky top-5 shadow-sm">
+        <div class="mb-6 flex justify-between items-end">
+            <h2 class="text-2xl font-black italic text-orange-700" data-translate="powerpoint_course_progress">Course Progress</h2>
+            <span id="overall-progress" class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                0 of {{ modules|length }} Modules complete
+            </span>
+        </div>
+
+        <div class="space-y-4">
+            {% for module in modules %}
+            <div class="border border-orange-200 rounded-2xl overflow-hidden bg-white shadow-sm">
+                <div class="p-4 bg-orange-600 text-white flex justify-between items-center cursor-pointer" 
+                     onclick="document.getElementById('mod-{{ forloop.counter }}').classList.toggle('hidden')">
+                    <div>
+                        <p class="text-[10px] uppercase font-bold opacity-80">Module {{ forloop.counter }}</p>
+                        <span class="text-sm font-bold">{{ module.title }}</span>
+                    </div>
+                    <span class="text-[10px] bg-orange-500 px-2 py-1 rounded">
+                        <span id="mod-prog-{{ forloop.counter }}">0</span> of {{ module.lessons.all|length }} <span data-translate="powerpoint_steps">steps</span>
+                    </span>                </div>
+
+                <div id="mod-{{ forloop.counter }}" class="p-2 space-y-1">
+                    {% for lesson in module.lessons.all %}
+                   <button onclick="jumpToLessonById('{{ lesson.id }}')" id="btn-{{ lesson.id }}" 
+        class="w-full text-left p-4 rounded-xl text-xs flex items-center gap-3 transition-all font-medium text-slate-500 hover:bg-slate-50">
+    <i class="fa-regular fa-circle" id="check-{{ lesson.id }}"></i> 
+    {{ lesson.label }}. {{ lesson.title }}
+</button>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</aside>
+
+        <section class="lg:w-2/3">
+            <div class="bg-white border border-slate-200 rounded-[2.5rem] p-8 lg:p-12 shadow-2xl relative overflow-hidden">
+                
+                <div id="feedback-correct" class="hidden absolute inset-0 bg-orange-500/95 z-50 flex flex-col items-center justify-center text-white p-10 text-center">
+                    <i class="fa-solid fa-circle-check text-7xl mb-4"></i>
+                    <h2 class="text-4xl font-black mb-2 text-white" data-translate="ide_feedback_excellent">Excellent!</h2>
+                    <button onclick="moveToNextLesson()" class="bg-white text-orange-600 px-10 py-4 rounded-xl font-black uppercase tracking-widest" data-translate="ide_feedback_continue">Continue</button>
+                </div>
+
+                <div id="feedback-wrong" class="hidden absolute inset-0 bg-red-500/95 z-50 flex flex-col items-center justify-center text-white p-10 text-center">
+                    <i class="fa-solid fa-circle-xmark text-7xl mb-4"></i>
+                    <h2 class="text-4xl font-black mb-2 text-white" data-translate="ide_feedback_try_again">Try Again</h2>
+                    <p id="error-details" class="mb-8 font-medium text-lg text-white"></p>
+                    <button onclick="closeFeedback()" class="bg-white text-red-600 px-10 py-4 rounded-xl font-black uppercase tracking-widest" data-translate="ide_feedback_review">Review</button>
+                </div>
+
+                <div class="mb-10">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="w-2 h-2 bg-orange-600 rounded-full"></span>
+                        <span id="module-label" class="text-[10px] font-black uppercase text-orange-600 tracking-widest italic"></span>
+                    </div>
+                    <h1 id="lesson-title" class="text-5xl font-black text-slate-900 leading-tight"></h1>
+                </div>
+
+                <div id="lesson-theory" class="text-slate-600 mb-10 text-lg leading-relaxed"></div>
+                
+                <!-- PowerPoint IDE Section -->
+                <div class="mb-12 bg-white rounded-2xl border border-slate-200 shadow-lg overflow-hidden">
+                    <div class="bg-orange-600 text-white p-4 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-file-powerpoint text-2xl"></i>
+                            <h3 class="text-lg font-bold" data-translate="ide_ppt_title">PowerPoint Practice IDE</h3>
+                        </div>
+                        <div class="flex items-center gap-2 text-sm">
+                            <span class="bg-orange-500 px-3 py-1 rounded-full" data-translate="ide_practice_mode">Practice Mode</span>
+                        </div>
+                    </div>
+
+                    <!-- PowerPoint Toolbar -->
+                    <div class="bg-slate-50 border-b border-slate-200 p-3">
+                        <div class="flex flex-wrap items-center gap-2">
+                            <!-- Slide Navigation -->
+                            <div class="flex items-center gap-1">
+                                <button id="prev-slide" class="p-2 hover:bg-slate-200 rounded" title="Previous Slide">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </button>
+                                <span id="slide-counter" class="px-3 py-1 bg-white border border-slate-300 rounded text-sm font-bold">Slide 1</span>
+                                <button id="next-slide" class="p-2 hover:bg-slate-200 rounded" title="Next Slide">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </button>
+                            </div>
+
+                            <!-- Slide Management -->
+                            <div class="flex items-center gap-1 border-l border-slate-300 pl-2 ml-2">
+                                <button id="add-slide" class="p-2 hover:bg-slate-200 rounded text-sm" title="Add New Slide">
+                                    <i class="fa-solid fa-plus"></i> Add Slide
+                                </button>
+                                <button id="delete-slide" class="p-2 hover:bg-slate-200 rounded text-sm text-red-600" title="Delete Slide">
+                                    <i class="fa-solid fa-trash"></i> Delete
+                                </button>
+                            </div>
+
+                            <!-- Text Formatting -->
+                            <div class="flex items-center gap-1 border-l border-slate-300 pl-2 ml-2">
+                                <select id="font-size" class="px-3 py-1 border border-slate-300 rounded text-sm w-20">
+                                    <option value="12">12pt</option>
+                                    <option value="16">16pt</option>
+                                    <option value="20">20pt</option>
+                                    <option value="24" selected>24pt</option>
+                                    <option value="32">32pt</option>
+                                    <option value="40">40pt</option>
+                                    <option value="48">48pt</option>
+                                </select>
+                                <button id="bold-btn" class="p-2 hover:bg-slate-200 rounded" title="Bold">
+                                    <i class="fa-solid fa-bold"></i>
+                                </button>
+                                <button id="italic-btn" class="p-2 hover:bg-slate-200 rounded" title="Italic">
+                                    <i class="fa-solid fa-italic"></i>
+                                </button>
+                            </div>
+
+                            <!-- Colors -->
+                            <div class="flex items-center gap-1 border-l border-slate-300 pl-2 ml-2">
+                                <input type="color" id="text-color" class="w-8 h-8 border border-slate-300 rounded cursor-pointer" title="Text Color" value="#000000">
+                                <input type="color" id="bg-color" class="w-8 h-8 border border-slate-300 rounded cursor-pointer" title="Background Color" value="#ffffff">
+                            </div>
+
+                            <!-- Actions -->
+                            <div class="flex items-center gap-1 border-l border-slate-300 pl-2 ml-2">
+                                <button id="save-presentation" class="px-3 py-1 bg-orange-500 text-white rounded text-sm hover:bg-orange-600" title="Save Presentation">
+                                    Save
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide Canvas and Notes -->
+                    <div class="flex flex-col lg:flex-row">
+                        <!-- Main Slide Area -->
+                        <div class="flex-1 p-6 bg-gray-100 flex items-center justify-center min-h-[400px] lg:min-h-[500px]">
+                            <div id="slide-canvas" class="slide-canvas w-full h-96 p-8 rounded-lg relative">
+                                <!-- Slide content will be rendered here -->
+                                <div id="slide-title" contenteditable="true" class="text-4xl font-black mb-8 focus:outline-none focus:ring-2 focus:ring-orange-400 p-2 rounded">
+                                    Slide Title
+                                </div>
+                                <div id="slide-content" contenteditable="true" class="text-lg text-slate-600 focus:outline-none focus:ring-2 focus:ring-orange-400 p-2 rounded">
+                                    Click here to add content...
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Notes Section -->
+                        <div class="w-full lg:w-1/3 slide-notes p-4">
+                            <h4 class="font-bold text-slate-900 mb-2 text-sm">Notes</h4>
+                            <textarea id="slide-notes" class="w-full h-32 p-2 border border-slate-300 rounded text-xs resize-none focus:outline-none focus:ring-2 focus:ring-orange-400" placeholder="Add speaker notes here..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Slide Thumbnails -->
+                    <div class="bg-slate-50 border-t border-slate-200 p-4">
+                        <p class="text-xs font-bold text-slate-600 mb-3 uppercase">Slide Thumbnails</p>
+                        <div id="slides-panel" class="flex gap-2 overflow-x-auto pb-2">
+                            <!-- Thumbnails will be generated here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quiz Section -->
+                <div class="bg-orange-50 rounded-3xl p-8 border border-orange-100 shadow-sm">
+                    <div id="quiz-container" class="space-y-3 mb-8"></div>
+                    <button onclick="checkAllAnswers()" class="w-full bg-slate-900 text-white py-5 rounded-2xl font-black text-lg hover:bg-orange-600 transition-all" data-translate="ide_submit_answers">
+                        Submit Answers
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+{% endblock %}
+{% block footer %}
+    {% endblock %}
+
+{% block extra_js %}
+<script>
+    // PowerPoint IDE Functionality
+    let slides = [{ title: 'Slide 1', content: '', notes: '', bgColor: '#ffffff', textColor: '#000000' }];
+    let currentSlide = 0;
+
+    document.addEventListener('DOMContentLoaded', function() {
+        initializePresentation();
+        setupPPTToolbar();
+    });
+
+    function initializePresentation() {
+        loadSlide(0);
+    }
+
+    function loadSlide(index) {
+        if (index < 0 || index >= slides.length) return;
+        currentSlide = index;
+
+        const slide = slides[index];
+        document.getElementById('slide-title').innerText = slide.title;
+        document.getElementById('slide-content').innerText = slide.content;
+        document.getElementById('slide-notes').value = slide.notes;
+        document.getElementById('slide-canvas').style.backgroundColor = slide.bgColor;
+        document.getElementById('slide-title').style.color = slide.textColor;
+        document.getElementById('slide-content').style.color = slide.textColor;
+        document.getElementById('slide-counter').innerText = `Slide ${index + 1}/${slides.length}`;
+
+        updateThumbnails();
+    }
+
+    function saveCurrentSlide() {
+        slides[currentSlide] = {
+            title: document.getElementById('slide-title').innerText,
+            content: document.getElementById('slide-content').innerText,
+            notes: document.getElementById('slide-notes').value,
+            bgColor: document.getElementById('slide-canvas').style.backgroundColor || '#ffffff',
+            textColor: document.getElementById('slide-title').style.color || '#000000'
+        };
+        localStorage.setItem(`ppt-slides`, JSON.stringify(slides));
+    }
+
+    function addSlide() {
+        saveCurrentSlide();
+        slides.push({ title: `Slide ${slides.length + 1}`, content: '', notes: '', bgColor: '#ffffff', textColor: '#000000' });
+        loadSlide(slides.length - 1);
+    }
+
+    function deleteSlide() {
+        if (slides.length === 1) {
+            alert('Cannot delete the last slide!');
+            return;
+        }
+        if (confirm('Delete this slide?')) {
+            slides.splice(currentSlide, 1);
+            loadSlide(Math.min(currentSlide, slides.length - 1));
+        }
+    }
+
+    function updateThumbnails() {
+        const panel = document.getElementById('slides-panel');
+        panel.innerHTML = '';
+        
+        slides.forEach((slide, idx) => {
+            const thumb = document.createElement('div');
+            thumb.className = `flex-shrink-0 w-20 h-14 border-2 rounded cursor-pointer transition-all ${idx === currentSlide ? 'border-orange-600 ring-2 ring-orange-400' : 'border-slate-300'}`;
+            thumb.style.backgroundColor = slide.bgColor;
+            thumb.innerText = `${idx + 1}`;
+            thumb.style.color = slide.textColor;
+            thumb.style.display = 'flex';
+            thumb.style.alignItems = 'center';
+            thumb.style.justifyContent = 'center';
+            thumb.style.fontSize = '12px';
+            thumb.style.fontWeight = 'bold';
+            thumb.addEventListener('click', () => {
+                saveCurrentSlide();
+                loadSlide(idx);
+            });
+            panel.appendChild(thumb);
+        });
+    }
+
+    function setupPPTToolbar() {
+        document.getElementById('prev-slide').addEventListener('click', () => {
+            saveCurrentSlide();
+            loadSlide(currentSlide - 1);
+        });
+
+        document.getElementById('next-slide').addEventListener('click', () => {
+            saveCurrentSlide();
+            loadSlide(currentSlide + 1);
+        });
+
+        document.getElementById('add-slide').addEventListener('click', addSlide);
+        document.getElementById('delete-slide').addEventListener('click', deleteSlide);
+
+        document.getElementById('font-size').addEventListener('change', function() {
+            document.getElementById('slide-title').style.fontSize = this.value + 'pt';
+        });
+
+        document.getElementById('bold-btn').addEventListener('click', () => {
+            const title = document.getElementById('slide-title');
+            title.style.fontWeight = title.style.fontWeight === 'bold' ? 'normal' : 'bold';
+        });
+
+        document.getElementById('italic-btn').addEventListener('click', () => {
+            const title = document.getElementById('slide-title');
+            title.style.fontStyle = title.style.fontStyle === 'italic' ? 'normal' : 'italic';
+        });
+
+        document.getElementById('text-color').addEventListener('input', function() {
+            document.getElementById('slide-title').style.color = this.value;
+            document.getElementById('slide-content').style.color = this.value;
+        });
+
+        document.getElementById('bg-color').addEventListener('input', function() {
+            document.getElementById('slide-canvas').style.backgroundColor = this.value;
+        });
+
+        document.getElementById('save-presentation').addEventListener('click', () => {
+            saveCurrentSlide();
+            const json = JSON.stringify(slides, null, 2);
+            const blob = new Blob([json], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'presentation.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
+
+        // Auto-save
+        setInterval(() => {
+            saveCurrentSlide();
+        }, 5000);
+    }
+
+    // Override loadLesson to load saved presentation
+    const originalLoadLesson = window.loadLesson;
+    window.loadLesson = function(idx) {
+        originalLoadLesson(idx);
+        const lessonId = dbLessons[idx] ? dbLessons[idx].id : 'default';
+        const saved = localStorage.getItem(`ppt-presentation-${lessonId}`);
+        if (saved) {
+            slides = JSON.parse(saved);
+        } else {
+            slides = [{ title: 'Slide 1', content: '', notes: '', bgColor: '#ffffff', textColor: '#000000' }];
+        }
+        loadSlide(0);
+    };
+</script>
+
+<script>
+    // Organize lessons into a flat array for the logic, 
+    // but keep track of which module they belong to
+    const dbLessons = [
+        {% for module in modules %}
+            {% for lesson in module.lessons.all %}
+            {
+                id: "{{ lesson.id }}",
+                moduleIndex: {{ forloop.parentloop.counter }},
+                label: "{{ lesson.label|escapejs }}",
+                title: "{{ lesson.title|escapejs }}",
+                theory: "{{ lesson.theory|safe|escapejs }}",
+                embed_url: "{{ lesson.embed_url|escapejs }}",
+                questions: [
+                    {% for q in lesson.questions.all %}
+                    { 
+                        q: "{{ q.question_text|escapejs }}", 
+                        opts: ["{{ q.option_1|escapejs }}", "{{ q.option_2|escapejs }}"], 
+                        ans: "{{ q.correct_answer|escapejs }}" 
+                    }{% if not forloop.last %},{% endif %}
+                    {% endfor %}
+                ]
+            }{% if not forloop.last or not forloop.parentloop.last %},{% endif %}
+            {% endfor %}
+        {% endfor %}
+    ];
+</script>
+
+<script src="{% static 'accounts/course_logic.js' %}"></script>
+
+<script>
+    // Initialize first lesson
+    if (dbLessons.length > 0) {
+        loadLesson(0);
+    } else {
+        document.getElementById('lesson-title').innerText = "No Lessons Added Yet";
+    }
+</script>
+{% endblock %}

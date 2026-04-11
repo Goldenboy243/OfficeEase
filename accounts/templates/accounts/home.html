@@ -1,0 +1,409 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+
+{% block content %}  
+<section class="max-w-7xl mx-auto mt-10 px-10 min-h-[85vh] flex items-center overflow-visible pb-20">
+    <div class="flex flex-col lg:flex-row items-center gap-16 w-full">
+      <div class="lg:w-1/2">
+        <h1 class="text-5xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight font-sans text-slate-900 mb-10">
+          <span class="block animate-typing delay-1 mb-2" data-translate="home_hero_title">Learn</span>
+          <span class="block animate-typing delay-2 text-blue-600 mb-2">Microsoft Office</span>
+          <span class="block animate-typing delay-3">the Easy Way</span>
+        </h1>
+
+        <div class="animate-together">
+          <p class="mt-6 text-lg max-w-xl text-slate-600" data-translate="home_hero_subtitle">
+            Clear lessons, simple language, and structured steps — with local language
+            support — to help you master MS Office with confidence.
+          </p>
+          <div class="mt-8">
+            <button class="px-8 py-4 rounded-lg font-bold text-white bg-slate-900 
+               transition-all duration-300 ease-in-out
+               hover:bg-blue-600 hover:shadow-xl" data-translate="home_start_learning">
+              <span>Start Learning Now</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:w-1/2 relative animate-together">
+        <div class="absolute -top-6 -left-6 w-32 h-32 bg-blue-100 rounded-full filter blur-xl opacity-70"></div>
+        <div class="relative group cursor-pointer">
+          <div
+            class="absolute inset-0 bg-blue-600 rounded-2xl opacity-20 transform rotate-3 scale-105 transition-all duration-500 ease-out group-hover:rotate-6 group-hover:scale-110">
+          </div>
+          <div
+            class="relative bg-white border border-slate-200 p-3 rounded-2xl shadow-2xl transition-all duration-500 group-hover:-translate-y-7">
+            <img src="{% static 'accounts/Hero_img.png' %}" alt="Learning" class="rounded-xl w-full h-[380px] object-cover">
+            <div
+              class="absolute -bottom-6 -left-6 bg-white/95 backdrop-blur-md p-6 rounded-2xl shadow-2xl border border-blue-50 w-[420px] max-w-[100%] animate-slide-in animate-glow transition-transform group-hover:translate-x-2">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="relative flex h-3 w-3">
+                  <span class="animate-ping absolute h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                  <span class="h-3 w-3 rounded-full bg-blue-600"></span>
+                </span>
+                <span class="text-xs font-black text-blue-600 uppercase tracking-[0.2em]">Master Microsoft Office</span>
+              </div>
+              <p class="text-slate-800 text-sm leading-relaxed font-medium">
+                <span class="text-blue-600 font-bold italic">Interactive Modules:</span> Practical projects in Excel,
+                Word, and PowerPoint.
+              </p>
+              <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+                <span class="text-[10px] text-slate-400 font-bold uppercase tracking-tighter">Beginner to Pro ● Lifetime
+                  Access</span>
+                <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full font-bold">Free Trial</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- impact status -->
+  <div class="max-w-7xl mx-auto px-10 py-16">
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-8 border-y border-slate-100 py-12">
+
+      <div class="text-center">
+        <p class="text-3xl font-black text-slate-900 flex items-center justify-center">
+          <span class="counter" data-target="{{ user_count }}">0</span>+
+        </p>
+        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-2" data-translate="home_active_learners">Active Learners</p>
+      </div>
+
+      <div class="text-center border-l border-slate-100">
+        <p class="text-3xl font-black text-blue-600 flex items-center justify-center">
+          <span class="counter" data-target="120">0</span>+
+        </p>
+        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-2" data-translate="home_interactive_tasks">Interactive Tasks</p>
+      </div>
+
+      <div class="text-center border-l border-slate-100">
+        <p class="text-3xl font-black text-emerald-600 flex items-center justify-center">
+          <span class="counter" data-target="25">0</span>
+        </p>
+        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-2" data-translate="home_real_world_labs">Real-World Labs</p>
+      </div>
+
+      <div class="text-center border-l border-slate-100">
+        <p class="text-3xl font-black text-orange-600 flex items-center justify-center">
+          <span class="counter" data-target="500">0</span>+
+        </p>
+        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-2" data-translate="home_knowledge_quizzes">Knowledge Quizzes</p>
+      </div>
+
+      <div class="text-center border-l border-slate-100">
+        <p class="text-3xl font-black text-indigo-600 flex items-center justify-center">
+          <span class="counter" data-target="4.9">0</span>/5
+        </p>
+        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-2" data-translate="home_user_rating">User Rating</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- word section -->
+  <section
+    class="relative w-full min-h-[110vh] flex items-center justify-center bg-gradient-to-br from-[#2b579a] to-[#1e3a8a] text-white overflow-hidden pb-20 pt-20"
+    style="clip-path: ellipse(150% 100% at 50% 100%);">
+    <div class="absolute inset-0 w-full h-full pointer-events-none z-0">
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-400 rounded-full blur-[120px] opacity-20"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-300 rounded-full blur-[120px] opacity-10"></div>
+      <svg class="absolute bottom-0 left-0 w-full h-[40%] opacity-[0.1]" viewBox="0 0 1440 320"
+        preserveAspectRatio="none">
+        <path fill="white"
+          d="M0,160L120,186.7C240,213,480,267,720,245.3C960,224,1200,128,1320,80L1440,32L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z">
+        </path>
+      </svg>
+      <div class="absolute inset-0 opacity-[0.05]"
+        style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 40px 40px;">
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10 w-full">
+      <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+        <div class="lg:w-1/2">
+          <div
+            class="mt-10 inline-flex items-center gap-3 px-4 py-1.5 bg-white/10 border border-white/20 rounded-full mb-8 backdrop-blur-md">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-300"></span>
+            </span>
+            <span class="text-[10px] font-black text-blue-100 uppercase tracking-[0.2em]" data-translate="home_word_module">Module 01: Creative
+              Artistry</span>
+          </div>
+          <h2 class="text-6xl lg:text-7xl font-black leading-[1.05] mb-8" data-translate="home_word_title">The Art of <br /><span
+              class="text-blue-300 italic">the Page.</span></h2>
+          <p class="text-xl text-blue-100 mb-10 max-w-xl leading-relaxed opacity-90" data-translate="home_word_desc">Microsoft Word is your digital
+            canvas. Master professional reports and modern CVs with practical, step-by-step lessons.
+          <div class="flex flex-wrap gap-3 mb-12">
+            <span
+              class="px-5 py-2.5 bg-white/10 border border-white/10 rounded-xl text-white text-sm font-bold backdrop-blur-sm" data-translate="home_word_feature1">Smart
+              Formatting</span>
+            <span
+              class="px-5 py-2.5 bg-white/10 border border-white/10 rounded-xl text-white text-sm font-bold backdrop-blur-sm" data-translate="home_word_feature2">Pro
+              Resume Design</span>
+          </div>
+          {% if user.is_authenticated %}
+          <a href="#">
+            <button  class="px-12 py-5 rounded-2xl font-black text-xl text-[#2b579a] bg-white 
+            border-2 border-transparent transition-all duration-300 ease-in-out
+            hover:bg-blue-600 hover:text-white hover:shadow-[0_15px_30px_rgba(37,99,235,0.3)]" data-translate="home_word_start">
+            <span>Start Project Now</span>
+          </a>
+          </button>
+          {% else %}
+          <a href="{% url 'auth' %}">
+            <button class="px-12 py-5 rounded-2xl font-black text-xl text-[#2b579a] bg-white 
+            border-2 border-transparent transition-all duration-300 ease-in-out
+            hover:bg-blue-600 hover:text-white hover:shadow-[0_15px_30px_rgba(37,99,235,0.3)]" data-translate="home_word_start">
+          </a>
+          <span>Start Project Now</span>
+          </button> 
+          {% endif %}
+        </div>
+
+        <div class="lg:w-1/2 relative group">
+          <div
+            class="relative bg-white/5 p-2 rounded-[2.5rem] shadow-[0_50px_100px_rgba(0,0,0,0.3)] border border-white/10 backdrop-blur-xl overflow-hidden transition-all duration-500 transform group-hover:shadow-2xl group-hover:scale-[1.02]">
+            <div class="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-black">
+              <video class="w-full h-full object-cover" autoplay loop muted playsinline>
+                <source src="your-video.mp4" type="video/mp4">
+              </video>
+              <div class="absolute top-6 left-6">
+                <div
+                  class="bg-black/60 backdrop-blur-md px-4 py-2 rounded-xl border border-white/20 flex items-center gap-2">
+                  <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                  <p class="text-white text-[10px] font-black uppercase tracking-widest" data-translate="word_live_demo">Live Demo</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- excel section -->
+  <section class="relative w-full min-h-[110vh] flex items-center justify-center bg-white overflow-hidden"
+    style="clip-path: ellipse(150% 100% at 50% 0%); margin-top: 0; padding-top: 100px; padding-bottom: 100px;">
+    <div class="absolute inset-0 w-full h-full pointer-events-none z-0">
+      <div class="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-emerald-200 rounded-full blur-[120px] opacity-70">
+      </div>
+      <div class="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-teal-100 rounded-full blur-[100px] opacity-50">
+      </div>
+      <div class="absolute inset-0 opacity-[0.08]"
+        style="background-image: linear-gradient(#10b981 2px, transparent 2px), linear-gradient(90deg, #10b981 2px, transparent 2px); background-size: 60px 60px;">
+      </div>
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-white/50 to-white"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10 w-full">
+      <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+        <div class="lg:w-1/2 relative group">
+          <div
+            class="relative bg-white p-3 rounded-[3rem] shadow-[0_40px_100px_rgba(16,185,129,0.2)] border border-emerald-100 overflow-hidden transition-all duration-700 transform group-hover:shadow-2xl group-hover:scale-[1.02]">
+            <div class="relative aspect-[4/3] rounded-[2.5rem] overflow-hidden bg-slate-900">
+              <video class="w-full h-full object-cover opacity-90" autoplay loop muted playsinline>
+                <source src="your-excel-video.mp4" type="video/mp4">
+              </video>
+              <div class="absolute top-8 left-8">
+                <div
+                  class="bg-white/95 backdrop-blur-md px-5 py-2.5 rounded-2xl shadow-lg border border-emerald-200 flex items-center gap-2">
+                  <span class="relative flex h-2 w-2">
+                    <span
+                      class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                  </span>
+                  <p class="text-emerald-900 text-[10px] font-black uppercase tracking-widest" data-translate="home_excel_live">Excel Live: Data Magic
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="absolute -top-6 -right-6 w-24 h-24 bg-white rounded-full shadow-2xl flex flex-col items-center justify-center border-4 border-emerald-100 z-20 transition-transform group-hover:translate-x-2" data-translate="home_excel_practical">
+            <span class="text-emerald-600 font-black text-xl leading-none">100%</span>
+            <span class="text-[8px] font-bold text-slate-400 uppercase mt-1">Practical</span>
+          </div>
+        </div>
+
+        <div class="lg:w-1/2">
+          <div
+            class="inline-flex items-center gap-3 px-4 py-1.5 bg-emerald-50 border border-emerald-100 rounded-full mb-8 shadow-sm">
+            <span class="relative flex h-2 w-2">
+              <span
+                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <span class="text-[10px] font-black text-emerald-700 uppercase tracking-[0.2em]" data-translate="home_excel_module">Module 02: Smart
+              Spreadsheets</span>
+          </div>
+          <h2 class="text-6xl lg:text-6xl font-black text-slate-900 leading-[1.05] mb-8" data-translate="home_excel_title">Numbers Don't <br /><span
+              class="text-emerald-600 italic">Need to be Scary.</span></h2>
+          <p class="text-xl text-slate-600 mb-10 max-w-xl leading-relaxed" data-translate="home_excel_desc">Stop manual typing. We teach you how to make
+            Excel do the heavy lifting—from simple lists to automated dashboards.
+          <div class="flex flex-wrap gap-3 mb-12">
+            <span
+              class="px-5 py-2.5 bg-emerald-50 border border-emerald-100 rounded-xl text-emerald-700 text-sm font-bold" data-translate="home_excel_feature1">Automated
+              Formulas</span>
+            <span
+              class="px-5 py-2.5 bg-emerald-50 border border-emerald-100 rounded-xl text-emerald-700 text-sm font-bold" data-translate="home_excel_feature2">Dynamic
+              Charts</span>
+          </div>
+          <button class="px-12 py-5 rounded-2xl font-black text-xl text-white bg-slate-900 
+               transition-all duration-300 ease-in-out
+               hover:bg-emerald-600 hover:shadow-[0_20px_40px_rgba(16,185,129,0.3)]" data-translate="home_excel_start">
+            <span>Unlock Data Mastery</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- feature bar -->
+  <section class="max-w-7xl mx-auto px-10 pb-20">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="p-8 bg-slate-50 rounded-3xl border border-slate-100">
+        <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center font-bold mb-6">IDE
+        </div>
+        <h4 class="font-black text-slate-900 text-lg" data-translate="home_feature_ide_title">In-Browser Practice</h4>
+        <p class="text-slate-500 text-sm mt-2 leading-relaxed" data-translate="home_feature_ide_desc">No need to install anything. Practice MS Office directly
+          in our interactive environment.</p>
+      </div>
+      <div class="p-8 bg-slate-50 rounded-3xl border border-slate-100">
+        <div
+          class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center font-bold mb-6">
+          LAB</div>
+        <h4 class="font-black text-slate-900 text-lg" data-translate="home_feature_lab_title">Workout Exercises</h4>
+        <p class="text-slate-500 text-sm mt-2 leading-relaxed" data-translate="home_feature_lab_desc">Complete real-world tasks like building automated
+          payrolls or professional pitch decks.</p>
+      </div>
+      <div class="p-8 bg-slate-50 rounded-3xl border border-slate-100">
+        <div
+          class="w-12 h-12 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center font-bold mb-6">
+          Q&A</div>
+        <h4 class="font-black text-slate-900 text-lg" data-translate="home_feature_qa_title">Instant Feedback</h4>
+        <p class="text-slate-500 text-sm mt-2 leading-relaxed" data-translate="home_feature_qa_desc">Our system checks your work instantly and guides you
+          through every step of the quiz.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- powerpoint section -->
+  <section class="relative w-full min-h-[110vh] flex items-center justify-center bg-white overflow-hidden"
+    style="clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%); margin-top: -80px; padding-top: 180px; padding-bottom: 120px;">
+
+    <div class="absolute inset-0 w-full h-full pointer-events-none z-0">
+      <div class="absolute top-1/4 right-1/4 w-[700px] h-[700px] bg-orange-100/50 rounded-full blur-[140px]"></div>
+      <div class="absolute -bottom-20 -left-20 w-[500px] h-[500px] bg-red-100/30 rounded-full blur-[120px]"></div>
+
+      <svg class="absolute inset-0 w-full h-full opacity-[0.05]" xmlns="http://www.w3.org/2000/svg">
+        <line x1="0" y1="0" x2="100%" y2="100%" stroke="#ea580c" stroke-width="1" />
+        <line x1="100%" y1="0" x2="0" y2="100%" stroke="#ea580c" stroke-width="1" />
+        <circle cx="50%" cy="50%" r="30%" fill="none" stroke="#ea580c" stroke-width="1" stroke-dasharray="10 10" />
+      </svg>
+
+      <div class="absolute top-40 left-[15%] w-48 h-32 border border-orange-200/40 rounded-lg transform -rotate-12">
+        <div class="absolute top-4 left-4 w-12 h-1 bg-orange-200/40"></div>
+        <div class="absolute top-8 left-4 w-24 h-1 bg-orange-200/40"></div>
+      </div>
+
+      <div class="absolute bottom-40 right-[10%] w-40 h-28 border border-red-200/30 rounded-lg transform rotate-6">
+        <div class="absolute bottom-6 right-4 w-16 h-10 bg-red-100/20 rounded-md"></div>
+      </div>
+
+      <svg class="absolute top-1/2 left-1/4 w-64 h-32 opacity-20" viewBox="0 0 200 100">
+        <path d="M0,50 C50,0 150,100 200,50" fill="none" stroke="#ea580c" stroke-width="2" stroke-dasharray="6 6" />
+      </svg>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10 w-full">
+      <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+
+        <div class="lg:w-1/2">
+          <div
+            class="inline-flex items-center gap-3 px-4 py-1.5 bg-orange-50 border border-orange-100 rounded-full mb-8 shadow-sm">
+            <span class="relative flex h-2 w-2">
+              <span
+                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-orange-600"></span>
+            </span>
+            <span class="text-[10px] font-black text-orange-700 uppercase tracking-[0.2em]" data-translate="home_powerpoint_module">Module 03: Presentation
+              Pro</span>
+          </div>
+
+          <h2 class="text-6xl lg:text-7xl font-black text-slate-900 leading-[1.05] mb-8" data-translate="home_powerpoint_title">
+            Present Like <br />
+            <span class="text-orange-600 italic">a Storyteller.</span>
+          </h2>
+
+          <p class="text-xl text-slate-600 mb-10 max-w-xl leading-relaxed" data-translate="home_powerpoint_desc">
+            Don't just show slides; show a vision. We teach you how to use animations, transitions, and modern design
+            rules.</span>
+
+          <div class="flex flex-wrap gap-3 mb-16">
+            <span
+              class="px-5 py-2.5 bg-orange-50 border border-orange-100 rounded-xl text-orange-700 text-sm font-bold" data-translate="home_powerpoint_feature1">Slide
+              Morphing</span>
+            <span
+              class="px-5 py-2.5 bg-orange-50 border border-orange-100 rounded-xl text-orange-700 text-sm font-bold" data-translate="home_powerpoint_feature2">Visual
+              Storytelling</span>
+          </div>
+
+          <button  class="px-12 py-5 rounded-2xl font-black text-xl text-white bg-slate-900 
+                       transition-all duration-300 ease-in-out
+                       hover:bg-orange-600 hover:shadow-[0_20px_40px_rgba(234,88,12,0.3)] mb-10" data-translate="home_powerpoint_start">
+            Become a Pro Speaker
+          </button>
+        </div>
+
+        <div class="lg:w-1/2 relative group">
+          <div
+            class="relative bg-white p-3 rounded-[3rem] shadow-xl border border-orange-50 overflow-hidden transition-all duration-500 group-hover:shadow-2xl">
+            <div class="relative aspect-[4/3] rounded-[2.5rem] overflow-hidden bg-slate-900">
+              <video class="w-full h-full object-cover opacity-90" autoplay loop muted playsinline>
+                <source src="your-pp-video.mp4" type="video/mp4">
+              </video>
+
+              <div class="absolute top-8 left-8">
+                <div
+                  class="bg-white/95 backdrop-blur-md px-5 py-2.5 rounded-2xl shadow-lg border border-orange-200 flex items-center gap-2">
+                  <span class="relative flex h-2 w-2">
+                    <span
+                      class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-orange-600"></span>
+                  </span>
+                  <p class="text-orange-900 text-[10px] font-black uppercase tracking-widest" data-translate="home_ppt_live">Live: Pitch Deck Magic</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% endblock %}
+
+  {% block extra_js %}
+  <script src="{% static 'accounts/home.js' %}"></script>
+  {% if not user.is_authenticated %}
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const authUrl = "{% url 'auth' %}";
+      document.querySelectorAll(`a[href*="${authUrl}"]`).forEach(a => {
+        a.addEventListener('click', e => {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          setTimeout(() => { window.location.href = a.href; }, 300);
+        });
+      });
+    });
+  </script>
+  {% endif %}
+  {% endblock %}
+</body>
+
+</html>
+

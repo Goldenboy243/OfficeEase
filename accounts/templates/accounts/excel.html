@@ -1,0 +1,400 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+
+{% block title %}OfficeEase - Excel Course{% endblock %}
+
+{% block extra_css %}
+<style>
+    .lesson-scroll::-webkit-scrollbar { width: 4px; }
+    .lesson-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+    .active-lesson { border-left: 4px solid #10b981 !important; background-color: #ecfdf5 !important; color: #065f46 !important; font-weight: 700; }
+    .accordion-content { transition: max-height 0.3s ease-out; overflow: hidden; max-height: 0; }
+    .accordion-content.open { max-height: 500px; padding-bottom: 1rem; }
+</style>
+{% endblock %}
+
+{% block content %}
+<main class="max-w-7xl mx-auto mt-8 px-4 lg:px-10 pb-20">
+    <div class="flex flex-col lg:flex-row gap-8">
+       <aside class="lg:w-1/3">
+    <div class="bg-slate-50 border border-slate-200 rounded-[2rem] p-6 sticky top-5 shadow-sm">
+        <div class="mb-6 flex justify-between items-end">
+            <h2 class="text-2xl font-black italic text-emerald-700" data-translate="excel_course_progress">Course Progress</h2>
+            <span id="overall-progress" class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                0 of {{ modules|length }} Modules complete
+            </span>
+        </div>
+
+        <div class="space-y-4">
+            {% for module in modules %}
+            <div class="border border-emerald-200 rounded-2xl overflow-hidden bg-white shadow-sm">
+                <div class="p-4 bg-emerald-600 text-white flex justify-between items-center cursor-pointer" 
+                     onclick="document.getElementById('mod-{{ forloop.counter }}').classList.toggle('hidden')">
+                    <div>
+                        <p class="text-[10px] uppercase font-bold opacity-80">Module {{ forloop.counter }}</p>
+                        <span class="text-sm font-bold">{{ module.title }}</span>
+                    </div>
+                    <span class="text-[10px] bg-emerald-500 px-2 py-1 rounded">
+                        <span id="mod-prog-{{ forloop.counter }}">0</span> of {{ module.lessons.all|length }} <span data-translate="excel_steps">steps</span>
+                    </span>                </div>
+
+                <div id="mod-{{ forloop.counter }}" class="p-2 space-y-1">
+                    {% for lesson in module.lessons.all %}
+                   <button onclick="jumpToLessonById('{{ lesson.id }}')" id="btn-{{ lesson.id }}" 
+        class="w-full text-left p-4 rounded-xl text-xs flex items-center gap-3 transition-all font-medium text-slate-500 hover:bg-slate-50">
+    <i class="fa-regular fa-circle" id="check-{{ lesson.id }}"></i> 
+    {{ lesson.label }}. {{ lesson.title }}
+</button>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</aside>
+
+        <section class="lg:w-2/3">
+            <div class="bg-white border border-slate-200 rounded-[2.5rem] p-8 lg:p-12 shadow-2xl relative overflow-hidden">
+                
+                <div id="feedback-correct" class="hidden absolute inset-0 bg-emerald-500/95 z-50 flex flex-col items-center justify-center text-white p-10 text-center">
+                    <i class="fa-solid fa-circle-check text-7xl mb-4"></i>
+                    <h2 class="text-4xl font-black mb-2 text-white" data-translate="ide_feedback_excellent">Excellent!</h2>
+                    <button onclick="moveToNextLesson()" class="bg-white text-emerald-600 px-10 py-4 rounded-xl font-black uppercase tracking-widest" data-translate="ide_feedback_continue">Continue</button>
+                </div>
+
+                <div id="feedback-wrong" class="hidden absolute inset-0 bg-red-500/95 z-50 flex flex-col items-center justify-center text-white p-10 text-center">
+                    <i class="fa-solid fa-circle-xmark text-7xl mb-4"></i>
+                    <h2 class="text-4xl font-black mb-2 text-white" data-translate="ide_feedback_try_again">Try Again</h2>
+                    <p id="error-details" class="mb-8 font-medium text-lg text-white"></p>
+                    <button onclick="closeFeedback()" class="bg-white text-red-600 px-10 py-4 rounded-xl font-black uppercase tracking-widest" data-translate="ide_feedback_review">Review</button>
+                </div>
+
+                <div class="mb-10">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="w-2 h-2 bg-emerald-600 rounded-full"></span>
+                        <span id="module-label" class="text-[10px] font-black uppercase text-emerald-600 tracking-widest italic"></span>
+                    </div>
+                    <h1 id="lesson-title" class="text-5xl font-black text-slate-900 leading-tight"></h1>
+                </div>
+
+                <div id="lesson-theory" class="text-slate-600 mb-10 text-lg leading-relaxed"></div>
+                <!-- Excel IDE Section -->
+                <div class="mb-12 bg-white rounded-2xl border border-slate-200 shadow-lg overflow-hidden">
+                    <div class="bg-emerald-600 text-white p-4 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-file-excel text-2xl"></i>
+                            <h3 class="text-lg font-bold" data-translate="ide_excel_title">Excel Practice IDE</h3>
+                        </div>
+                        <div class="flex items-center gap-2 text-sm">
+                            <span class="bg-emerald-500 px-3 py-1 rounded-full" data-translate="ide_practice_mode">Practice Mode</span>
+                        </div>
+                    </div>
+
+                    <!-- Excel Toolbar -->
+                    <div class="bg-slate-50 border-b border-slate-200 p-3">
+                        <div class="flex flex-wrap items-center gap-2">
+                            <!-- Font Controls -->
+                            <select id="font-family" class="px-3 py-1 border border-slate-300 rounded text-sm">
+                                <option value="Arial">Arial</option>
+                                <option value="Calibri">Calibri</option>
+                                <option value="Times New Roman">Times New Roman</option>
+                                <option value="Verdana">Verdana</option>
+                                <option value="Georgia">Georgia</option>
+                            </select>
+                            <select id="font-size" class="px-3 py-1 border border-slate-300 rounded text-sm w-16">
+                                <option value="8">8</option>
+                                <option value="10">10</option>
+                                <option value="11" selected>11</option>
+                                <option value="12">12</option>
+                                <option value="14">14</option>
+                                <option value="16">16</option>
+                                <option value="18">18</option>
+                            </select>
+
+                            <!-- Formatting Buttons -->
+                            <div class="flex items-center gap-1 border-l border-slate-300 pl-2 ml-2">
+                                <button id="bold-btn" class="p-2 hover:bg-slate-200 rounded" title="Bold">
+                                    <i class="fa-solid fa-bold"></i>
+                                </button>
+                                <button id="italic-btn" class="p-2 hover:bg-slate-200 rounded" title="Italic">
+                                    <i class="fa-solid fa-italic"></i>
+                                </button>
+                                <button id="underline-btn" class="p-2 hover:bg-slate-200 rounded" title="Underline">
+                                    <i class="fa-solid fa-underline"></i>
+                                </button>
+                            </div>
+
+                            <!-- Alignment -->
+                            <div class="flex items-center gap-1 border-l border-slate-300 pl-2 ml-2">
+                                <button id="align-left" class="p-2 hover:bg-slate-200 rounded" title="Align Left">
+                                    <i class="fa-solid fa-align-left"></i>
+                                </button>
+                                <button id="align-center" class="p-2 hover:bg-slate-200 rounded" title="Align Center">
+                                    <i class="fa-solid fa-align-center"></i>
+                                </button>
+                                <button id="align-right" class="p-2 hover:bg-slate-200 rounded" title="Align Right">
+                                    <i class="fa-solid fa-align-right"></i>
+                                </button>
+                            </div>
+
+                            <!-- Cell Operations -->
+                            <div class="flex items-center gap-1 border-l border-slate-300 pl-2 ml-2">
+                                <button id="insert-row" class="p-2 hover:bg-slate-200 rounded" title="Insert Row">
+                                    <i class="fa-solid fa-plus"></i> Row
+                                </button>
+                                <button id="insert-col" class="p-2 hover:bg-slate-200 rounded" title="Insert Column">
+                                    <i class="fa-solid fa-plus"></i> Col
+                                </button>
+                            </div>
+
+                            <!-- Colors -->
+                            <div class="flex items-center gap-1 border-l border-slate-300 pl-2 ml-2">
+                                <input type="color" id="text-color" class="w-8 h-8 border border-slate-300 rounded cursor-pointer" title="Text Color">
+                                <input type="color" id="cell-color" class="w-8 h-8 border border-slate-300 rounded cursor-pointer" title="Cell Color" value="#ffffff">
+                            </div>
+
+                            <!-- Actions -->
+                            <div class="flex items-center gap-1 border-l border-slate-300 pl-2 ml-2">
+                                <button id="clear-sheet" class="px-3 py-1 bg-red-500 text-white rounded text-sm hover:bg-red-600" title="Clear Sheet">
+                                    Clear
+                                </button>
+                                <button id="save-sheet" class="px-3 py-1 bg-emerald-500 text-white rounded text-sm hover:bg-emerald-600" title="Save Sheet">
+                                    Save
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Excel Grid Area -->
+                    <div class="relative overflow-x-auto">
+                        <table id="excel-sheet" class="w-full border-collapse bg-white">
+                            <tbody id="sheet-body">
+                                <!-- Rows will be generated here -->
+                            </tbody>
+                        </table>
+
+                        <!-- Cell input for focused editing -->
+                        <input type="text" id="cell-input" class="hidden absolute p-2 border border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-400" style="z-index: 10;">
+                    </div>
+                </div>
+
+                <!-- Quiz Section -->
+                <div class="bg-emerald-50 rounded-3xl p-8 border border-emerald-100 shadow-sm">
+                    <div id="quiz-container" class="space-y-3 mb-8"></div>
+                    <button onclick="checkAllAnswers()" class="w-full bg-slate-900 text-white py-5 rounded-2xl font-black text-lg hover:bg-emerald-600 transition-all" data-translate="ide_submit_answers">
+                        Submit Answers
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+{% endblock %}
+{% block footer %}
+    {% endblock %}
+
+{% block extra_js %}
+<script>
+    // Excel IDE Functionality
+    const ROWS = 10;
+    const COLS = 8;
+    let selectedCell = null;
+
+    document.addEventListener('DOMContentLoaded', function() {
+        initializeSheet();
+        setupToolbar();
+    });
+
+    function initializeSheet() {
+        const sheetBody = document.getElementById('sheet-body');
+        sheetBody.innerHTML = '';
+
+        for (let r = 0; r < ROWS; r++) {
+            const row = document.createElement('tr');
+            for (let c = 0; c < COLS; c++) {
+                const cell = document.createElement('td');
+                cell.className = 'border border-slate-300 p-2 h-8 min-w-24 cursor-cell relative hover:bg-emerald-50';
+                cell.contentEditable = true;
+                cell.addEventListener('click', (e) => selectCell(e));
+                cell.addEventListener('blur', () => saveCellData(r, c));
+                cell.dataset.row = r;
+                cell.dataset.col = c;
+                row.appendChild(cell);
+            }
+            sheetBody.appendChild(row);
+        }
+    }
+
+    function selectCell(e) {
+        const cell = e.target;
+        if (selectedCell) {
+            selectedCell.classList.remove('ring-2', 'ring-emerald-400');
+        }
+        selectedCell = cell;
+        selectedCell.classList.add('ring-2', 'ring-emerald-400');
+    }
+
+    function saveCellData(row, col) {
+        const key = `excel-cell-${row}-${col}`;
+        const content = selectedCell ? selectedCell.innerText : '';
+        localStorage.setItem(key, content);
+    }
+
+    function loadSheetData() {
+        const cells = document.querySelectorAll('#sheet-body td');
+        cells.forEach(cell => {
+            const row = cell.dataset.row;
+            const col = cell.dataset.col;
+            const key = `excel-cell-${row}-${col}`;
+            const saved = localStorage.getItem(key);
+            if (saved) {
+                cell.innerText = saved;
+            }
+        });
+    }
+
+    function setupToolbar() {
+        const fontFamily = document.getElementById('font-family');
+        const fontSize = document.getElementById('font-size');
+        const textColor = document.getElementById('text-color');
+        const cellColor = document.getElementById('cell-color');
+        const clearBtn = document.getElementById('clear-sheet');
+        const saveBtn = document.getElementById('save-sheet');
+
+        fontFamily.addEventListener('change', () => {
+            if (selectedCell) selectedCell.style.fontFamily = this.value;
+        });
+
+        fontSize.addEventListener('change', () => {
+            if (selectedCell) selectedCell.style.fontSize = this.value + 'pt';
+        });
+
+        textColor.addEventListener('input', function() {
+            if (selectedCell) selectedCell.style.color = this.value;
+        });
+
+        cellColor.addEventListener('input', function() {
+            if (selectedCell) selectedCell.style.backgroundColor = this.value;
+        });
+
+        document.getElementById('bold-btn').addEventListener('click', () => {
+            if (selectedCell) selectedCell.style.fontWeight = selectedCell.style.fontWeight === 'bold' ? 'normal' : 'bold';
+        });
+
+        document.getElementById('italic-btn').addEventListener('click', () => {
+            if (selectedCell) selectedCell.style.fontStyle = selectedCell.style.fontStyle === 'italic' ? 'normal' : 'italic';
+        });
+
+        document.getElementById('underline-btn').addEventListener('click', () => {
+            if (selectedCell) selectedCell.style.textDecoration = selectedCell.style.textDecoration === 'underline' ? 'none' : 'underline';
+        });
+
+        document.getElementById('align-left').addEventListener('click', () => {
+            if (selectedCell) selectedCell.style.textAlign = 'left';
+        });
+
+        document.getElementById('align-center').addEventListener('click', () => {
+            if (selectedCell) selectedCell.style.textAlign = 'center';
+        });
+
+        document.getElementById('align-right').addEventListener('click', () => {
+            if (selectedCell) selectedCell.style.textAlign = 'right';
+        });
+
+        document.getElementById('insert-row').addEventListener('click', () => {
+            const sheetBody = document.getElementById('sheet-body');
+            const newRow = document.createElement('tr');
+            for (let c = 0; c < COLS; c++) {
+                const cell = document.createElement('td');
+                cell.className = 'border border-slate-300 p-2 h-8 min-w-24 cursor-cell relative hover:bg-emerald-50';
+                cell.contentEditable = true;
+                cell.addEventListener('click', selectCell);
+                cell.dataset.row = sheetBody.children.length;
+                cell.dataset.col = c;
+                newRow.appendChild(cell);
+            }
+            sheetBody.appendChild(newRow);
+        });
+
+        clearBtn.addEventListener('click', () => {
+            if (confirm('Clear all cells? This cannot be undone.')) {
+                document.querySelectorAll('#sheet-body td').forEach(cell => {
+                    cell.innerText = '';
+                    localStorage.removeItem(`excel-cell-${cell.dataset.row}-${cell.dataset.col}`);
+                });
+            }
+        });
+
+        saveBtn.addEventListener('click', () => {
+            const csv = generateCSV();
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'spreadsheet.csv';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
+    }
+
+    function generateCSV() {
+        const rows = [];
+        document.querySelectorAll('#sheet-body tr').forEach(row => {
+            const cells = [];
+            row.querySelectorAll('td').forEach(cell => {
+                cells.push('"' + cell.innerText.replace(/"/g, '""') + '"');
+            });
+            rows.push(cells.join(','));
+        });
+        return rows.join('\n');
+    }
+
+    // Override loadLesson to load saved sheet data
+    const originalLoadLesson = window.loadLesson;
+    window.loadLesson = function(idx) {
+        originalLoadLesson(idx);
+        setTimeout(loadSheetData, 100);
+    };
+</script>
+
+<script>
+    // Organize lessons into a flat array for the logic, 
+    // but keep track of which module they belong to
+    const dbLessons = [
+        {% for module in modules %}
+            {% for lesson in module.lessons.all %}
+            {
+                id: "{{ lesson.id }}",
+                moduleIndex: {{ forloop.parentloop.counter }},
+                label: "{{ lesson.label|escapejs }}",
+                title: "{{ lesson.title|escapejs }}",
+                theory: "{{ lesson.theory|safe|escapejs }}",
+                embed_url: "{{ lesson.embed_url|escapejs }}",
+                questions: [
+                    {% for q in lesson.questions.all %}
+                    { 
+                        q: "{{ q.question_text|escapejs }}", 
+                        opts: ["{{ q.option_1|escapejs }}", "{{ q.option_2|escapejs }}"], 
+                        ans: "{{ q.correct_answer|escapejs }}" 
+                    }{% if not forloop.last %},{% endif %}
+                    {% endfor %}
+                ]
+            }{% if not forloop.last or not forloop.parentloop.last %},{% endif %}
+            {% endfor %}
+        {% endfor %}
+    ];
+</script>
+
+<script src="{% static 'accounts/course_logic.js' %}"></script>
+
+<script>
+    // Initialize first lesson
+    if (dbLessons.length > 0) {
+        loadLesson(0);
+    } else {
+        document.getElementById('lesson-title').innerText = "No Lessons Added Yet";
+    }
+</script>
+{% endblock %}

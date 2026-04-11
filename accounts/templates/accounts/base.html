@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="site_title">OfficeEase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'accounts/style.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body class="container bg-white text-black pt-1 mx-auto font-sans">
+
+  <nav class="max-w-7xl mx-auto flex items-center justify-between bg-blue-50 px-10 py-3 rounded-2xl">
+    <div class="text-3xl font-semibold" data-translate="site_title">OfficeEase</div>
+    <ul class="md:flex gap-8 text-sm">
+      <li class="hover:text-black cursor-pointer"><a href="{% url 'home' %}" data-translate="nav_home">Home</a></li>
+      
+      <li class="relative group cursor-pointer">
+        <div class="flex items-center gap-1 hover:text-black transition-colors">
+          <a href="#" data-translate="nav_courses">Courses</a>
+          <i class="fa-solid fa-chevron-down text-[10px] opacity-50 group-hover:rotate-180 transition-transform"></i>
+        </div>
+
+        <ul class="absolute left-0 mt-2 w-48 bg-white border border-slate-100 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-[100] p-2">
+            <li>
+                <a href="{% url 'word_course' %}" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-all">
+                    <i class="fa-solid fa-file-word text-blue-500"></i>
+                    <span class="font-medium" data-translate="nav_word">Microsoft Word</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'excel_course' %}" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-emerald-50 hover:text-emerald-600 rounded-lg transition-all">
+                    <i class="fa-solid fa-file-excel text-emerald-500"></i>
+                    <span class="font-medium" data-translate="nav_excel">Microsoft Excel</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'powerpoint_course' %}" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-orange-50 hover:text-orange-600 rounded-lg transition-all">
+                    <i class="fa-solid fa-file-powerpoint text-orange-500"></i>
+                    <span class="font-medium" data-translate="nav_powerpoint">Microsoft PowerPoint</span>
+                </a>
+            </li>
+        </ul>
+      </li>
+
+      {% if user.is_authenticated %}
+      <li class="hover:text-black cursor-pointer"><a href="{% url 'how_it_works' %}" data-translate="nav_how_it_works">How It Works</a></li>
+      {% else %}
+      <li class="hover:text-black cursor-pointer"><a href="{% url 'auth' %}?next={{ request.path }}" data-translate="nav_courses">Courses</a></li>
+      <li class="hover:text-black cursor-pointer"><a href="{% url 'auth' %}?next={{ request.path }}" data-translate="nav_how_it_works">How It Works</a></li>
+      {% endif %}
+      <li class="hover:text-black cursor-pointer"><a href="{% url 'about_us' %}" data-translate="nav_about_us">About Us</a></li>
+    </ul>
+
+    <div class="flex gap-4 ml-6 items-center">
+      <div class="relative group cursor-pointer mr-2">
+        <div class="flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">
+          <i class="fa-solid fa-globe"></i>
+          <span class="current-lang" data-translate="lang_en">EN</span>
+          <i class="fa-solid fa-chevron-down text-[10px] opacity-50"></i>
+        </div>
+        <ul class="absolute right-0 mt-2 w-32 bg-white border border-slate-100 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-[100] p-2">
+            <li><a href="#" class="language-option block px-4 py-2 text-xs hover:bg-blue-50 rounded-lg" data-lang="en" data-translate="lang_english">English</a></li>
+            <li><a href="#" class="language-option block px-4 py-2 text-xs hover:bg-blue-50 rounded-lg" data-lang="fr">Français</a></li>
+        </ul>
+      </div>
+
+      {% if user.is_authenticated %}
+        <div class="relative">
+          <button class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white font-semibold" onclick="toggleDropdown()">
+            {{ user.first_name|slice:":1"|upper }}
+          </button>
+          <div id="user-dropdown" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-20 hidden">
+            <a href="{% url 'logout' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-translate="btn_logout">Logout</a>
+          </div>
+        </div>
+      {% else %}
+        <a href="{% url 'auth' %}" class="text-sm border border-slate-500 py-3 px-8 inline-flex items-center justify-center" data-translate="btn_sign_in">Sign In</a>
+        <a href="{% url 'auth' %}#signup" class="text-sm bg-blue-600 px-8 py-3 text-white inline-flex items-center justify-center" data-translate="btn_sign_up">Sign Up</a>
+      {% endif %}
+    </div>
+  </nav>
+
+    {% block content %}{% endblock %}
+
+    {% block footer %}
+    <footer class="bg-slate-50 border-t border-slate-200 pt-20 pb-10 mt-20">
+        <div class="max-w-7xl mx-auto px-10">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="text-2xl font-black text-slate-900 mb-6">OfficeEase</div>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-6">
+                        Mastering Microsoft Office through interactive labs, real-world projects, and local language support.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-6 uppercase text-xs tracking-widest" data-translate="footer_modules">Modules</h4>
+                    <ul class="space-y-4 text-sm text-slate-500">
+                       {% if user.is_authenticated %}
+              <li><a href="#" class="hover:text-blue-400 transition-colors" data-translate="nav_word">Microsoft Word</a></li>
+              <li><a href="#" class="hover:text-emerald-400 transition-colors" data-translate="nav_excel">Microsoft Excel</a></li>
+              <li><a href="#" class="hover:text-orange-400 transition-colors" data-translate="nav_powerpoint">Microsoft PowerPoint</a></li>
+              <li><a href="#" class="hover:text-slate-400 transition-colors" data-translate="nav_ide">Interactive IDE</a></li>
+              {% else %}
+              <li><a href="{% url 'auth' %}?next={{ request.path }}" class="hover:text-blue-400 transition-colors" data-translate="nav_word">Microsoft Word</a></li>
+              <li><a href="{% url 'auth' %}?next={{ request.path }}" class="hover:text-emerald-400 transition-colors" data-translate="nav_excel">Microsoft Excel</a></li>
+              <li><a href="{% url 'auth' %}?next={{ request.path }}" class="hover:text-orange-400 transition-colors" data-translate="nav_powerpoint">Microsoft PowerPoint</a></li>
+              <li><a href="{% url 'auth' %}?next={{ request.path }}" class="hover:text-slate-400 transition-colors" data-translate="nav_ide">Interactive IDE</a></li>
+              {% endif %}
+            </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-6 uppercase text-xs tracking-widest" data-translate="footer_resources">Resources</h4>
+                    <ul class="space-y-4 text-sm text-slate-500">
+                        <li><a href="#" class="hover:text-slate-900 transition-colors" data-translate="footer_lab_docs">Lab Documentation</a></li>
+                        <li><a href="#" class="hover:text-slate-900 transition-colors" data-translate="footer_workout">Workout Exercises</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-6 uppercase text-xs tracking-widest" data-translate="footer_support">Support</h4>
+                    <ul class="space-y-4 text-sm text-slate-500">
+                        <li><a href="mailto:hello@office-ease.com" class="text-slate-900 font-bold" data-translate="footer_email">hello@office-ease.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-slate-200 text-center text-xs font-bold text-slate-400 uppercase tracking-tighter">
+                <p data-translate="footer_copyright">© 2026 OfficeEase Learning Platform. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    {% endblock %}
+
+    <script src="{% static 'accounts/translation.js' %}"></script>
+    <script src="{% static 'accounts/home.js' %}"></script>
+    <script>
+        function toggleDropdown() {
+            document.getElementById('user-dropdown').classList.toggle('hidden');
+        }
+    </script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,190 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+
+{% block content %}  
+  <section class="hero-bg grid-texture relative overflow-hidden pt-20 pb-24 mt-6">
+    <!-- Decorative blobs -->
+    <div class="absolute -top-10 -right-10 w-80 h-80 bg-blue-100 rounded-full blur-[80px] opacity-60 pointer-events-none"></div>
+    <div class="absolute bottom-0 left-1/4 w-60 h-60 bg-indigo-100 rounded-full blur-[80px] opacity-40 pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+      <!-- eyebrow -->
+      <div class="reveal reveal-1 inline-flex items-center gap-2.5 px-4 py-1.5 bg-white border border-blue-100 rounded-full mb-6 shadow-sm">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
+        </span>
+        <span class="text-[10px] font-black text-blue-700 uppercase tracking-[0.2em]" data-translate="about_meet_team">Meet the Team</span>
+      </div>
+
+      <h1 class="reveal reveal-2 text-5xl lg:text-7xl font-black text-slate-900 leading-[1.05] mb-6 tracking-tight">
+        <span data-translate="about_hero_title1">Built with <span class="text-blue-600 italic">Purpose.</span></span><br/>
+        <span data-translate="about_hero_title2">Driven by <span class="text-orange-600 italic">People.</span></span>
+      </h1>
+
+      <p class="reveal reveal-3 text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed" data-translate="about_hero_desc">
+        We are dedicated to delivering innovative solutions that transform ideas into reality. 
+        Our mission is to create meaningful impact through technology and collaborative teamwork.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       MISSION PILLARS
+  ══════════════════════════════════════ -->
+
+  <section class="max-w-5xl mx-auto px-6 py-20">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <!-- Innovation -->
+      <div class="pillar bg-blue-600 border border-slate-100 rounded-2xl p-7 shadow-sm ">
+        <div class="w-12 h-12 bg-blue-700 rounded-xl flex items-center justify-center mb-5 shadow-md">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+          </svg>
+        </div>
+        <h3 class="text-lg font-bold text-white mb-2" data-translate="about_pillar1_title">Innovation First</h3>
+        <p class="text-sm text-white leading-relaxed" data-translate="about_pillar1_desc">Cutting-edge technologies solving real-world problems while maintaining simplicity and accessibility.</p>
+      </div>
+
+      <!-- Collaboration -->
+      <div class="pillar bg-orange-700 rounded-2xl p-7 shadow-sm">
+        <div class="w-12 h-12  bg-orange-800 rounded-xl flex items-center justify-center mb-5">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+        </div>
+        <h3 class="text-lg font-bold mb-2 text-white" data-translate="about_pillar2_title">Team Collaboration</h3>
+        <p class="text-sm text-white leading-relaxed" data-translate="about_pillar2_desc">A diverse team united by one goal — making Microsoft Office learning effortless for everyone.</p>
+      </div>
+
+      <!-- Impact -->
+      <div class="pillar bg-green-700 border border-slate-100 rounded-2xl p-7 shadow-sm">
+        <div class="w-12 h-12 bg-emerald-800 rounded-xl flex items-center justify-center mb-5 shadow-md">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <h3 class="text-lg font-bold text-white mb-2" data-translate="about_pillar3_title">Real Impact</h3>
+        <p class="text-sm text-white leading-relaxed" data-translate="about_pillar3_desc">From zero to pro — our learners gain job-ready skills through hands-on labs and structured modules.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       TEAM SECTION
+  ══════════════════════════════════════ -->
+  <section class="max-w-5xl mx-auto px-6 pb-28">
+
+    <div class="text-center mb-14">
+      <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.25em] mb-3" data-translate="about_team_subtitle">The Humans Behind It</p>
+      <h2 class="text-4xl lg:text-5xl font-black text-slate-900 tracking-tight" data-translate="about_team_title">Our Team</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+      <!-- ── WORD (Blue) ── -->
+      <div class="team-card relative bg-white rounded-2xl overflow-hidden shadow-md border border-slate-100 cursor-pointer">
+        <!-- Colored header band -->
+        <div class="h-44 relative overflow-hidden"
+             style="background: linear-gradient(135deg, #2b579a 0%, #1e3a8a 100%);">
+          <!-- subtle dot pattern -->
+          <div class="absolute inset-0 opacity-10"
+               style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 18px 18px;"></div>
+          <!-- App icon badge -->
+          <div class="app-icon absolute top-5 left-5 w-11 h-11 bg-white rounded-xl shadow-lg flex items-center justify-center">
+            <span class="text-[#2b579a] font-black text-xl leading-none">W</span>
+          </div>
+          <!-- big faded letter bg -->
+          <span class="absolute -bottom-4 -right-2 text-[120px] font-black text-white/10 leading-none select-none">W</span>
+        </div>
+        <div class="p-6 relative">
+          <div class="card-stripe rounded-full" style="background:#2b579a;"></div>
+          <h3 class="text-xl font-bold text-slate-900 mb-1" data-translate="about_member_name">Member Name</h3>
+          <p class="text-sm font-semibold mb-3" style="color:#2b579a;" data-translate="about_word_role">Role — Word Module</p>
+          <p class="text-sm text-slate-500 leading-relaxed" data-translate="about_word_desc">Member description goes here. They bring expertise in document design and content architecture.</p>
+          <div class="mt-5 flex gap-2">
+            <span class="px-3 py-1 text-xs font-bold rounded-full text-white" style="background:#2b579a;" data-translate="about_word_tag1">Word</span>
+            <span class="px-3 py-1 text-xs font-bold rounded-full bg-slate-100 text-slate-600" data-translate="about_word_tag2">Documentation</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── POWERPOINT (Orange) ── -->
+      <div class="team-card relative bg-white rounded-2xl overflow-hidden shadow-md border border-slate-100 cursor-pointer">
+        <div class="h-44 relative overflow-hidden"
+             style="background: linear-gradient(135deg, #c43e1c 0%, #a83318 100%);">
+          <div class="absolute inset-0 opacity-10"
+               style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 18px 18px;"></div>
+          <div class="app-icon absolute top-5 left-5 w-11 h-11 bg-white rounded-xl shadow-lg flex items-center justify-center">
+            <span class="font-black text-xl leading-none" style="color:#c43e1c;">P</span>
+          </div>
+          <span class="absolute -bottom-4 -right-2 text-[120px] font-black text-white/10 leading-none select-none">P</span>
+        </div>
+        <div class="p-6 relative">
+          <div class="card-stripe rounded-full" style="background:#c43e1c;"></div>
+          <h3 class="text-xl font-bold text-slate-900 mb-1" data-translate="about_member_name">Member Name</h3>
+          <p class="text-sm font-semibold mb-3" style="color:#c43e1c;" data-translate="about_ppt_role">Role — PowerPoint Module</p>
+          <p class="text-sm text-slate-500 leading-relaxed" data-translate="about_ppt_desc">Member description goes here. They specialise in visual storytelling and presentation design systems.</p>
+          <div class="mt-5 flex gap-2">
+            <span class="px-3 py-1 text-xs font-bold rounded-full text-white" style="background:#c43e1c;" data-translate="about_ppt_tag1">PowerPoint</span>
+            <span class="px-3 py-1 text-xs font-bold rounded-full bg-slate-100 text-slate-600" data-translate="about_ppt_tag2">Design</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── EXCEL (Green) ── -->
+      <div class="team-card relative bg-white rounded-2xl overflow-hidden shadow-md border border-slate-100 cursor-pointer">
+        <div class="h-44 relative overflow-hidden"
+             style="background: linear-gradient(135deg, #217346 0%, #185c37 100%);">
+          <div class="absolute inset-0 opacity-10"
+               style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 18px 18px;"></div>
+          <div class="app-icon absolute top-5 left-5 w-11 h-11 bg-white rounded-xl shadow-lg flex items-center justify-center">
+            <span class="font-black text-xl leading-none" style="color:#217346;">X</span>
+          </div>
+          <span class="absolute -bottom-4 -right-2 text-[120px] font-black text-white/10 leading-none select-none">X</span>
+        </div>
+        <div class="p-6 relative">
+          <div class="card-stripe rounded-full" style="background:#217346;"></div>
+          <h3 class="text-xl font-bold text-slate-900 mb-1" data-translate="about_member_name">Member Name</h3>
+          <p class="text-sm font-semibold mb-3" style="color:#217346;" data-translate="about_excel_role">Role — Excel Module</p>
+          <p class="text-sm text-slate-500 leading-relaxed" data-translate="about_excel_desc">Member description goes here. They craft data-driven exercises and formula-based lab challenges.</p>
+          <div class="mt-5 flex gap-2">
+            <span class="px-3 py-1 text-xs font-bold rounded-full text-white" style="background:#217346;" data-translate="about_excel_tag1">Excel</span>
+            <span class="px-3 py-1 text-xs font-bold rounded-full bg-slate-100 text-slate-600" data-translate="about_excel_tag2">Data</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── ONENOTE (Purple) ── -->
+      <div class="team-card relative bg-white rounded-2xl overflow-hidden shadow-md border border-slate-100 cursor-pointer">
+        <div class="h-44 relative overflow-hidden"
+             style="background: linear-gradient(135deg, #7719aa 0%, #5c1282 100%);">
+          <div class="absolute inset-0 opacity-10"
+               style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 18px 18px;"></div>
+          <div class="app-icon absolute top-5 left-5 w-11 h-11 bg-white rounded-xl shadow-lg flex items-center justify-center">
+            <span class="font-black text-xl leading-none" style="color:#7719aa;">N</span>
+          </div>
+          <span class="absolute -bottom-4 -right-2 text-[120px] font-black text-white/10 leading-none select-none">N</span>
+        </div>
+        <div class="p-6 relative">
+          <div class="card-stripe rounded-full" style="background:#7719aa;"></div>
+          <h3 class="text-xl font-bold text-slate-900 mb-1" data-translate="about_member_name">Member Name</h3>
+          <p class="text-sm font-semibold mb-3" style="color:#7719aa;" data-translate="about_onenote_role">Role — OneNote Module</p>
+          <p class="text-sm text-slate-500 leading-relaxed" data-translate="about_onenote_desc">Member description goes here. They build structured note-taking workflows and knowledge management labs.</p>
+          <div class="mt-5 flex gap-2">
+            <span class="px-3 py-1 text-xs font-bold rounded-full text-white" style="background:#7719aa;" data-translate="about_onenote_tag1">OneNote</span>
+            <span class="px-3 py-1 text-xs font-bold rounded-full bg-slate-100 text-slate-600" data-translate="about_onenote_tag2">Notes</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+    {% endblock %}
+
+
+
+</body>
+</html>

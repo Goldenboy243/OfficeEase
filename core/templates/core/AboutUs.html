@@ -1,5 +1,6 @@
-{% extends 'accounts/base.html' %}
+{% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block content %}  
   <section class="hero-bg grid-texture relative overflow-hidden pt-20 pb-24 mt-6">
@@ -14,18 +15,15 @@
           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
           <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
         </span>
-        <span class="text-[10px] font-black text-blue-700 uppercase tracking-[0.2em]" data-translate="about_meet_team">Meet the Team</span>
+        <span class="text-[10px] font-black text-blue-700 uppercase tracking-[0.2em]" >{% trans "Meet the Team" %}</span>
       </div>
 
       <h1 class="reveal reveal-2 text-5xl lg:text-7xl font-black text-slate-900 leading-[1.05] mb-6 tracking-tight">
-        <span data-translate="about_hero_title1">Built with <span class="text-blue-600 italic">Purpose.</span></span><br/>
-        <span data-translate="about_hero_title2">Driven by <span class="text-orange-600 italic">People.</span></span>
+        <span >{% trans "Built with <span class=\'text-blue-600 italic\'>Purpose.</span>" %}<span class="text-blue-600 italic">Purpose.</span></span><br/>
+        <span >{% trans "Driven by <span class=\'text-orange-600 italic\'>People.</span>" %}<span class="text-orange-600 italic">People.</span></span>
       </h1>
 
-      <p class="reveal reveal-3 text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed" data-translate="about_hero_desc">
-        We are dedicated to delivering innovative solutions that transform ideas into reality. 
-        Our mission is to create meaningful impact through technology and collaborative teamwork.
-      </p>
+      <p class="reveal reveal-3 text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed" >{% trans "We are dedicated to delivering innovative solutions that transform ideas into reality. Our mission is to create meaningful impact through technology and collaborative teamwork." %}</p>
     </div>
   </section>
 
@@ -43,8 +41,8 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
           </svg>
         </div>
-        <h3 class="text-lg font-bold text-white mb-2" data-translate="about_pillar1_title">Innovation First</h3>
-        <p class="text-sm text-white leading-relaxed" data-translate="about_pillar1_desc">Cutting-edge technologies solving real-world problems while maintaining simplicity and accessibility.</p>
+        <h3 class="text-lg font-bold text-white mb-2" >{% trans "Innovation First" %}</h3>
+        <p class="text-sm text-white leading-relaxed" >{% trans "Cutting-edge technologies solving real-world problems while maintaining simplicity and accessibility." %}</p>
       </div>
 
       <!-- Collaboration -->
@@ -54,8 +52,8 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
           </svg>
         </div>
-        <h3 class="text-lg font-bold mb-2 text-white" data-translate="about_pillar2_title">Team Collaboration</h3>
-        <p class="text-sm text-white leading-relaxed" data-translate="about_pillar2_desc">A diverse team united by one goal — making Microsoft Office learning effortless for everyone.</p>
+        <h3 class="text-lg font-bold mb-2 text-white" >{% trans "Team Collaboration" %}</h3>
+        <p class="text-sm text-white leading-relaxed" >{% trans "A diverse team united by one goal — making Microsoft Office learning effortless for everyone." %}</p>
       </div>
 
       <!-- Impact -->
@@ -65,8 +63,8 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
           </svg>
         </div>
-        <h3 class="text-lg font-bold text-white mb-2" data-translate="about_pillar3_title">Real Impact</h3>
-        <p class="text-sm text-white leading-relaxed" data-translate="about_pillar3_desc">From zero to pro — our learners gain job-ready skills through hands-on labs and structured modules.</p>
+        <h3 class="text-lg font-bold text-white mb-2" >{% trans "Real Impact" %}</h3>
+        <p class="text-sm text-white leading-relaxed" >{% trans "From zero to pro — our learners gain job-ready skills through hands-on labs and structured modules." %}</p>
       </div>
 
     </div>
@@ -78,8 +76,8 @@
   <section class="max-w-5xl mx-auto px-6 pb-28">
 
     <div class="text-center mb-14">
-      <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.25em] mb-3" data-translate="about_team_subtitle">The Humans Behind It</p>
-      <h2 class="text-4xl lg:text-5xl font-black text-slate-900 tracking-tight" data-translate="about_team_title">Our Team</h2>
+      <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.25em] mb-3" >{% trans "The Humans Behind It" %}</p>
+      <h2 class="text-4xl lg:text-5xl font-black text-slate-900 tracking-tight" >{% trans "Our Team" %}</h2>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -101,12 +99,12 @@
         </div>
         <div class="p-6 relative">
           <div class="card-stripe rounded-full" style="background:#2b579a;"></div>
-          <h3 class="text-xl font-bold text-slate-900 mb-1" data-translate="about_member_name">Member Name</h3>
-          <p class="text-sm font-semibold mb-3" style="color:#2b579a;" data-translate="about_word_role">Role — Word Module</p>
-          <p class="text-sm text-slate-500 leading-relaxed" data-translate="about_word_desc">Member description goes here. They bring expertise in document design and content architecture.</p>
+          <h3 class="text-xl font-bold text-slate-900 mb-1" >{% trans "Member Name" %}</h3>
+          <p class="text-sm font-semibold mb-3" style="color:#2b579a;" >{% trans "Role — Word Module" %}</p>
+          <p class="text-sm text-slate-500 leading-relaxed" >{% trans "Member description goes here. They bring expertise in document design and content architecture." %}</p>
           <div class="mt-5 flex gap-2">
-            <span class="px-3 py-1 text-xs font-bold rounded-full text-white" style="background:#2b579a;" data-translate="about_word_tag1">Word</span>
-            <span class="px-3 py-1 text-xs font-bold rounded-full bg-slate-100 text-slate-600" data-translate="about_word_tag2">Documentation</span>
+            <span class="px-3 py-1 text-xs font-bold rounded-full text-white" style="background:#2b579a;" >{% trans "Word" %}</span>
+            <span class="px-3 py-1 text-xs font-bold rounded-full bg-slate-100 text-slate-600" >{% trans "Documentation" %}</span>
           </div>
         </div>
       </div>
@@ -124,12 +122,12 @@
         </div>
         <div class="p-6 relative">
           <div class="card-stripe rounded-full" style="background:#c43e1c;"></div>
-          <h3 class="text-xl font-bold text-slate-900 mb-1" data-translate="about_member_name">Member Name</h3>
-          <p class="text-sm font-semibold mb-3" style="color:#c43e1c;" data-translate="about_ppt_role">Role — PowerPoint Module</p>
-          <p class="text-sm text-slate-500 leading-relaxed" data-translate="about_ppt_desc">Member description goes here. They specialise in visual storytelling and presentation design systems.</p>
+          <h3 class="text-xl font-bold text-slate-900 mb-1" >{% trans "Member Name" %}</h3>
+          <p class="text-sm font-semibold mb-3" style="color:#c43e1c;" >{% trans "Role — PowerPoint Module" %}</p>
+          <p class="text-sm text-slate-500 leading-relaxed" >{% trans "Member description goes here. They specialise in visual storytelling and presentation design systems." %}</p>
           <div class="mt-5 flex gap-2">
-            <span class="px-3 py-1 text-xs font-bold rounded-full text-white" style="background:#c43e1c;" data-translate="about_ppt_tag1">PowerPoint</span>
-            <span class="px-3 py-1 text-xs font-bold rounded-full bg-slate-100 text-slate-600" data-translate="about_ppt_tag2">Design</span>
+            <span class="px-3 py-1 text-xs font-bold rounded-full text-white" style="background:#c43e1c;" >{% trans "PowerPoint" %}</span>
+            <span class="px-3 py-1 text-xs font-bold rounded-full bg-slate-100 text-slate-600" >{% trans "Design" %}</span>
           </div>
         </div>
       </div>
@@ -147,12 +145,12 @@
         </div>
         <div class="p-6 relative">
           <div class="card-stripe rounded-full" style="background:#217346;"></div>
-          <h3 class="text-xl font-bold text-slate-900 mb-1" data-translate="about_member_name">Member Name</h3>
-          <p class="text-sm font-semibold mb-3" style="color:#217346;" data-translate="about_excel_role">Role — Excel Module</p>
-          <p class="text-sm text-slate-500 leading-relaxed" data-translate="about_excel_desc">Member description goes here. They craft data-driven exercises and formula-based lab challenges.</p>
+          <h3 class="text-xl font-bold text-slate-900 mb-1" >{% trans "Member Name" %}</h3>
+          <p class="text-sm font-semibold mb-3" style="color:#217346;" >{% trans "Role — Excel Module" %}</p>
+          <p class="text-sm text-slate-500 leading-relaxed" >{% trans "Member description goes here. They craft data-driven exercises and formula-based lab challenges." %}</p>
           <div class="mt-5 flex gap-2">
-            <span class="px-3 py-1 text-xs font-bold rounded-full text-white" style="background:#217346;" data-translate="about_excel_tag1">Excel</span>
-            <span class="px-3 py-1 text-xs font-bold rounded-full bg-slate-100 text-slate-600" data-translate="about_excel_tag2">Data</span>
+            <span class="px-3 py-1 text-xs font-bold rounded-full text-white" style="background:#217346;" >{% trans "Excel" %}</span>
+            <span class="px-3 py-1 text-xs font-bold rounded-full bg-slate-100 text-slate-600" >{% trans "Data" %}</span>
           </div>
         </div>
       </div>
@@ -170,12 +168,12 @@
         </div>
         <div class="p-6 relative">
           <div class="card-stripe rounded-full" style="background:#7719aa;"></div>
-          <h3 class="text-xl font-bold text-slate-900 mb-1" data-translate="about_member_name">Member Name</h3>
-          <p class="text-sm font-semibold mb-3" style="color:#7719aa;" data-translate="about_onenote_role">Role — OneNote Module</p>
-          <p class="text-sm text-slate-500 leading-relaxed" data-translate="about_onenote_desc">Member description goes here. They build structured note-taking workflows and knowledge management labs.</p>
+          <h3 class="text-xl font-bold text-slate-900 mb-1" >{% trans "Member Name" %}</h3>
+          <p class="text-sm font-semibold mb-3" style="color:#7719aa;" >{% trans "Role — OneNote Module" %}</p>
+          <p class="text-sm text-slate-500 leading-relaxed" >{% trans "Member description goes here. They build structured note-taking workflows and knowledge management labs." %}</p>
           <div class="mt-5 flex gap-2">
-            <span class="px-3 py-1 text-xs font-bold rounded-full text-white" style="background:#7719aa;" data-translate="about_onenote_tag1">OneNote</span>
-            <span class="px-3 py-1 text-xs font-bold rounded-full bg-slate-100 text-slate-600" data-translate="about_onenote_tag2">Notes</span>
+            <span class="px-3 py-1 text-xs font-bold rounded-full text-white" style="background:#7719aa;" >{% trans "OneNote" %}</span>
+            <span class="px-3 py-1 text-xs font-bold rounded-full bg-slate-100 text-slate-600" >{% trans "Notes" %}</span>
           </div>
         </div>
       </div>

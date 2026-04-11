@@ -1,0 +1,40 @@
+/* Sliding mechanism — cannot be expressed purely in Tailwind utility classes */
+:root { --ease-slide: cubic-bezier(0.77, 0, 0.175, 1); }
+
+/* Forms wrapper: 2× box width; default shifted to show login (right panel) */
+#forms-wrapper {
+  width: 1720px;
+  transform: translateX(-860px);
+  transition: transform 0.7s var(--ease-slide);
+}
+#auth-box.signup-mode #forms-wrapper {
+  transform: translateX(0);
+}
+
+/* Blue panel slides left → right */
+#blue-panel {
+  transition: left 0.7s var(--ease-slide);
+}
+#auth-box.signup-mode #blue-panel {
+  left: 50%;
+}
+
+/* Panel message cross-fade */
+#msg-login, #msg-signup {
+  transition: opacity 0.25s ease;
+}
+#msg-signup {
+  opacity: 0;
+  pointer-events: none;
+}
+#auth-box.signup-mode #msg-login {
+  opacity: 0;
+  pointer-events: none;
+}
+#auth-box.signup-mode #msg-signup {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Input icon color on focus */
+input:focus + .field-icon { color: #1a4fd6; }

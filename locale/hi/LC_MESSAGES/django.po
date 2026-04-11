@@ -1,0 +1,890 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-11 23:35+0530\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\accounts\templates\accounts\auth.html:9
+msgid "Authentication"
+msgstr "प्रमाणीकरण"
+
+#: .\accounts\templates\accounts\auth.html:116
+#: .\accounts\templates\accounts\auth.html:190
+msgid "Create Account"
+msgstr "खाता बनाएं"
+
+#: .\accounts\templates\accounts\auth.html:125
+msgid "First name"
+msgstr "पहला नाम"
+
+#: .\accounts\templates\accounts\auth.html:133
+msgid "Last name"
+msgstr "उपनाम"
+
+#: .\accounts\templates\accounts\auth.html:143
+msgid "Email address"
+msgstr "मेल पता"
+
+#: .\accounts\templates\accounts\auth.html:146
+msgid "Email already exists."
+msgstr "ईमेल पहले से ही मौजूद है।"
+
+#: .\accounts\templates\accounts\auth.html:155
+#: .\accounts\templates\accounts\auth.html:222
+msgid "Password"
+msgstr "पासवर्ड"
+
+#: .\accounts\templates\accounts\auth.html:163
+msgid "Confirm"
+msgstr "पुष्टि करना"
+
+#: .\accounts\templates\accounts\auth.html:170
+msgid "At least 8 characters"
+msgstr "कम से कम 8 अक्षर"
+
+#: .\accounts\templates\accounts\auth.html:171
+msgid "At least one letter"
+msgstr "कम से कम एक अक्षर"
+
+#: .\accounts\templates\accounts\auth.html:172
+msgid "At least one number"
+msgstr "कम से कम एक नंबर"
+
+#: .\accounts\templates\accounts\auth.html:173
+msgid "At least one special symbol"
+msgstr "कम से कम एक विशेष प्रतीक"
+
+#: .\accounts\templates\accounts\auth.html:178
+msgid "Passwords do not match."
+msgstr "सांकेतिक शब्द मेल नहीं खाते।"
+
+#: .\accounts\templates\accounts\auth.html:205
+#: .\accounts\templates\accounts\auth.html:295
+msgid "Welcome Back"
+msgstr "वापसी पर स्वागत है"
+
+#: .\accounts\templates\accounts\auth.html:213
+msgid "Email or username"
+msgstr "ईमेल या उपयोगकर्ता का नाम"
+
+#: .\accounts\templates\accounts\auth.html:228
+msgid "Invalid email or password. Please try again."
+msgstr "अमान्य ईमेल या पासवर्ड. कृपया पुन: प्रयास करें।"
+
+#: .\accounts\templates\accounts\auth.html:242
+#: .\accounts\templates\accounts\auth.html:302 .\templates\base.html:87
+msgid "Sign In"
+msgstr "दाखिल करना"
+
+#: .\accounts\templates\accounts\auth.html:247
+msgid "or continue with"
+msgstr "या जारी रखें"
+
+#: .\accounts\templates\accounts\auth.html:282
+msgid "Hello,<br/>Welcome!"
+msgstr "नमस्कार,<br/>स्वागत है!"
+
+#: .\accounts\templates\accounts\auth.html:284
+msgid "Don\\'t have an account?<br/>Join us and get started today."
+msgstr "क्या आपके पास कोई खाता नहीं है?<br/>हमसे जुड़ें और आज ही शुरुआत करें।"
+
+#: .\accounts\templates\accounts\auth.html:289 .\templates\base.html:88
+msgid "Sign Up"
+msgstr "साइन अप करें"
+
+#: .\accounts\templates\accounts\auth.html:297
+msgid "Already have an account?<br/>Sign in to continue."
+msgstr ""
+"क्या आपके पास पहले से ही एक खाता है?<br/>जारी रखने के लिए साइन इन करें।"
+
+#: .\core\templates\core\AboutUs.html:18
+msgid "Meet the Team"
+msgstr "टीम से मिलो"
+
+#: .\core\templates\core\AboutUs.html:22
+msgid "Built with <span class=\\'text-blue-600 italic\\'>Purpose.</span>"
+msgstr "<span class=\\'text-blue-600 italic\\'>उद्देश्य</span> के साथ निर्मित"
+
+#: .\core\templates\core\AboutUs.html:23
+msgid "Driven by <span class=\\'text-orange-600 italic\\'>People.</span>"
+msgstr "<span class=\\'text-orange-600 italic\\'>लोगों द्वारा संचालित।</span>"
+
+#: .\core\templates\core\AboutUs.html:26
+msgid ""
+"We are dedicated to delivering innovative solutions that transform ideas "
+"into reality. Our mission is to create meaningful impact through technology "
+"and collaborative teamwork."
+msgstr ""
+"हम विचारों को वास्तविकता में बदलने वाले नवोन्वेषी समाधान प्रदान करने के लिए "
+"समर्पित हैं। हमारा मिशन प्रौद्योगिकी और सहयोगी टीम वर्क के माध्यम से सार्थक "
+"प्रभाव पैदा करना है।"
+
+#: .\core\templates\core\AboutUs.html:44
+msgid "Innovation First"
+msgstr "नवप्रवर्तन प्रथम"
+
+#: .\core\templates\core\AboutUs.html:45
+msgid ""
+"Cutting-edge technologies solving real-world problems while maintaining "
+"simplicity and accessibility."
+msgstr ""
+"अत्याधुनिक प्रौद्योगिकियां सरलता और पहुंच बनाए रखते हुए वास्तविक दुनिया की "
+"समस्याओं का समाधान करती हैं।"
+
+#: .\core\templates\core\AboutUs.html:55
+msgid "Team Collaboration"
+msgstr "दल का सहयोग"
+
+#: .\core\templates\core\AboutUs.html:56
+msgid ""
+"A diverse team united by one goal — making Microsoft Office learning "
+"effortless for everyone."
+msgstr ""
+"एक विविध टीम एक लक्ष्य से एकजुट हुई - माइक्रोसॉफ्ट ऑफिस को सभी के लिए सीखना "
+"आसान बनाना।"
+
+#: .\core\templates\core\AboutUs.html:66
+msgid "Real Impact"
+msgstr "वास्तविक प्रभाव"
+
+#: .\core\templates\core\AboutUs.html:67
+msgid ""
+"From zero to pro — our learners gain job-ready skills through hands-on labs "
+"and structured modules."
+msgstr ""
+"शून्य से पेशेवर तक - हमारे शिक्षार्थी व्यावहारिक प्रयोगशालाओं और संरचित "
+"मॉड्यूल के माध्यम से नौकरी के लिए तैयार कौशल प्राप्त करते हैं।"
+
+#: .\core\templates\core\AboutUs.html:79
+msgid "The Humans Behind It"
+msgstr "इसके पीछे के इंसान"
+
+#: .\core\templates\core\AboutUs.html:80
+msgid "Our Team"
+msgstr "हमारी टीम"
+
+#: .\core\templates\core\AboutUs.html:102
+#: .\core\templates\core\AboutUs.html:125
+#: .\core\templates\core\AboutUs.html:148
+#: .\core\templates\core\AboutUs.html:171
+msgid "Member Name"
+msgstr "सदस्य का नाम"
+
+#: .\core\templates\core\AboutUs.html:103
+msgid "Role — Word Module"
+msgstr "भूमिका - वर्ड मॉड्यूल"
+
+#: .\core\templates\core\AboutUs.html:104
+msgid ""
+"Member description goes here. They bring expertise in document design and "
+"content architecture."
+msgstr ""
+"सदस्य विवरण यहाँ दिया गया है। वे दस्तावेज़ डिज़ाइन और सामग्री वास्तुकला में "
+"विशेषज्ञता लाते हैं।"
+
+#: .\core\templates\core\AboutUs.html:106
+msgid "Word"
+msgstr "शब्द"
+
+#: .\core\templates\core\AboutUs.html:107
+msgid "Documentation"
+msgstr "प्रलेखन"
+
+#: .\core\templates\core\AboutUs.html:126
+msgid "Role — PowerPoint Module"
+msgstr "भूमिका - पावरपॉइंट मॉड्यूल"
+
+#: .\core\templates\core\AboutUs.html:127
+msgid ""
+"Member description goes here. They specialise in visual storytelling and "
+"presentation design systems."
+msgstr ""
+"सदस्य विवरण यहाँ दिया गया है। वे दृश्य कहानी कहने और प्रस्तुति डिजाइन "
+"प्रणालियों में विशेषज्ञ हैं।"
+
+#: .\core\templates\core\AboutUs.html:129
+msgid "PowerPoint"
+msgstr "पावर प्वाइंट"
+
+#: .\core\templates\core\AboutUs.html:130
+msgid "Design"
+msgstr "डिज़ाइन"
+
+#: .\core\templates\core\AboutUs.html:149
+msgid "Role — Excel Module"
+msgstr "भूमिका - एक्सेल मॉड्यूल"
+
+#: .\core\templates\core\AboutUs.html:150
+msgid ""
+"Member description goes here. They craft data-driven exercises and formula-"
+"based lab challenges."
+msgstr ""
+"सदस्य विवरण यहाँ दिया गया है। वे डेटा-संचालित अभ्यास और फॉर्मूला-आधारित "
+"प्रयोगशाला चुनौतियाँ तैयार करते हैं।"
+
+#: .\core\templates\core\AboutUs.html:152
+msgid "Excel"
+msgstr "एक्सेल"
+
+#: .\core\templates\core\AboutUs.html:153
+msgid "Data"
+msgstr "डेटा"
+
+#: .\core\templates\core\AboutUs.html:172
+msgid "Role — OneNote Module"
+msgstr "भूमिका - वननोट मॉड्यूल"
+
+#: .\core\templates\core\AboutUs.html:173
+msgid ""
+"Member description goes here. They build structured note-taking workflows "
+"and knowledge management labs."
+msgstr ""
+"सदस्य विवरण यहाँ दिया गया है। वे संरचित नोट लेने वाले वर्कफ़्लो और ज्ञान "
+"प्रबंधन प्रयोगशालाएँ बनाते हैं।"
+
+#: .\core\templates\core\AboutUs.html:175
+msgid "OneNote"
+msgstr "वननोट"
+
+#: .\core\templates\core\AboutUs.html:176
+msgid "Notes"
+msgstr "टिप्पणियाँ"
+
+#: .\core\templates\core\HowItWorks.html:18 .\templates\base.html:50
+#: .\templates\base.html:53
+msgid "How It Works"
+msgstr "यह काम किस प्रकार करता है"
+
+#: .\core\templates\core\HowItWorks.html:22
+msgid "Learn Microsoft Office <br/>"
+msgstr "माइक्रोसॉफ्ट ऑफिस सीखें <br/>"
+
+#: .\core\templates\core\HowItWorks.html:23
+msgid "<span class=\\'text-emerald-600 italic\\'>Step by Step.</span>"
+msgstr "<span class=\\'text-emerald-600 italic\\'>चरण दर चरण।</span>"
+
+#: .\core\templates\core\HowItWorks.html:26
+msgid ""
+"Our interactive learning platform guides you through practical exercises, "
+"real-world projects, and instant feedback to master Word, Excel, and "
+"PowerPoint with confidence."
+msgstr ""
+"हमारा इंटरैक्टिव लर्निंग प्लेटफ़ॉर्म आपको व्यावहारिक अभ्यासों, वास्तविक "
+"दुनिया की परियोजनाओं और आत्मविश्वास के साथ वर्ड, एक्सेल और पॉवरपॉइंट में "
+"महारत हासिल करने के लिए त्वरित प्रतिक्रिया के माध्यम से मार्गदर्शन करता है।"
+
+#: .\core\templates\core\HowItWorks.html:36
+msgid "Your Learning Journey"
+msgstr "आपकी सीखने की यात्रा"
+
+#: .\core\templates\core\HowItWorks.html:37
+msgid ""
+"Follow our proven 4-step process designed to take you from beginner to "
+"expert"
+msgstr ""
+"आपको शुरुआती से विशेषज्ञ तक ले जाने के लिए डिज़ाइन की गई हमारी सिद्ध 4-चरणीय"
+" प्रक्रिया का पालन करें"
+
+#: .\core\templates\core\HowItWorks.html:52
+msgid "Learn Theory"
+msgstr "सिद्धांत सीखें"
+
+#: .\core\templates\core\HowItWorks.html:53
+msgid ""
+"Start with clear, concise lessons that explain concepts in simple language "
+"with practical examples."
+msgstr ""
+"स्पष्ट, संक्षिप्त पाठों से शुरुआत करें जो अवधारणाओं को व्यावहारिक उदाहरणों "
+"के साथ सरल भाषा में समझाते हैं।"
+
+#: .\core\templates\core\HowItWorks.html:66
+msgid "Practice Hands-On"
+msgstr "व्यावहारिक अभ्यास करें"
+
+#: .\core\templates\core\HowItWorks.html:67
+msgid ""
+"Apply what you\\'ve learned in our interactive environment with guided "
+"exercises and real-time feedback."
+msgstr ""
+"निर्देशित अभ्यासों और वास्तविक समय की प्रतिक्रिया के साथ हमारे इंटरैक्टिव "
+"वातावरण में आपने जो सीखा है उसे लागू करें।"
+
+#: .\core\templates\core\HowItWorks.html:80
+msgid "Test Knowledge"
+msgstr "ज्ञान का परीक्षण करें"
+
+#: .\core\templates\core\HowItWorks.html:81
+msgid ""
+"Reinforce learning with quizzes that check your understanding and provide "
+"instant explanations."
+msgstr ""
+"क्विज़ के साथ सीखने को सुदृढ़ करें जो आपकी समझ की जांच करते हैं और तुरंत "
+"स्पष्टीकरण प्रदान करते हैं।"
+
+#: .\core\templates\core\HowItWorks.html:94
+msgid "Build Projects"
+msgstr "प्रोजेक्ट बनाएं"
+
+#: .\core\templates\core\HowItWorks.html:95
+msgid ""
+"Create real-world documents, spreadsheets, and presentations that you can "
+"use in your career."
+msgstr ""
+"वास्तविक दुनिया के दस्तावेज़, स्प्रेडशीट और प्रस्तुतियाँ बनाएं जिनका उपयोग "
+"आप अपने करियर में कर सकते हैं।"
+
+#: .\core\templates\core\HowItWorks.html:108
+msgid "Why Choose OfficeEase?"
+msgstr "OfficeEase क्यों चुनें?"
+
+#: .\core\templates\core\HowItWorks.html:109
+msgid ""
+"Our platform combines the best of traditional learning with modern "
+"technology"
+msgstr "हमारा मंच सर्वोत्तम पारंपरिक शिक्षा को आधुनिक तकनीक के साथ जोड़ता है"
+
+#: .\core\templates\core\HowItWorks.html:119
+msgid "Local Language Support"
+msgstr "स्थानीय भाषा समर्थन"
+
+#: .\core\templates\core\HowItWorks.html:120
+msgid ""
+"Learn in your preferred language with culturally relevant examples and "
+"explanations."
+msgstr ""
+"सांस्कृतिक रूप से प्रासंगिक उदाहरणों और स्पष्टीकरणों के साथ अपनी पसंदीदा "
+"भाषा में सीखें।"
+
+#: .\core\templates\core\HowItWorks.html:128
+msgid "Learn at Your Pace"
+msgstr "अपनी गति से सीखें"
+
+#: .\core\templates\core\HowItWorks.html:129
+msgid ""
+"No deadlines or pressure. Study when it fits your schedule with lifetime "
+"access to all content."
+msgstr ""
+"कोई समय सीमा या दबाव नहीं. सभी सामग्री तक आजीवन पहुंच के साथ अपने शेड्यूल "
+"में फिट होने पर अध्ययन करें।"
+
+#: .\core\templates\core\HowItWorks.html:137
+msgid "Mobile Friendly"
+msgstr "मोबाइल फ्रेंडली"
+
+#: .\core\templates\core\HowItWorks.html:138
+msgid ""
+"Access your learning materials on any device - desktop, tablet, or "
+"smartphone."
+msgstr ""
+"अपनी शिक्षण सामग्री को किसी भी डिवाइस - डेस्कटॉप, टैबलेट या स्मार्टफोन पर "
+"एक्सेस करें।"
+
+#: .\core\templates\core\HowItWorks.html:146
+msgid "Track Progress"
+msgstr "प्रगति को ट्रैक करें"
+
+#: .\core\templates\core\HowItWorks.html:147
+msgid ""
+"Monitor your learning journey with detailed progress tracking and "
+"achievement badges."
+msgstr ""
+"विस्तृत प्रगति ट्रैकिंग और उपलब्धि बैज के साथ अपनी सीखने की यात्रा की "
+"निगरानी करें।"
+
+#: .\core\templates\core\HowItWorks.html:155
+msgid "Community Support"
+msgstr "समुदाय का समर्थन"
+
+#: .\core\templates\core\HowItWorks.html:156
+msgid ""
+"Join a community of learners and get help from instructors and fellow "
+"students."
+msgstr ""
+"शिक्षार्थियों के एक समुदाय में शामिल हों और प्रशिक्षकों और साथी छात्रों से "
+"सहायता प्राप्त करें।"
+
+#: .\core\templates\core\HowItWorks.html:164
+msgid "Earn Certificates"
+msgstr "प्रमाणपत्र अर्जित करें"
+
+#: .\core\templates\core\HowItWorks.html:165
+msgid ""
+"Get recognized for your skills with completion certificates for each course "
+"module."
+msgstr ""
+"प्रत्येक पाठ्यक्रम मॉड्यूल के लिए पूर्णता प्रमाणपत्र के साथ अपने कौशल के लिए"
+" मान्यता प्राप्त करें।"
+
+#: .\core\templates\core\HowItWorks.html:178
+msgid "What You\\'ll Learn"
+msgstr "आप क्या सीखेंगे"
+
+#: .\core\templates\core\HowItWorks.html:179
+msgid "Comprehensive modules covering all essential Microsoft Office skills"
+msgstr "सभी आवश्यक माइक्रोसॉफ्ट ऑफिस कौशल को कवर करने वाले व्यापक मॉड्यूल"
+
+#: .\core\templates\core\HowItWorks.html:194 .\templates\base.html:31
+#: .\templates\base.html:109 .\templates\base.html:114
+msgid "Microsoft Word"
+msgstr "माइक्रोसॉफ्ट वर्ड"
+
+#: .\core\templates\core\HowItWorks.html:195
+msgid "Professional document creation"
+msgstr "व्यावसायिक दस्तावेज़ निर्माण"
+
+#: .\core\templates\core\HowItWorks.html:202
+msgid "Document formatting and styles"
+msgstr "दस्तावेज़ स्वरूपण और शैलियाँ"
+
+#: .\core\templates\core\HowItWorks.html:206
+msgid "Advanced layout techniques"
+msgstr "उन्नत लेआउट तकनीकें"
+
+#: .\core\templates\core\HowItWorks.html:210
+msgid "Mail merge and automation"
+msgstr "मेल मर्ज और स्वचालन"
+
+#: .\core\templates\core\HowItWorks.html:214
+msgid "Professional resume design"
+msgstr "व्यावसायिक बायोडाटा डिज़ाइन"
+
+#: .\core\templates\core\HowItWorks.html:230 .\templates\base.html:37
+#: .\templates\base.html:110 .\templates\base.html:115
+msgid "Microsoft Excel"
+msgstr "Microsoft Excel"
+
+#: .\core\templates\core\HowItWorks.html:231
+msgid "Data analysis and automation"
+msgstr "डेटा विश्लेषण और स्वचालन"
+
+#: .\core\templates\core\HowItWorks.html:238
+msgid "Formulas and functions"
+msgstr "सूत्र और कार्य"
+
+#: .\core\templates\core\HowItWorks.html:242
+msgid "Data visualization with charts"
+msgstr "चार्ट के साथ डेटा विज़ुअलाइज़ेशन"
+
+#: .\core\templates\core\HowItWorks.html:246
+msgid "Pivot tables and analysis"
+msgstr "पिवोट टेबल और विश्लेषण"
+
+#: .\core\templates\core\HowItWorks.html:250
+msgid "Automated reporting"
+msgstr "स्वचालित रिपोर्टिंग"
+
+#: .\core\templates\core\HowItWorks.html:266 .\templates\base.html:43
+#: .\templates\base.html:111 .\templates\base.html:116
+msgid "Microsoft PowerPoint"
+msgstr "माइक्रोसॉफ्ट पावरप्वाइंट"
+
+#: .\core\templates\core\HowItWorks.html:267
+msgid "Compelling presentations"
+msgstr "सम्मोहक प्रस्तुतियाँ"
+
+#: .\core\templates\core\HowItWorks.html:274
+msgid "Slide design and layouts"
+msgstr "स्लाइड डिज़ाइन और लेआउट"
+
+#: .\core\templates\core\HowItWorks.html:278
+msgid "Animation and transitions"
+msgstr "एनिमेशन और बदलाव"
+
+#: .\core\templates\core\HowItWorks.html:282
+msgid "Visual storytelling techniques"
+msgstr "दृश्य कहानी कहने की तकनीक"
+
+#: .\core\templates\core\HowItWorks.html:286
+msgid "Presentation delivery skills"
+msgstr "प्रस्तुति वितरण कौशल"
+
+#: .\core\templates\core\HowItWorks.html:301
+msgid "Ready to Start Your Journey?"
+msgstr "अपनी यात्रा शुरू करने के लिए तैयार हैं?"
+
+#: .\core\templates\core\HowItWorks.html:302
+msgid ""
+"Join thousands of learners who have mastered Microsoft Office with our "
+"proven method. Start learning today with our free trial."
+msgstr ""
+"उन हजारों शिक्षार्थियों से जुड़ें जिन्होंने हमारी सिद्ध पद्धति से "
+"माइक्रोसॉफ्ट ऑफिस में महारत हासिल की है। हमारे निःशुल्क परीक्षण के साथ आज ही"
+" सीखना शुरू करें।"
+
+#: .\core\templates\core\HowItWorks.html:306
+#: .\core\templates\core\home.html:20
+msgid "Start Learning Now"
+msgstr "अभी सीखना शुरू करें"
+
+#: .\core\templates\core\HowItWorks.html:310
+msgid "Sign Up Free"
+msgstr "निशुल्क साइन अप करें"
+
+#: .\core\templates\core\HowItWorks.html:313
+msgid "Try Demo Course"
+msgstr "डेमो कोर्स आज़माएं"
+
+#: .\core\templates\core\home.html:10
+msgid "Learn"
+msgstr "सीखना"
+
+#: .\core\templates\core\home.html:11
+msgid "Microsoft Office"
+msgstr "माइक्रोसॉफ्ट ऑफिस"
+
+#: .\core\templates\core\home.html:12
+msgid "the Easy Way"
+msgstr "आसान तरीका"
+
+#: .\core\templates\core\home.html:16
+msgid ""
+"Clear lessons, simple language, and structured steps — with local language "
+"support — to help you master MS Office with confidence."
+msgstr ""
+"स्पष्ट पाठ, सरल भाषा और संरचित चरण - स्थानीय भाषा समर्थन के साथ - आपको "
+"आत्मविश्वास के साथ एमएस ऑफिस में महारत हासिल करने में मदद करते हैं।"
+
+#: .\core\templates\core\home.html:42
+msgid "Master Microsoft Office"
+msgstr "मास्टर माइक्रोसॉफ्ट ऑफिस"
+
+#: .\core\templates\core\home.html:45
+msgid "Interactive Modules:"
+msgstr "इंटरएक्टिव मॉड्यूल:"
+
+#: .\core\templates\core\home.html:45
+msgid "Practical projects in Excel, Word, and PowerPoint."
+msgstr "एक्सेल, वर्ड और पॉवरपॉइंट में व्यावहारिक परियोजनाएँ।"
+
+#: .\core\templates\core\home.html:48
+msgid "Beginner to Pro ● Lifetime Access"
+msgstr "शुरुआती से प्रो ● लाइफटाइम एक्सेस"
+
+#: .\core\templates\core\home.html:49
+msgid "Free Trial"
+msgstr "मुफ्त परीक्षण"
+
+#: .\core\templates\core\home.html:66
+msgid "Active Learners"
+msgstr "सक्रिय शिक्षार्थी"
+
+#: .\core\templates\core\home.html:73
+msgid "Interactive Tasks"
+msgstr "इंटरैक्टिव कार्य"
+
+#: .\core\templates\core\home.html:80
+msgid "Real-World Labs"
+msgstr "वास्तविक दुनिया की लैब्स"
+
+#: .\core\templates\core\home.html:87
+msgid "Knowledge Quizzes"
+msgstr "ज्ञान प्रश्नोत्तरी"
+
+#: .\core\templates\core\home.html:94
+msgid "User Rating"
+msgstr "प्रयोक्ता श्रेणी"
+
+#: .\core\templates\core\home.html:127
+msgid "Module 01: Creative Artistry"
+msgstr "मॉड्यूल 01: रचनात्मक कलात्मकता"
+
+#: .\core\templates\core\home.html:130
+msgid "The Art of"
+msgstr "की कला"
+
+#: .\core\templates\core\home.html:131
+msgid "the Page."
+msgstr "पृष्ठ।"
+
+#: .\core\templates\core\home.html:133
+msgid ""
+"Microsoft Word is your digital canvas. Master professional reports and "
+"modern CVs with practical, step-by-step lessons."
+msgstr ""
+"माइक्रोसॉफ्ट वर्ड आपका डिजिटल कैनवास है। व्यावहारिक, चरण-दर-चरण पाठों के साथ"
+" पेशेवर रिपोर्ट और आधुनिक सीवी में महारत हासिल करें।"
+
+#: .\core\templates\core\home.html:136
+msgid "Smart Formatting"
+msgstr "स्मार्ट फ़ॉर्मेटिंग"
+
+#: .\core\templates\core\home.html:138
+msgid "Pro Resume Design"
+msgstr "प्रो बायोडाटा डिज़ाइन"
+
+#: .\core\templates\core\home.html:144 .\core\templates\core\home.html:151
+msgid "Start Project Now"
+msgstr "अभी प्रोजेक्ट प्रारंभ करें"
+
+#: .\core\templates\core\home.html:167
+msgid "Live Demo"
+msgstr "लाइव डेमो"
+
+#: .\core\templates\core\home.html:208
+msgid "Excel Live: Data Magic"
+msgstr "एक्सेल लाइव: डेटा मैजिक"
+
+#: .\core\templates\core\home.html:216
+msgid "Practical"
+msgstr "व्यावहारिक"
+
+#: .\core\templates\core\home.html:228
+msgid "Module 02: Smart Spreadsheets"
+msgstr "मॉड्यूल 02: स्मार्ट स्प्रेडशीट्स"
+
+#: .\core\templates\core\home.html:231
+msgid "Numbers Don't"
+msgstr "संख्याएँ नहीं"
+
+#: .\core\templates\core\home.html:232
+#| msgid "Numbers Don\\'t <br/>Need to be Scary."
+msgid "Need to be Scary."
+msgstr "डरावना होने की जरूरत है."
+
+#: .\core\templates\core\home.html:234
+msgid ""
+"Stop manual typing. We teach you how to make Excel do the heavy lifting—from"
+" simple lists to automated dashboards."
+msgstr ""
+"मैन्युअल टाइपिंग बंद करें. हम आपको सिखाते हैं कि एक्सेल को सरल सूचियों से "
+"लेकर स्वचालित डैशबोर्ड तक भारी काम कैसे कराया जाए।"
+
+#: .\core\templates\core\home.html:237
+msgid "Automated Formulas"
+msgstr "स्वचालित सूत्र"
+
+#: .\core\templates\core\home.html:239
+msgid "Dynamic Charts"
+msgstr "गतिशील चार्ट"
+
+#: .\core\templates\core\home.html:243
+msgid "Unlock Data Mastery"
+msgstr "डेटा मास्टरी को अनलॉक करें"
+
+#: .\core\templates\core\home.html:256
+msgid "In-Browser Practice"
+msgstr "इन-ब्राउज़र अभ्यास"
+
+#: .\core\templates\core\home.html:257
+msgid ""
+"No need to install anything. Practice MS Office directly in our interactive "
+"environment."
+msgstr ""
+"कुछ भी इंस्टॉल करने की जरूरत नहीं. हमारे इंटरैक्टिव वातावरण में सीधे एमएस "
+"ऑफिस का अभ्यास करें।"
+
+#: .\core\templates\core\home.html:263 .\templates\base.html:125
+msgid "Workout Exercises"
+msgstr "कसरत व्यायाम"
+
+#: .\core\templates\core\home.html:264
+msgid ""
+"Complete real-world tasks like building automated payrolls or professional "
+"pitch decks."
+msgstr ""
+"स्वचालित पेरोल या पेशेवर पिच डेक बनाने जैसे वास्तविक दुनिया के कार्यों को "
+"पूरा करें।"
+
+#: .\core\templates\core\home.html:270
+msgid "Instant Feedback"
+msgstr "तत्काल प्रतिक्रिया"
+
+#: .\core\templates\core\home.html:271
+msgid ""
+"Our system checks your work instantly and guides you through every step of "
+"the quiz."
+msgstr ""
+"हमारा सिस्टम आपके काम की तुरंत जाँच करता है और क्विज़ के हर चरण में आपका "
+"मार्गदर्शन करता है।"
+
+#: .\core\templates\core\home.html:315
+msgid "Module 03: Presentation Pro"
+msgstr "मॉड्यूल 03: प्रेजेंटेशन प्रो"
+
+#: .\core\templates\core\home.html:319
+msgid "Present Like"
+msgstr "वर्तमान की तरह"
+
+#: .\core\templates\core\home.html:320
+#| msgid "Visual Storytelling"
+msgid "a Storyteller."
+msgstr "एक कहानीकार."
+
+#: .\core\templates\core\home.html:323
+#| msgid ""
+#| "Don\\'t just show slides; show a vision. We teach you how to use animations,"
+#| " transitions, and modern design rules."
+msgid ""
+"Don't just show slides; show a vision. We teach you how to use animations, "
+"transitions, and modern design rules."
+msgstr ""
+"केवल स्लाइड न दिखाएं; एक दृष्टि दिखाओ. हम आपको एनिमेशन, ट्रांज़िशन और आधुनिक"
+" डिज़ाइन नियमों का उपयोग करना सिखाते हैं।"
+
+#: .\core\templates\core\home.html:327
+msgid "Slide Morphing"
+msgstr "स्लाइड मॉर्फ़िंग"
+
+#: .\core\templates\core\home.html:329
+msgid "Visual Storytelling"
+msgstr "दृश्य कथावाचन"
+
+#: .\core\templates\core\home.html:334
+msgid "Become a Pro Speaker"
+msgstr "प्रो स्पीकर बनें"
+
+#: .\core\templates\core\home.html:353
+msgid "Live: Pitch Deck Magic"
+msgstr "लाइव: पिच डेक मैजिक"
+
+#: .\courses\templates\courses\excel.html:23
+#: .\courses\templates\courses\powerpoint.html:25
+#: .\courses\templates\courses\word.html:23
+msgid "Course Progress"
+msgstr "पाठ्यक्रम प्रगति"
+
+#: .\courses\templates\courses\excel.html:62
+#: .\courses\templates\courses\powerpoint.html:64
+msgid "Excellent!"
+msgstr "उत्कृष्ट!"
+
+#: .\courses\templates\courses\excel.html:63
+#: .\courses\templates\courses\powerpoint.html:65
+msgid "Continue"
+msgstr "जारी रखना"
+
+#: .\courses\templates\courses\excel.html:68
+#: .\courses\templates\courses\powerpoint.html:70
+#: .\courses\templates\courses\word.html:68
+msgid "Try Again"
+msgstr "पुनः प्रयास करें"
+
+#: .\courses\templates\courses\excel.html:70
+#: .\courses\templates\courses\powerpoint.html:72
+#: .\courses\templates\courses\word.html:70
+msgid "Review"
+msgstr "समीक्षा"
+
+#: .\courses\templates\courses\excel.html:87
+msgid "Excel Practice IDE"
+msgstr "एक्सेल प्रैक्टिस आईडीई"
+
+#: .\courses\templates\courses\excel.html:90
+#: .\courses\templates\courses\powerpoint.html:93
+#: .\courses\templates\courses\word.html:90
+msgid "Practice Mode"
+msgstr "अभ्यास मोड"
+
+#: .\courses\templates\courses\excel.html:185
+#: .\courses\templates\courses\powerpoint.html:189
+#: .\courses\templates\courses\word.html:197
+msgid "Submit Answers"
+msgstr "उत्तर जमा करें"
+
+#: .\courses\templates\courses\powerpoint.html:90
+msgid "PowerPoint Practice IDE"
+msgstr "पावरपॉइंट प्रैक्टिस आईडीई"
+
+#: .\courses\templates\courses\word.html:87
+msgid "Word Practice IDE"
+msgstr "शब्द अभ्यास आईडीई"
+
+#: .\courses\templates\courses\word.html:169
+msgid "Clear"
+msgstr "स्पष्ट"
+
+#: .\courses\templates\courses\word.html:172
+msgid "Save"
+msgstr "बचाना"
+
+#: .\my_project\settings.py:115
+msgid "English"
+msgstr "अंग्रेज़ी"
+
+#: .\my_project\settings.py:116
+msgid "French"
+msgstr "फ़्रेंच"
+
+#: .\my_project\settings.py:117
+msgid "Burmese"
+msgstr "बर्मी"
+
+#: .\my_project\settings.py:118
+msgid "Hindi"
+msgstr "हिंदी"
+
+#: .\templates\base.html:8 .\templates\base.html:17
+msgid "OfficeEase"
+msgstr "OfficeEase"
+
+#: .\templates\base.html:19
+msgid "Home"
+msgstr "घर"
+
+#: .\templates\base.html:23 .\templates\base.html:52
+msgid "Courses"
+msgstr "पाठ्यक्रम"
+
+#: .\templates\base.html:55
+msgid "About Us"
+msgstr "हमारे बारे में"
+
+#: .\templates\base.html:83
+msgid "Logout"
+msgstr "लॉग आउट"
+
+#: .\templates\base.html:102
+msgid ""
+"Mastering Microsoft Office through interactive labs, real-world projects, "
+"and local language support."
+msgstr ""
+"इंटरैक्टिव लैब, वास्तविक दुनिया की परियोजनाओं और स्थानीय भाषा समर्थन के "
+"माध्यम से माइक्रोसॉफ्ट ऑफिस में महारत हासिल करना।"
+
+#: .\templates\base.html:106
+msgid "Modules"
+msgstr "मॉड्यूल"
+
+#: .\templates\base.html:112 .\templates\base.html:117
+msgid "Interactive IDE"
+msgstr "इंटरएक्टिव आईडीई"
+
+#: .\templates\base.html:122
+msgid "Resources"
+msgstr "संसाधन"
+
+#: .\templates\base.html:124
+msgid "Lab Documentation"
+msgstr "लैब दस्तावेज़ीकरण"
+
+#: .\templates\base.html:129
+msgid "Support"
+msgstr "सहायता"
+
+#: .\templates\base.html:131
+msgid "hello@office-ease.com"
+msgstr "hello@office-ease.com"
+
+#: .\templates\base.html:136
+msgid "© 2026 OfficeEase Learning Platform. All rights reserved."
+msgstr "© 2026 OfficeEase लर्निंग प्लेटफ़ॉर्म। सर्वाधिकार सुरक्षित।"
+
+#~ msgid "The Art of <br/>the Page."
+#~ msgstr "पेज की कला।"
+
+#~ msgid "Present Like <br/>a Storyteller."
+#~ msgstr "एक कहानीकार की तरह प्रस्तुत करें।"

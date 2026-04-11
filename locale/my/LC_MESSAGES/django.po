@@ -1,0 +1,908 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-11 23:35+0530\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: .\accounts\templates\accounts\auth.html:9
+msgid "Authentication"
+msgstr "အထောက်အထားပြခြင်း။"
+
+#: .\accounts\templates\accounts\auth.html:116
+#: .\accounts\templates\accounts\auth.html:190
+msgid "Create Account"
+msgstr "အကောင့်ပြုလုပ်ပါ"
+
+#: .\accounts\templates\accounts\auth.html:125
+msgid "First name"
+msgstr "နာမည်"
+
+#: .\accounts\templates\accounts\auth.html:133
+msgid "Last name"
+msgstr "မျိုးနွယ်အမည်"
+
+#: .\accounts\templates\accounts\auth.html:143
+msgid "Email address"
+msgstr "အီးမေးလ်လိပ်စာ"
+
+#: .\accounts\templates\accounts\auth.html:146
+msgid "Email already exists."
+msgstr "အီးမေးလ် ရှိနှင့်ပြီးဖြစ်သည်။"
+
+#: .\accounts\templates\accounts\auth.html:155
+#: .\accounts\templates\accounts\auth.html:222
+msgid "Password"
+msgstr "စကားဝှက်"
+
+#: .\accounts\templates\accounts\auth.html:163
+msgid "Confirm"
+msgstr "အတည်ပြုပါ။"
+
+#: .\accounts\templates\accounts\auth.html:170
+msgid "At least 8 characters"
+msgstr "အနည်းဆုံး စာလုံး ၈ လုံး"
+
+#: .\accounts\templates\accounts\auth.html:171
+msgid "At least one letter"
+msgstr "အနည်းဆုံး စာတစ်စောင်"
+
+#: .\accounts\templates\accounts\auth.html:172
+msgid "At least one number"
+msgstr "အနည်းဆုံး နံပါတ်တစ်ခု"
+
+#: .\accounts\templates\accounts\auth.html:173
+msgid "At least one special symbol"
+msgstr "အနည်းဆုံး အထူးသင်္ကေတတစ်ခု"
+
+#: .\accounts\templates\accounts\auth.html:178
+msgid "Passwords do not match."
+msgstr "စကားဝှက်များ မတိုက်ဆိုင်ပါ။"
+
+#: .\accounts\templates\accounts\auth.html:205
+#: .\accounts\templates\accounts\auth.html:295
+msgid "Welcome Back"
+msgstr "ကြိုဆိုပါတယ်"
+
+#: .\accounts\templates\accounts\auth.html:213
+msgid "Email or username"
+msgstr "အီးမေးလ် သို့မဟုတ် အသုံးပြုသူအမည်"
+
+#: .\accounts\templates\accounts\auth.html:228
+msgid "Invalid email or password. Please try again."
+msgstr "မမှန်ကန်သော အီးမေးလ် သို့မဟုတ် စကားဝှက်။ ထပ်စမ်းကြည့်ပါ။"
+
+#: .\accounts\templates\accounts\auth.html:242
+#: .\accounts\templates\accounts\auth.html:302 .\templates\base.html:87
+msgid "Sign In"
+msgstr "ဆိုင်းအင်လုပ်ခြင်း"
+
+#: .\accounts\templates\accounts\auth.html:247
+msgid "or continue with"
+msgstr "သို့မဟုတ် ဆက်လုပ်ပါ။"
+
+#: .\accounts\templates\accounts\auth.html:282
+msgid "Hello,<br/>Welcome!"
+msgstr "မင်္ဂလာပါ၊<br/>ကြိုဆိုပါတယ်။"
+
+#: .\accounts\templates\accounts\auth.html:284
+msgid "Don\\'t have an account?<br/>Join us and get started today."
+msgstr "အကောင့်မရှိဘူးလား။<br/>ကျွန်ုပ်တို့နဲ့ပူးပေါင်းပြီး ဒီနေ့စတင်လိုက်ပါ။"
+
+#: .\accounts\templates\accounts\auth.html:289 .\templates\base.html:88
+msgid "Sign Up"
+msgstr "ဆိုင်းအပ်"
+
+#: .\accounts\templates\accounts\auth.html:297
+msgid "Already have an account?<br/>Sign in to continue."
+msgstr "အကောင့်ရှိပြီးသားလား။<br/>ဆက်လက်ဆောင်ရွက်ရန် လက်မှတ်ထိုးဝင်ပါ။"
+
+#: .\core\templates\core\AboutUs.html:18
+msgid "Meet the Team"
+msgstr "အသင်းနှင့်တွေ့ဆုံပါ။"
+
+#: .\core\templates\core\AboutUs.html:22
+msgid "Built with <span class=\\'text-blue-600 italic\\'>Purpose.</span>"
+msgstr ""
+"<span class=\\'text-blue-600 italic\\'>ရည်ရွယ်ချက်ဖြင့် "
+"တည်ဆောက်ထားသည်။</span>"
+
+#: .\core\templates\core\AboutUs.html:23
+msgid "Driven by <span class=\\'text-orange-600 italic\\'>People.</span>"
+msgstr "<span class=\\'text-orange-600 italic\\'>လူများက မောင်းနှင်သည်။</span>"
+
+#: .\core\templates\core\AboutUs.html:26
+msgid ""
+"We are dedicated to delivering innovative solutions that transform ideas "
+"into reality. Our mission is to create meaningful impact through technology "
+"and collaborative teamwork."
+msgstr ""
+"ကျွန်ုပ်တို့သည် စိတ်ကူးစိတ်သန်းများကို လက်တွေ့အဖြစ်သို့ ပြောင်းလဲပေးသည့် "
+"ဆန်းသစ်သောဖြေရှင်းနည်းများကို ပေးအပ်ရန် ရည်စူးပါသည်။ ကျွန်ုပ်တို့၏ "
+"ရည်မှန်းချက်မှာ နည်းပညာနှင့် ပူးပေါင်းလုပ်ဆောင်မှုမှတစ်ဆင့် အဓိပ္ပါယ်ရှိသော "
+"အကျိုးသက်ရောက်မှုများကို ဖန်တီးရန်ဖြစ်သည်။"
+
+#: .\core\templates\core\AboutUs.html:44
+msgid "Innovation First"
+msgstr "ဆန်းသစ်တီထွင်မှု ပထမ"
+
+#: .\core\templates\core\AboutUs.html:45
+msgid ""
+"Cutting-edge technologies solving real-world problems while maintaining "
+"simplicity and accessibility."
+msgstr ""
+"ရိုးရှင်းမှုနှင့် သုံးစွဲနိုင်မှုကို ထိန်းသိမ်းထားစဉ်တွင် "
+"ခေတ်ပေါ်နည်းပညာများသည် လက်တွေ့ကမ္ဘာပြဿနာများကို ဖြေရှင်းပေးသည်။"
+
+#: .\core\templates\core\AboutUs.html:55
+msgid "Team Collaboration"
+msgstr "အဖွဲ့လိုက် ပူးပေါင်းဆောင်ရွက်ခြင်း"
+
+#: .\core\templates\core\AboutUs.html:56
+msgid ""
+"A diverse team united by one goal — making Microsoft Office learning "
+"effortless for everyone."
+msgstr ""
+"Microsoft Office သင်ယူမှုအား လူတိုင်းအတွက် အားမကိုးဘဲ "
+"ရည်မှန်းချက်တစ်ခုတည်းဖြင့် စုစည်းထားသော မတူကွဲပြားသောအဖွဲ့။"
+
+#: .\core\templates\core\AboutUs.html:66
+msgid "Real Impact"
+msgstr "တကယ့်သက်ရောက်မှု"
+
+#: .\core\templates\core\AboutUs.html:67
+msgid ""
+"From zero to pro — our learners gain job-ready skills through hands-on labs "
+"and structured modules."
+msgstr ""
+"သုညမှ ပရော်ဖက်ရှင်နယ်အထိ — ကျွန်ုပ်တို့၏သင်ယူသူများသည် "
+"လက်ပေါ်ဓာတ်ခွဲခန်းများနှင့် ဖွဲ့စည်းတည်ဆောက်ထားသော မော်ဂျူးများမှတစ်ဆင့် "
+"အလုပ်အသင့်ဖြစ်နိုင်သော စွမ်းရည်များကို ရရှိကြသည်။"
+
+#: .\core\templates\core\AboutUs.html:79
+msgid "The Humans Behind It"
+msgstr "နောက်ကွယ်က လူတွေ"
+
+#: .\core\templates\core\AboutUs.html:80
+msgid "Our Team"
+msgstr "ငါတို့အဖွဲ့"
+
+#: .\core\templates\core\AboutUs.html:102
+#: .\core\templates\core\AboutUs.html:125
+#: .\core\templates\core\AboutUs.html:148
+#: .\core\templates\core\AboutUs.html:171
+msgid "Member Name"
+msgstr "အဖွဲ့ဝင်အမည်"
+
+#: .\core\templates\core\AboutUs.html:103
+msgid "Role — Word Module"
+msgstr "အခန်းကဏ္ဍ - စကားလုံး မော်ဂျူး"
+
+#: .\core\templates\core\AboutUs.html:104
+msgid ""
+"Member description goes here. They bring expertise in document design and "
+"content architecture."
+msgstr ""
+"အဖွဲ့ဝင်ဖော်ပြချက် ဤနေရာတွင် သွားပါသည်။ ၎င်းတို့သည် "
+"စာရွက်စာတမ်းဒီဇိုင်းနှင့် အကြောင်းအရာဗိသုကာဆိုင်ရာ ကျွမ်းကျင်မှုများကို "
+"ယူဆောင်လာကြသည်။"
+
+#: .\core\templates\core\AboutUs.html:106
+msgid "Word"
+msgstr "စကားလုံး"
+
+#: .\core\templates\core\AboutUs.html:107
+msgid "Documentation"
+msgstr "စာတမ်းပြုစုခြင်း။"
+
+#: .\core\templates\core\AboutUs.html:126
+msgid "Role — PowerPoint Module"
+msgstr "အခန်းကဏ္ဍ - PowerPoint မော်ဂျူး"
+
+#: .\core\templates\core\AboutUs.html:127
+msgid ""
+"Member description goes here. They specialise in visual storytelling and "
+"presentation design systems."
+msgstr ""
+"အဖွဲ့ဝင်ဖော်ပြချက် ဤနေရာတွင် သွားပါသည်။ ၎င်းတို့သည် "
+"ရုပ်မြင်သံကြားပုံပြင်ပြောခြင်းနှင့် တင်ဆက်မှုပုံစံစနစ်များတွင် အထူးပြုကြသည်။"
+
+#: .\core\templates\core\AboutUs.html:129
+msgid "PowerPoint"
+msgstr "ပါဝါပွိုင့်"
+
+#: .\core\templates\core\AboutUs.html:130
+msgid "Design"
+msgstr "ဒီဇိုင်း"
+
+#: .\core\templates\core\AboutUs.html:149
+msgid "Role — Excel Module"
+msgstr "အခန်းကဏ္ဍ - Excel Module"
+
+#: .\core\templates\core\AboutUs.html:150
+msgid ""
+"Member description goes here. They craft data-driven exercises and formula-"
+"based lab challenges."
+msgstr ""
+"အဖွဲ့ဝင်ဖော်ပြချက် ဤနေရာတွင် သွားပါသည်။ ၎င်းတို့သည် ဒေတာမောင်းနှင်သော "
+"လေ့ကျင့်ခန်းများနှင့် ဖော်မြူလာအခြေခံဓာတ်ခွဲခန်းစိန်ခေါ်မှုများကို "
+"ပြုလုပ်ကြသည်။"
+
+#: .\core\templates\core\AboutUs.html:152
+msgid "Excel"
+msgstr "Excel"
+
+#: .\core\templates\core\AboutUs.html:153
+msgid "Data"
+msgstr "ဒေ"
+
+#: .\core\templates\core\AboutUs.html:172
+msgid "Role — OneNote Module"
+msgstr "အခန်းကဏ္ဍ - OneNote မော်ဂျူး"
+
+#: .\core\templates\core\AboutUs.html:173
+msgid ""
+"Member description goes here. They build structured note-taking workflows "
+"and knowledge management labs."
+msgstr ""
+"အဖွဲ့ဝင်ဖော်ပြချက် ဤနေရာတွင် သွားပါသည်။ ၎င်းတို့သည် ဖွဲ့စည်းတည်ဆောက်ထားသော "
+"မှတ်စုယူခြင်းလုပ်ငန်းအသွားအလာများနှင့် "
+"အသိပညာစီမံခန့်ခွဲမှုဓာတ်ခွဲခန်းများကို တည်ဆောက်ကြသည်။"
+
+#: .\core\templates\core\AboutUs.html:175
+msgid "OneNote"
+msgstr "OneNote"
+
+#: .\core\templates\core\AboutUs.html:176
+msgid "Notes"
+msgstr "မှတ်စုများ"
+
+#: .\core\templates\core\HowItWorks.html:18 .\templates\base.html:50
+#: .\templates\base.html:53
+msgid "How It Works"
+msgstr "ဘယ်လိုအလုပ်လုပ်လဲ။"
+
+#: .\core\templates\core\HowItWorks.html:22
+msgid "Learn Microsoft Office <br/>"
+msgstr "Microsoft Office <br/> ကို လေ့လာပါ။"
+
+#: .\core\templates\core\HowItWorks.html:23
+msgid "<span class=\\'text-emerald-600 italic\\'>Step by Step.</span>"
+msgstr "<span class=\\'text-emerald-600 italic\\'>အဆင့်ဆင့်။</span>"
+
+#: .\core\templates\core\HowItWorks.html:26
+msgid ""
+"Our interactive learning platform guides you through practical exercises, "
+"real-world projects, and instant feedback to master Word, Excel, and "
+"PowerPoint with confidence."
+msgstr ""
+"ကျွန်ုပ်တို့၏ အပြန်အလှန်အကျိုးသက်ရောက်သော သင်ယူမှုပလက်ဖောင်းသည် သင့်အား "
+"လက်တွေ့ကျသောလေ့ကျင့်ခန်းများ၊ လက်တွေ့ကမ္ဘာပရောဂျက်များနှင့် Word၊ Excel "
+"နှင့် PowerPoint တို့ကို ယုံကြည်မှုအပြည့်ဖြင့် ကျွမ်းကျင်စေရန် "
+"လက်ငင်းတုံ့ပြန်ချက်ဖြင့် လမ်းညွှန်ပေးပါသည်။"
+
+#: .\core\templates\core\HowItWorks.html:36
+msgid "Your Learning Journey"
+msgstr "သင်၏သင်ယူမှုခရီး"
+
+#: .\core\templates\core\HowItWorks.html:37
+msgid ""
+"Follow our proven 4-step process designed to take you from beginner to "
+"expert"
+msgstr ""
+"ကျွန်ုပ်တို့၏ သက်သေပြထားသော အဆင့် ၄ ဆင့်ဖြင့် သင့်အား စတင်သူမှ "
+"ကျွမ်းကျင်သူထံ ခေါ်ဆောင်သွားနိုင်ရန် ဒီဇိုင်းထုတ်ထားသော လုပ်ငန်းစဉ်ကို "
+"လိုက်နာပါ။"
+
+#: .\core\templates\core\HowItWorks.html:52
+msgid "Learn Theory"
+msgstr "သီအိုရီကို လေ့လာပါ။"
+
+#: .\core\templates\core\HowItWorks.html:53
+msgid ""
+"Start with clear, concise lessons that explain concepts in simple language "
+"with practical examples."
+msgstr ""
+"သဘောတရားများကို ရိုးရှင်းသောဘာသာစကားဖြင့် လက်တွေ့နမူနာများဖြင့် ရှင်းပြသည့် "
+"ရှင်းလင်းပြတ်သားသော သင်ခန်းစာများဖြင့် စတင်ပါ။"
+
+#: .\core\templates\core\HowItWorks.html:66
+msgid "Practice Hands-On"
+msgstr "Hands-On လေ့ကျင့်ပါ။"
+
+#: .\core\templates\core\HowItWorks.html:67
+msgid ""
+"Apply what you\\'ve learned in our interactive environment with guided "
+"exercises and real-time feedback."
+msgstr ""
+"လမ်းညွှန်ထားသော လေ့ကျင့်ခန်းများနှင့် အချိန်နှင့်တပြေးညီ "
+"အကြံပြုချက်များဖြင့် ကျွန်ုပ်တို့၏ အပြန်အလှန်အကျိုးသက်ရောက်သော "
+"ပတ်ဝန်းကျင်တွင် သင်သင်ယူခဲ့ရာများကို အသုံးချပါ။"
+
+#: .\core\templates\core\HowItWorks.html:80
+msgid "Test Knowledge"
+msgstr "အသိပညာစမ်းသပ်"
+
+#: .\core\templates\core\HowItWorks.html:81
+msgid ""
+"Reinforce learning with quizzes that check your understanding and provide "
+"instant explanations."
+msgstr ""
+"သင်၏နားလည်မှုကိုစစ်ဆေးပြီး ချက်ချင်းရှင်းပြချက်ပေးသည့် ပဟေဋ္ဌိများဖြင့် "
+"သင်ယူမှုကို အားဖြည့်ပါ။"
+
+#: .\core\templates\core\HowItWorks.html:94
+msgid "Build Projects"
+msgstr "ပရောဂျက်များတည်ဆောက်ပါ။"
+
+#: .\core\templates\core\HowItWorks.html:95
+msgid ""
+"Create real-world documents, spreadsheets, and presentations that you can "
+"use in your career."
+msgstr ""
+"သင့်အသက်မွေးဝမ်းကျောင်းလုပ်ငန်းတွင် သင်အသုံးပြုနိုင်သည့် "
+"လက်တွေ့ကမ္ဘာစာရွက်စာတမ်းများ၊ စာရင်းဇယားများနှင့် တင်ပြချက်များကို ဖန်တီးပါ။"
+
+#: .\core\templates\core\HowItWorks.html:108
+msgid "Why Choose OfficeEase?"
+msgstr "OfficeEase ကို ဘာကြောင့် ရွေးချယ်တာလဲ။"
+
+#: .\core\templates\core\HowItWorks.html:109
+msgid ""
+"Our platform combines the best of traditional learning with modern "
+"technology"
+msgstr ""
+"ကျွန်ုပ်တို့၏ ပလက်ဖောင်းသည် ရိုးရာသင်ကြားမှု၏ အကောင်းဆုံးကို "
+"ခေတ်မီနည်းပညာနှင့် ပေါင်းစပ်ထားသည်။"
+
+#: .\core\templates\core\HowItWorks.html:119
+msgid "Local Language Support"
+msgstr "ဒေသန္တရဘာသာစကားပံ့ပိုးမှု"
+
+#: .\core\templates\core\HowItWorks.html:120
+msgid ""
+"Learn in your preferred language with culturally relevant examples and "
+"explanations."
+msgstr ""
+"ယဉ်ကျေးမှုအရ သက်ဆိုင်သော ဥပမာများနှင့် ရှင်းပြချက်များဖြင့် သင်နှစ်သက်ရာ "
+"ဘာသာစကားဖြင့် လေ့လာပါ။"
+
+#: .\core\templates\core\HowItWorks.html:128
+msgid "Learn at Your Pace"
+msgstr "သင့်အရှိန်အဟုန်ဖြင့် လေ့လာပါ။"
+
+#: .\core\templates\core\HowItWorks.html:129
+msgid ""
+"No deadlines or pressure. Study when it fits your schedule with lifetime "
+"access to all content."
+msgstr ""
+"သတ်မှတ်ရက် သို့မဟုတ် ဖိအားမရှိပါ။ အကြောင်းအရာအားလုံးကို "
+"တစ်သက်တာအသုံးပြုခွင့်ဖြင့် သင်၏အချိန်ဇယားနှင့်ကိုက်ညီသည့်အခါ လေ့လာပါ။"
+
+#: .\core\templates\core\HowItWorks.html:137
+msgid "Mobile Friendly"
+msgstr "Mobile Friendly ပါ။"
+
+#: .\core\templates\core\HowItWorks.html:138
+msgid ""
+"Access your learning materials on any device - desktop, tablet, or "
+"smartphone."
+msgstr ""
+"မည်သည့်စက်ပစ္စည်းတွင်မဆို - ဒက်စတော့၊ တက်ဘလက်၊ သို့မဟုတ် စမတ်ဖုန်းတွင် "
+"သင်၏သင်ကြားရေးပစ္စည်းများကို ဝင်ရောက်ကြည့်ရှုပါ။"
+
+#: .\core\templates\core\HowItWorks.html:146
+msgid "Track Progress"
+msgstr "တိုးတက်မှုကို ခြေရာခံပါ။"
+
+#: .\core\templates\core\HowItWorks.html:147
+msgid ""
+"Monitor your learning journey with detailed progress tracking and "
+"achievement badges."
+msgstr ""
+"အသေးစိတ်တိုးတက်မှုခြေရာခံခြင်းနှင့် အောင်မြင်မှုတံဆိပ်များဖြင့် "
+"သင်၏သင်ယူမှုခရီးကို စောင့်ကြည့်ပါ။"
+
+#: .\core\templates\core\HowItWorks.html:155
+msgid "Community Support"
+msgstr "ရပ်ရွာပံ့ပိုးမှု"
+
+#: .\core\templates\core\HowItWorks.html:156
+msgid ""
+"Join a community of learners and get help from instructors and fellow "
+"students."
+msgstr ""
+"သင်ယူသူများအသိုင်းအ၀ိုင်းတွင်ပါဝင်ပြီး သင်တန်းပို့ချသူများနှင့် "
+"ကျောင်းသားများထံမှအကူအညီရယူပါ။"
+
+#: .\core\templates\core\HowItWorks.html:164
+msgid "Earn Certificates"
+msgstr "လက်မှတ်များရယူပါ။"
+
+#: .\core\templates\core\HowItWorks.html:165
+msgid ""
+"Get recognized for your skills with completion certificates for each course "
+"module."
+msgstr ""
+"သင်တန်း module တစ်ခုစီအတွက် ပြီးဆုံးကြောင်း အသိအမှတ်ပြုလက်မှတ်များနှင့်အတူ "
+"သင်၏အရည်အချင်းများအတွက် အသိအမှတ်ပြုမှုရယူပါ။"
+
+#: .\core\templates\core\HowItWorks.html:178
+msgid "What You\\'ll Learn"
+msgstr "သင်လေ့လာမည့်အရာ"
+
+#: .\core\templates\core\HowItWorks.html:179
+msgid "Comprehensive modules covering all essential Microsoft Office skills"
+msgstr ""
+"မရှိမဖြစ် Microsoft Office ကျွမ်းကျင်မှုအားလုံးကို လွှမ်းခြုံထားသော "
+"ပြည့်စုံသော module များ"
+
+#: .\core\templates\core\HowItWorks.html:194 .\templates\base.html:31
+#: .\templates\base.html:109 .\templates\base.html:114
+msgid "Microsoft Word"
+msgstr "Microsoft Word"
+
+#: .\core\templates\core\HowItWorks.html:195
+msgid "Professional document creation"
+msgstr "ပရော်ဖက်ရှင်နယ်စာရွက်စာတမ်းဖန်တီးမှု"
+
+#: .\core\templates\core\HowItWorks.html:202
+msgid "Document formatting and styles"
+msgstr "စာရွက်စာတမ်းဖော်မတ်ခြင်းနှင့် ပုံစံများ"
+
+#: .\core\templates\core\HowItWorks.html:206
+msgid "Advanced layout techniques"
+msgstr "အဆင့်မြင့် အပြင်အဆင်နည်းပညာများ"
+
+#: .\core\templates\core\HowItWorks.html:210
+msgid "Mail merge and automation"
+msgstr "မေးလ်ပေါင်းစည်းခြင်းနှင့် အလိုအလျောက်စနစ်"
+
+#: .\core\templates\core\HowItWorks.html:214
+msgid "Professional resume design"
+msgstr "Professional ကိုယ်ရေးရာဇဝင်ဒီဇိုင်း"
+
+#: .\core\templates\core\HowItWorks.html:230 .\templates\base.html:37
+#: .\templates\base.html:110 .\templates\base.html:115
+msgid "Microsoft Excel"
+msgstr "Microsoft Excel"
+
+#: .\core\templates\core\HowItWorks.html:231
+msgid "Data analysis and automation"
+msgstr "ဒေတာခွဲခြမ်းစိတ်ဖြာခြင်းနှင့် အလိုအလျောက်စနစ်"
+
+#: .\core\templates\core\HowItWorks.html:238
+msgid "Formulas and functions"
+msgstr "ဖော်မြူလာများနှင့် လုပ်ဆောင်ချက်များ"
+
+#: .\core\templates\core\HowItWorks.html:242
+msgid "Data visualization with charts"
+msgstr "ဇယားများဖြင့် ဒေတာကို ပုံဖော်ခြင်း"
+
+#: .\core\templates\core\HowItWorks.html:246
+msgid "Pivot tables and analysis"
+msgstr "pivot ဇယားများနှင့်ခွဲခြမ်းစိတ်ဖြာ"
+
+#: .\core\templates\core\HowItWorks.html:250
+msgid "Automated reporting"
+msgstr "အလိုအလျောက်အစီရင်ခံခြင်း။"
+
+#: .\core\templates\core\HowItWorks.html:266 .\templates\base.html:43
+#: .\templates\base.html:111 .\templates\base.html:116
+msgid "Microsoft PowerPoint"
+msgstr "Microsoft PowerPoint"
+
+#: .\core\templates\core\HowItWorks.html:267
+msgid "Compelling presentations"
+msgstr "ဆွဲဆောင်မှုရှိသော တင်ပြချက်များ"
+
+#: .\core\templates\core\HowItWorks.html:274
+msgid "Slide design and layouts"
+msgstr "ဆလိုက်ဒီဇိုင်းနှင့် အပြင်အဆင်များ"
+
+#: .\core\templates\core\HowItWorks.html:278
+msgid "Animation and transitions"
+msgstr "Animation နှင့် အသွင်ကူးပြောင်းမှုများ"
+
+#: .\core\templates\core\HowItWorks.html:282
+msgid "Visual storytelling techniques"
+msgstr "Visual Storytelling နည်းပညာများ"
+
+#: .\core\templates\core\HowItWorks.html:286
+msgid "Presentation delivery skills"
+msgstr "တင်ပြခြင်း စွမ်းရည်"
+
+#: .\core\templates\core\HowItWorks.html:301
+msgid "Ready to Start Your Journey?"
+msgstr "သင့်ခရီးစဉ်ကို စတင်ရန် အဆင်သင့်ဖြစ်ပြီလား။"
+
+#: .\core\templates\core\HowItWorks.html:302
+msgid ""
+"Join thousands of learners who have mastered Microsoft Office with our "
+"proven method. Start learning today with our free trial."
+msgstr ""
+"ကျွန်ုပ်တို့၏သက်သေပြနည်းလမ်းဖြင့် Microsoft Office ကို ကျွမ်းကျင်သော "
+"ထောင်ပေါင်းများစွာသော သင်ယူသူများနှင့် ပူးပေါင်းပါ။ ကျွန်ုပ်တို့၏ "
+"အခမဲ့အစမ်းသုံးခြင်းဖြင့် ယနေ့စတင်လေ့လာပါ။"
+
+#: .\core\templates\core\HowItWorks.html:306
+#: .\core\templates\core\home.html:20
+msgid "Start Learning Now"
+msgstr "ယခု စတင်လေ့လာပါ။"
+
+#: .\core\templates\core\HowItWorks.html:310
+msgid "Sign Up Free"
+msgstr "အခမဲ့စာရင်းသွင်းပါ။"
+
+#: .\core\templates\core\HowItWorks.html:313
+msgid "Try Demo Course"
+msgstr "ဒီမိုသင်တန်းကို စမ်းကြည့်ပါ။"
+
+#: .\core\templates\core\home.html:10
+msgid "Learn"
+msgstr "လေ့လာရန်"
+
+#: .\core\templates\core\home.html:11
+msgid "Microsoft Office"
+msgstr "Microsoft Office ကို"
+
+#: .\core\templates\core\home.html:12
+msgid "the Easy Way"
+msgstr "လွယ်ကူသောနည်းလမ်းဖြင့်"
+
+#: .\core\templates\core\home.html:16
+msgid ""
+"Clear lessons, simple language, and structured steps — with local language "
+"support — to help you master MS Office with confidence."
+msgstr ""
+"ရှင်းလင်းသောသင်ခန်းစာများ၊ ရိုးရှင်းသောဘာသာစကားနှင့် — "
+"ဒေသန္တရဘာသာစကားပံ့ပိုးမှုဖြင့် — သင့်အား MS Office ကို ယုံကြည်စိတ်ချစွာ "
+"ကျွမ်းကျင်အောင် ကူညီပေးရန်အတွက် ရှင်းလင်းပါ။"
+
+#: .\core\templates\core\home.html:42
+msgid "Master Microsoft Office"
+msgstr "Microsoft Officeကိုကျွမ်းကျင်အောင် လေ့လာပါ"
+
+#: .\core\templates\core\home.html:45
+msgid "Interactive Modules:"
+msgstr "အပြန်အလှန်အကျိုးပြုသော မော်ဂျူးများ-"
+
+#: .\core\templates\core\home.html:45
+msgid "Practical projects in Excel, Word, and PowerPoint."
+msgstr "Excel၊ Word နှင့် PowerPoint တို့တွင် လက်တွေ့ကျသော ပရောဂျက်များ။"
+
+#: .\core\templates\core\home.html:48
+msgid "Beginner to Pro ● Lifetime Access"
+msgstr "Pro မှ စတင်သူ ● တစ်သက်တာ အသုံးပြုခွင့်"
+
+#: .\core\templates\core\home.html:49
+msgid "Free Trial"
+msgstr "အခမဲ့ အစမ်းသုံးပါ။"
+
+#: .\core\templates\core\home.html:66
+msgid "Active Learners"
+msgstr "တက်ကြွစွာသင်ယူသူများ"
+
+#: .\core\templates\core\home.html:73
+msgid "Interactive Tasks"
+msgstr "အပြန်အလှန်အကျိုးပြုသောလုပ်ငန်းများ"
+
+#: .\core\templates\core\home.html:80
+msgid "Real-World Labs"
+msgstr "Real-World Labs များ"
+
+#: .\core\templates\core\home.html:87
+msgid "Knowledge Quizzes"
+msgstr "ဗဟုသုတ ပဟေဠိများ"
+
+#: .\core\templates\core\home.html:94
+msgid "User Rating"
+msgstr "အသုံးပြုသူ အဆင့်သတ်မှတ်ခြင်း။"
+
+#: .\core\templates\core\home.html:127
+msgid "Module 01: Creative Artistry"
+msgstr "Module 01- ဖန်တီးမှုအနုပညာ"
+
+#: .\core\templates\core\home.html:130
+msgid "The Art of"
+msgstr "အနုပညာ"
+
+#: .\core\templates\core\home.html:131
+msgid "the Page."
+msgstr "စာမျက်နှာ။"
+
+#: .\core\templates\core\home.html:133
+msgid ""
+"Microsoft Word is your digital canvas. Master professional reports and "
+"modern CVs with practical, step-by-step lessons."
+msgstr ""
+"Microsoft Word သည် သင်၏ ဒစ်ဂျစ်တယ် ပတ္တူဖြစ်သည်။ လက်တွေ့ကျကျ၊ "
+"အဆင့်ဆင့်သင်ခန်းစာများဖြင့် မာစတာပရော်ဖက်ရှင်နယ်အစီရင်ခံစာများနှင့် ခေတ်မီ "
+"CV များ။"
+
+#: .\core\templates\core\home.html:136
+msgid "Smart Formatting"
+msgstr "စမတ်ပုံစံချခြင်း။"
+
+#: .\core\templates\core\home.html:138
+msgid "Pro Resume Design"
+msgstr "Pro Resume ဒီဇိုင်း"
+
+#: .\core\templates\core\home.html:144 .\core\templates\core\home.html:151
+msgid "Start Project Now"
+msgstr "ပရောဂျက်ကို ယခုစတင်ပါ။"
+
+#: .\core\templates\core\home.html:167
+msgid "Live Demo"
+msgstr "တိုက်ရိုက်သရုပ်ပြ"
+
+#: .\core\templates\core\home.html:208
+msgid "Excel Live: Data Magic"
+msgstr "Excel တိုက်ရိုက်- Data Magic"
+
+#: .\core\templates\core\home.html:216
+msgid "Practical"
+msgstr "လက်တွေ့ပါ။"
+
+#: .\core\templates\core\home.html:228
+msgid "Module 02: Smart Spreadsheets"
+msgstr "Module 02- စမတ်စာရင်းဇယားများ"
+
+#: .\core\templates\core\home.html:231
+msgid "Numbers Don't"
+msgstr "နံပါတ်များ မလုပ်ပါနှင့်"
+
+#: .\core\templates\core\home.html:232
+#| msgid "Numbers Don\\'t <br/>Need to be Scary."
+msgid "Need to be Scary."
+msgstr "ကြောက်စရာဖြစ်ဖို့လိုတယ်။"
+
+#: .\core\templates\core\home.html:234
+msgid ""
+"Stop manual typing. We teach you how to make Excel do the heavy lifting—from"
+" simple lists to automated dashboards."
+msgstr ""
+"လူကိုယ်တိုင် စာရိုက်ခြင်းကို ရပ်ပါ။ Excel သည် ရိုးရှင်းသောစာရင်းများမှ "
+"အလိုအလျောက် ဒက်ရှ်ဘုတ်များအထိ လေးလံသောရုတ်သိမ်းမှုကို "
+"မည်သို့ပြုလုပ်ရမည်နည်း။"
+
+#: .\core\templates\core\home.html:237
+msgid "Automated Formulas"
+msgstr "အလိုအလျောက်ဖော်မြူလာများ"
+
+#: .\core\templates\core\home.html:239
+msgid "Dynamic Charts"
+msgstr "ဒိုင်းနမစ်ဇယားများ"
+
+#: .\core\templates\core\home.html:243
+msgid "Unlock Data Mastery"
+msgstr "Data Mastery ကိုဖွင့်ပါ။"
+
+#: .\core\templates\core\home.html:256
+msgid "In-Browser Practice"
+msgstr "ဘရောက်ဆာအတွင်း လက်တွေ့လုပ်ဆောင်ခြင်း။"
+
+#: .\core\templates\core\home.html:257
+msgid ""
+"No need to install anything. Practice MS Office directly in our interactive "
+"environment."
+msgstr ""
+"ဘာမှ install လုပ်စရာမလိုပါဘူး။ ကျွန်ုပ်တို့၏ အပြန်အလှန်အကျိုးပြုသော "
+"ပတ်ဝန်းကျင်တွင် MS Office ကို တိုက်ရိုက်လေ့ကျင့်ပါ။"
+
+#: .\core\templates\core\home.html:263 .\templates\base.html:125
+msgid "Workout Exercises"
+msgstr "လေ့ကျင့်ခန်း လေ့ကျင့်ခန်းများ"
+
+#: .\core\templates\core\home.html:264
+msgid ""
+"Complete real-world tasks like building automated payrolls or professional "
+"pitch decks."
+msgstr ""
+"အလိုအလျောက်လုပ်ခလစာများတည်ဆောက်ခြင်း သို့မဟုတ် ပရော်ဖက်ရှင်နယ် pitch decks "
+"များကဲ့သို့ လက်တွေ့ကမ္ဘာအလုပ်များကို ပြီးအောင်လုပ်ပါ။"
+
+#: .\core\templates\core\home.html:270
+msgid "Instant Feedback"
+msgstr "လက်ငင်းတုံ့ပြန်ချက်"
+
+#: .\core\templates\core\home.html:271
+msgid ""
+"Our system checks your work instantly and guides you through every step of "
+"the quiz."
+msgstr ""
+"ကျွန်ုပ်တို့၏စနစ်သည် သင့်အလုပ်ကိုချက်ချင်းစစ်ဆေးပြီး ပဟေဋ္ဌိ၏အဆင့်တိုင်းကို "
+"လမ်းညွှန်ပေးသည်။"
+
+#: .\core\templates\core\home.html:315
+msgid "Module 03: Presentation Pro"
+msgstr "Module 03- Presentation Pro"
+
+#: .\core\templates\core\home.html:319
+msgid "Present Like"
+msgstr "Present Like လုပ်ပါ။"
+
+#: .\core\templates\core\home.html:320
+#| msgid "Visual Storytelling"
+msgid "a Storyteller."
+msgstr "ပုံပြင်ဆရာ။"
+
+#: .\core\templates\core\home.html:323
+#| msgid ""
+#| "Don\\'t just show slides; show a vision. We teach you how to use animations,"
+#| " transitions, and modern design rules."
+msgid ""
+"Don't just show slides; show a vision. We teach you how to use animations, "
+"transitions, and modern design rules."
+msgstr ""
+"ဆလိုက်များကိုသာ မပြပါနှင့်။ အမြင်ကိုပြသပါ။ ကာတွန်းများ၊ "
+"အသွင်ကူးပြောင်းမှုများနှင့် ခေတ်မီဒီဇိုင်းစည်းမျဉ်းများကို အသုံးပြုနည်းကို "
+"ကျွန်ုပ်တို့ သင်ပေးပါသည်။"
+
+#: .\core\templates\core\home.html:327
+msgid "Slide Morphing"
+msgstr "Morphing ဆလိုက်"
+
+#: .\core\templates\core\home.html:329
+msgid "Visual Storytelling"
+msgstr "Visual Storytelling"
+
+#: .\core\templates\core\home.html:334
+msgid "Become a Pro Speaker"
+msgstr "Pro Speaker ဖြစ်လာပါ။"
+
+#: .\core\templates\core\home.html:353
+msgid "Live: Pitch Deck Magic"
+msgstr "တိုက်ရိုက်- Pitch Deck Magic"
+
+#: .\courses\templates\courses\excel.html:23
+#: .\courses\templates\courses\powerpoint.html:25
+#: .\courses\templates\courses\word.html:23
+msgid "Course Progress"
+msgstr "သင်တန်းတိုးတက်မှု"
+
+#: .\courses\templates\courses\excel.html:62
+#: .\courses\templates\courses\powerpoint.html:64
+msgid "Excellent!"
+msgstr "အရမ်းကောင်းတယ်!"
+
+#: .\courses\templates\courses\excel.html:63
+#: .\courses\templates\courses\powerpoint.html:65
+msgid "Continue"
+msgstr "ဆက်ရန်"
+
+#: .\courses\templates\courses\excel.html:68
+#: .\courses\templates\courses\powerpoint.html:70
+#: .\courses\templates\courses\word.html:68
+msgid "Try Again"
+msgstr "ထပ်စမ်းကြည့်ပါ။"
+
+#: .\courses\templates\courses\excel.html:70
+#: .\courses\templates\courses\powerpoint.html:72
+#: .\courses\templates\courses\word.html:70
+msgid "Review"
+msgstr "သုံးသပ်ချက်"
+
+#: .\courses\templates\courses\excel.html:87
+msgid "Excel Practice IDE"
+msgstr "Excel Practice IDE"
+
+#: .\courses\templates\courses\excel.html:90
+#: .\courses\templates\courses\powerpoint.html:93
+#: .\courses\templates\courses\word.html:90
+msgid "Practice Mode"
+msgstr "လေ့ကျင့်နည်း"
+
+#: .\courses\templates\courses\excel.html:185
+#: .\courses\templates\courses\powerpoint.html:189
+#: .\courses\templates\courses\word.html:197
+msgid "Submit Answers"
+msgstr "အဖြေများတင်ပြပါ။"
+
+#: .\courses\templates\courses\powerpoint.html:90
+msgid "PowerPoint Practice IDE"
+msgstr "PowerPoint Practice IDE"
+
+#: .\courses\templates\courses\word.html:87
+msgid "Word Practice IDE"
+msgstr "Word Practice IDE"
+
+#: .\courses\templates\courses\word.html:169
+msgid "Clear"
+msgstr "ရှင်းပါတယ်။"
+
+#: .\courses\templates\courses\word.html:172
+msgid "Save"
+msgstr "သိမ်းဆည်းပါ။"
+
+#: .\my_project\settings.py:115
+msgid "English"
+msgstr "အင်္ဂလိပ်စာ"
+
+#: .\my_project\settings.py:116
+msgid "French"
+msgstr "ပြင်သစ်"
+
+#: .\my_project\settings.py:117
+msgid "Burmese"
+msgstr "မြန်မာ"
+
+#: .\my_project\settings.py:118
+msgid "Hindi"
+msgstr "ဟိန္ဒီ"
+
+#: .\templates\base.html:8 .\templates\base.html:17
+msgid "OfficeEase"
+msgstr "OfficeEase"
+
+#: .\templates\base.html:19
+msgid "Home"
+msgstr "အိမ်"
+
+#: .\templates\base.html:23 .\templates\base.html:52
+msgid "Courses"
+msgstr "သင်တန်းများ"
+
+#: .\templates\base.html:55
+msgid "About Us"
+msgstr "ကြှနျုပျတို့အကွောငျး"
+
+#: .\templates\base.html:83
+msgid "Logout"
+msgstr "ထွက်လိုက်ပါ။"
+
+#: .\templates\base.html:102
+msgid ""
+"Mastering Microsoft Office through interactive labs, real-world projects, "
+"and local language support."
+msgstr ""
+"အပြန်အလှန်တုံ့ပြန်သောဓာတ်ခွဲခန်းများ၊ လက်တွေ့ကမ္ဘာပရောဂျက်များနှင့် "
+"ဒေသန္တရဘာသာစကားပံ့ပိုးမှုမှတစ်ဆင့် Microsoft Office ကို "
+"ကျွမ်းကျင်အောင်လုပ်ဆောင်ပါ။"
+
+#: .\templates\base.html:106
+msgid "Modules"
+msgstr "မော်ဂျူးများ"
+
+#: .\templates\base.html:112 .\templates\base.html:117
+msgid "Interactive IDE"
+msgstr "အပြန်အလှန်အကျိုးပြုသော IDE"
+
+#: .\templates\base.html:122
+msgid "Resources"
+msgstr "အရင်းအမြစ်များ"
+
+#: .\templates\base.html:124
+msgid "Lab Documentation"
+msgstr "ဓာတ်ခွဲခန်းမှတ်တမ်း"
+
+#: .\templates\base.html:129
+msgid "Support"
+msgstr "အထောက်အပံ့"
+
+#: .\templates\base.html:131
+msgid "hello@office-ease.com"
+msgstr "hello@office-ease.com"
+
+#: .\templates\base.html:136
+msgid "© 2026 OfficeEase Learning Platform. All rights reserved."
+msgstr "© 2026 OfficeEase သင်ယူမှု ပလပ်ဖောင်း။ မူပိုင်ခွင့်ကိုလက်ဝယ်ထားသည်။"
+
+#~ msgid "The Art of <br/>the Page."
+#~ msgstr "<br/>စာမျက်နှာ၏အနုပညာ။"
+
+#~ msgid "Present Like <br/>a Storyteller."
+#~ msgstr "<br/>ပုံပြင်ပြောသူကဲ့သို့ တင်ပြပါ။"

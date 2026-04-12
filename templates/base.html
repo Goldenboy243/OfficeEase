@@ -75,11 +75,40 @@
 
       {% if user.is_authenticated %}
         <div class="relative">
-          <button class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white font-semibold" onclick="toggleDropdown()">
-            {{ user.first_name|slice:":1"|upper }}
+          <button class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white font-semibold shadow-sm hover:shadow transition-shadow" onclick="toggleDropdown()">
+            {{ user.first_name|slice:":1"|default:user.username|slice:":1"|upper }}
           </button>
-          <div id="user-dropdown" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-20 hidden">
-            <a href="{% url 'logout' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" >{% trans "Logout" %}</a>
+          
+          <div id="user-dropdown" class="absolute right-0 mt-3 w-56 bg-white rounded-xl shadow-xl border border-slate-100 z-[100] hidden overflow-hidden transition-all duration-200">
+            <!-- User Info Header -->
+            <div class="px-4 py-3 border-b border-slate-100 bg-slate-50">
+                <p class="text-sm font-semibold text-slate-800">{{ user.first_name }} {{ user.last_name }}</p>
+                <p class="text-xs text-slate-500 truncate">{{ user.email }}</p>
+            </div>
+
+            <!-- Dropdown Links -->
+            <div class="py-2">
+                <a href="#" class="flex items-center gap-3 px-4 py-2 text-sm text-slate-600 hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                    <i class="fa-solid fa-chart-pie w-4 text-center"></i>
+                    {% trans "My Dashboard" %}
+                </a>
+                <a href="#" class="flex items-center gap-3 px-4 py-2 text-sm text-slate-600 hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                    <i class="fa-solid fa-user w-4 text-center"></i>
+                    {% trans "Account Settings" %}
+                </a>
+                <a href="#" class="flex items-center gap-3 px-4 py-2 text-sm text-slate-600 hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                    <i class="fa-solid fa-award w-4 text-center"></i>
+                    {% trans "My Certificates" %}
+                </a>
+            </div>
+
+            <!-- Logout Section -->
+            <div class="border-t border-slate-100 py-1">
+                <a href="{% url 'logout' %}" class="flex items-center gap-3 px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors">
+                    <i class="fa-solid fa-arrow-right-from-bracket w-4 text-center"></i>
+                    {% trans "Log Out" %}
+                </a>
+            </div>
           </div>
         </div>
       {% else %}
@@ -142,6 +171,16 @@
         function toggleDropdown() {
             document.getElementById('user-dropdown').classList.toggle('hidden');
         }
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('user-dropdown');
+            const button = event.target.closest('button[onclick="toggleDropdown()"]');
+            
+            if (!button && dropdown && !dropdown.contains(event.target)) {
+                dropdown.classList.add('hidden');
+            }
+        });
     </script>
     {% block extra_js %}{% endblock %}
 </body>

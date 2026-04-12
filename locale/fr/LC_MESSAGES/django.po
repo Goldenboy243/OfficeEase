@@ -31,11 +31,11 @@ msgstr "Nom de famille"
 
 #: .\accounts\templates\accounts\auth.html:143
 msgid "Email address"
-msgstr "Adresse e-mail"
+msgstr "Adresse email"
 
 #: .\accounts\templates\accounts\auth.html:146
 msgid "Email already exists."
-msgstr "L'adresse e-mail existe déjà."
+msgstr "L'e-mail existe déjà."
 
 #: .\accounts\templates\accounts\auth.html:155
 #: .\accounts\templates\accounts\auth.html:222
@@ -56,7 +56,7 @@ msgstr "Au moins une lettre"
 
 #: .\accounts\templates\accounts\auth.html:172
 msgid "At least one number"
-msgstr "Au moins un chiffre"
+msgstr "Au moins un numéro"
 
 #: .\accounts\templates\accounts\auth.html:173
 msgid "At least one special symbol"
@@ -69,7 +69,7 @@ msgstr "Les mots de passe ne correspondent pas."
 #: .\accounts\templates\accounts\auth.html:205
 #: .\accounts\templates\accounts\auth.html:295
 msgid "Welcome Back"
-msgstr "Bienvenue"
+msgstr "Content de te revoir"
 
 #: .\accounts\templates\accounts\auth.html:213
 msgid "Email or username"
@@ -77,7 +77,7 @@ msgstr "E-mail ou nom d'utilisateur"
 
 #: .\accounts\templates\accounts\auth.html:228
 msgid "Invalid email or password. Please try again."
-msgstr "E-mail ou mot de passe invalide. Veuillez réessayer."
+msgstr "Email ou mot de passe invalide. Veuillez réessayer."
 
 #: .\accounts\templates\accounts\auth.html:242
 #: .\accounts\templates\accounts\auth.html:302 .\templates\base.html:87
@@ -86,7 +86,7 @@ msgstr "Se connecter"
 
 #: .\accounts\templates\accounts\auth.html:247
 msgid "or continue with"
-msgstr "ou continuer avec"
+msgstr "ou continuez avec"
 
 #: .\accounts\templates\accounts\auth.html:282
 msgid "Hello,<br/>Welcome!"
@@ -125,7 +125,7 @@ msgid ""
 msgstr ""
 "Nous nous engageons à fournir des solutions innovantes qui transforment les "
 "idées en réalité. Notre mission est de créer un impact significatif grâce à "
-"la technologie et au travail d'équipe collaboratif."
+"la technologie et au travail d’équipe collaboratif."
 
 #: .\core\templates\core\AboutUs.html:44
 msgid "Innovation First"
@@ -137,7 +137,7 @@ msgid ""
 "simplicity and accessibility."
 msgstr ""
 "Des technologies de pointe résolvant des problèmes du monde réel tout en "
-"maintenant simplicité et accessibilité."
+"conservant simplicité et accessibilité."
 
 #: .\core\templates\core\AboutUs.html:55
 msgid "Team Collaboration"
@@ -148,24 +148,24 @@ msgid ""
 "A diverse team united by one goal — making Microsoft Office learning "
 "effortless for everyone."
 msgstr ""
-"Une équipe diversifiée unie par un seul objectif — rendre l'apprentissage de"
-" Microsoft Office facile pour tous."
+"Une équipe diversifiée unie par un seul objectif : rendre l’apprentissage de"
+" Microsoft Office sans effort pour tout le monde."
 
 #: .\core\templates\core\AboutUs.html:66
 msgid "Real Impact"
-msgstr "Impact Réel"
+msgstr "Impact réel"
 
 #: .\core\templates\core\AboutUs.html:67
 msgid ""
 "From zero to pro — our learners gain job-ready skills through hands-on labs "
 "and structured modules."
 msgstr ""
-"De zéro à pro — nos apprenants acquièrent des compétences prêtes pour "
+"De zéro à professionnel, nos apprenants acquièrent des compétences prêtes à "
 "l'emploi grâce à des laboratoires pratiques et des modules structurés."
 
 #: .\core\templates\core\AboutUs.html:79
 msgid "The Humans Behind It"
-msgstr "Les humains derrière cela"
+msgstr "Les humains derrière tout ça"
 
 #: .\core\templates\core\AboutUs.html:80
 msgid "Our Team"
@@ -266,7 +266,7 @@ msgstr "Comment ça marche"
 
 #: .\core\templates\core\HowItWorks.html:22
 msgid "Learn Microsoft Office <br/>"
-msgstr "Apprenez Microsoft Office <br/>"
+msgstr "Apprendre Microsoft Office"
 
 #: .\core\templates\core\HowItWorks.html:23
 msgid "<span class=\\'text-emerald-600 italic\\'>Step by Step.</span>"
@@ -292,7 +292,7 @@ msgid ""
 "expert"
 msgstr ""
 "Suivez notre processus éprouvé en 4 étapes conçu pour vous faire passer de "
-"débutant à expert"
+"débutant à expert."
 
 #: .\core\templates\core\HowItWorks.html:52
 msgid "Learn Theory"
@@ -308,7 +308,7 @@ msgstr ""
 
 #: .\core\templates\core\HowItWorks.html:66
 msgid "Practice Hands-On"
-msgstr "Pratique"
+msgstr "Pratiquez la pratique"
 
 #: .\core\templates\core\HowItWorks.html:67
 msgid ""
@@ -327,20 +327,20 @@ msgid ""
 "Reinforce learning with quizzes that check your understanding and provide "
 "instant explanations."
 msgstr ""
-"Renforcez votre apprentissage avec des quiz qui vérifient votre "
-"compréhension et fournissent des explications instantanées."
+"Renforcez l'apprentissage avec des quiz qui vérifient votre compréhension et"
+" fournissent des explications instantanées."
 
 #: .\core\templates\core\HowItWorks.html:94
 msgid "Build Projects"
-msgstr "Créer des projets"
+msgstr "Construire des projets"
 
 #: .\core\templates\core\HowItWorks.html:95
 msgid ""
 "Create real-world documents, spreadsheets, and presentations that you can "
 "use in your career."
 msgstr ""
-"Créez des documents, des feuilles de calcul et des présentations du monde "
-"réel que vous pouvez utiliser dans votre carrière."
+"Créez des documents, des feuilles de calcul et des présentations réels que "
+"vous pourrez utiliser dans votre carrière."
 
 #: .\core\templates\core\HowItWorks.html:108
 msgid "Why Choose OfficeEase?"
@@ -356,7 +356,7 @@ msgstr ""
 
 #: .\core\templates\core\HowItWorks.html:119
 msgid "Local Language Support"
-msgstr "Support linguistique local"
+msgstr "Prise en charge des langues locales"
 
 #: .\core\templates\core\HowItWorks.html:120
 msgid ""
@@ -380,27 +380,27 @@ msgstr ""
 
 #: .\core\templates\core\HowItWorks.html:137
 msgid "Mobile Friendly"
-msgstr "Compatible mobile"
+msgstr "Adapté aux mobiles"
 
 #: .\core\templates\core\HowItWorks.html:138
 msgid ""
 "Access your learning materials on any device - desktop, tablet, or "
 "smartphone."
 msgstr ""
-"Accédez à vos supports d'apprentissage sur n'importe quel appareil - "
-"ordinateur, tablette ou smartphone."
+"Accédez à vos supports d'apprentissage sur n'importe quel appareil : "
+"ordinateur de bureau, tablette ou smartphone."
 
 #: .\core\templates\core\HowItWorks.html:146
 msgid "Track Progress"
-msgstr "Suivre la progression"
+msgstr "Suivre les progrès"
 
 #: .\core\templates\core\HowItWorks.html:147
 msgid ""
 "Monitor your learning journey with detailed progress tracking and "
 "achievement badges."
 msgstr ""
-"Suivez votre parcours d'apprentissage avec un suivi détaillé de vos progrès "
-"et des badges de réussite."
+"Surveillez votre parcours d'apprentissage avec un suivi détaillé des progrès"
+" et des badges de réussite."
 
 #: .\core\templates\core\HowItWorks.html:155
 msgid "Community Support"
@@ -411,20 +411,20 @@ msgid ""
 "Join a community of learners and get help from instructors and fellow "
 "students."
 msgstr ""
-"Rejoignez une communauté d'apprenants et obtenez de l'aide d'instructeurs et"
-" d'autres étudiants."
+"Rejoignez une communauté d'apprenants et obtenez l'aide d'instructeurs et "
+"d'autres étudiants."
 
 #: .\core\templates\core\HowItWorks.html:164
 msgid "Earn Certificates"
-msgstr "Obtenir des certificats"
+msgstr "Gagnez des certificats"
 
 #: .\core\templates\core\HowItWorks.html:165
 msgid ""
 "Get recognized for your skills with completion certificates for each course "
 "module."
 msgstr ""
-"Faites reconnaître vos compétences avec des certificats d'achèvement pour "
-"chaque module de cours."
+"Soyez reconnu pour vos compétences grâce à des certificats d'achèvement pour"
+" chaque module de cours."
 
 #: .\core\templates\core\HowItWorks.html:178
 msgid "What You\\'ll Learn"
@@ -433,8 +433,8 @@ msgstr "Ce que vous apprendrez"
 #: .\core\templates\core\HowItWorks.html:179
 msgid "Comprehensive modules covering all essential Microsoft Office skills"
 msgstr ""
-"Des modules complets couvrant toutes les compétences essentielles de "
-"Microsoft Office"
+"Modules complets couvrant toutes les compétences essentielles de Microsoft "
+"Office"
 
 #: .\core\templates\core\HowItWorks.html:194 .\templates\base.html:31
 #: .\templates\base.html:109 .\templates\base.html:114
@@ -447,7 +447,7 @@ msgstr "Création de documents professionnels"
 
 #: .\core\templates\core\HowItWorks.html:202
 msgid "Document formatting and styles"
-msgstr "Formatage de documents et styles"
+msgstr "Formatage et styles des documents"
 
 #: .\core\templates\core\HowItWorks.html:206
 msgid "Advanced layout techniques"
@@ -455,11 +455,11 @@ msgstr "Techniques de mise en page avancées"
 
 #: .\core\templates\core\HowItWorks.html:210
 msgid "Mail merge and automation"
-msgstr "Publipostage et automatisation"
+msgstr "Fusion et publipostage et automatisation"
 
 #: .\core\templates\core\HowItWorks.html:214
 msgid "Professional resume design"
-msgstr "Conception de CV professionnels"
+msgstr "Conception de CV professionnel"
 
 #: .\core\templates\core\HowItWorks.html:230 .\templates\base.html:37
 #: .\templates\base.html:110 .\templates\base.html:115
@@ -468,15 +468,15 @@ msgstr "Microsoft Excel"
 
 #: .\core\templates\core\HowItWorks.html:231
 msgid "Data analysis and automation"
-msgstr "Analyse de données et automatisation"
+msgstr "Analyse et automatisation des données"
 
 #: .\core\templates\core\HowItWorks.html:238
 msgid "Formulas and functions"
-msgstr "Formulas et fonctions"
+msgstr "Formules et fonctions"
 
 #: .\core\templates\core\HowItWorks.html:242
 msgid "Data visualization with charts"
-msgstr "Visualisation de données avec des graphiques"
+msgstr "Visualisation des données avec des graphiques"
 
 #: .\core\templates\core\HowItWorks.html:246
 msgid "Pivot tables and analysis"
@@ -497,11 +497,11 @@ msgstr "Des présentations convaincantes"
 
 #: .\core\templates\core\HowItWorks.html:274
 msgid "Slide design and layouts"
-msgstr "Conception de diapositives et mises en page"
+msgstr "Conception et mises en page des diapositives"
 
 #: .\core\templates\core\HowItWorks.html:278
 msgid "Animation and transitions"
-msgstr "Animation et transitions"
+msgstr "Animations et transitions"
 
 #: .\core\templates\core\HowItWorks.html:282
 msgid "Visual storytelling techniques"
@@ -513,29 +513,29 @@ msgstr "Compétences en matière de présentation"
 
 #: .\core\templates\core\HowItWorks.html:301
 msgid "Ready to Start Your Journey?"
-msgstr "Prêt à commencer votre parcours ?"
+msgstr "Prêt à commencer votre voyage ?"
 
 #: .\core\templates\core\HowItWorks.html:302
 msgid ""
 "Join thousands of learners who have mastered Microsoft Office with our "
 "proven method. Start learning today with our free trial."
 msgstr ""
-"Rejoignez des milliers d'apprenants qui ont maîtrisé Microsoft Office avec "
+"Rejoignez des milliers d'apprenants qui maîtrisent Microsoft Office avec "
 "notre méthode éprouvée. Commencez à apprendre dès aujourd'hui avec notre "
 "essai gratuit."
 
 #: .\core\templates\core\HowItWorks.html:306
 #: .\core\templates\core\home.html:20
 msgid "Start Learning Now"
-msgstr "Commencer l'apprentissage"
+msgstr "Commencez à apprendre maintenant"
 
 #: .\core\templates\core\HowItWorks.html:310
 msgid "Sign Up Free"
-msgstr "S'inscrire gratuitement"
+msgstr "Inscrivez-vous gratuitement"
 
 #: .\core\templates\core\HowItWorks.html:313
 msgid "Try Demo Course"
-msgstr "Essayer le cours de démonstration"
+msgstr "Essayez le cours de démonstration"
 
 #: .\core\templates\core\home.html:10
 msgid "Learn"
@@ -554,8 +554,9 @@ msgid ""
 "Clear lessons, simple language, and structured steps — with local language "
 "support — to help you master MS Office with confidence."
 msgstr ""
-"Leçons claires, langage simple et étapes structurées — avec support "
-"linguistique local — pour vous aider à maîtriser MS Office avec confiance."
+"Des leçons claires, un langage simple et des étapes structurées, avec prise "
+"en charge dans la langue locale, pour vous aider à maîtriser MS Office en "
+"toute confiance."
 
 #: .\core\templates\core\home.html:42
 msgid "Master Microsoft Office"
@@ -587,7 +588,7 @@ msgstr "Tâches interactives"
 
 #: .\core\templates\core\home.html:80
 msgid "Real-World Labs"
-msgstr "Labs du monde réel"
+msgstr "Laboratoires du monde réel"
 
 #: .\core\templates\core\home.html:87
 msgid "Knowledge Quizzes"
@@ -595,11 +596,11 @@ msgstr "Quiz de connaissances"
 
 #: .\core\templates\core\home.html:94
 msgid "User Rating"
-msgstr "Note des utilisateurs"
+msgstr "Évaluation des utilisateurs"
 
 #: .\core\templates\core\home.html:127
 msgid "Module 01: Creative Artistry"
-msgstr "Module 01 : Art créatif"
+msgstr "Module 01 : Art créatif"
 
 #: .\core\templates\core\home.html:130
 msgid "The Art of"
@@ -614,7 +615,7 @@ msgid ""
 "Microsoft Word is your digital canvas. Master professional reports and "
 "modern CVs with practical, step-by-step lessons."
 msgstr ""
-"Microsoft Word est votre toile numérique. Maîtrisez les rapports "
+"Microsoft Word est votre canevas numérique. Maîtrisez les rapports "
 "professionnels et les CV modernes avec des leçons pratiques étape par étape."
 
 #: .\core\templates\core\home.html:136
@@ -623,11 +624,11 @@ msgstr "Formatage intelligent"
 
 #: .\core\templates\core\home.html:138
 msgid "Pro Resume Design"
-msgstr "Conception de CV pro"
+msgstr "Conception de CV professionnel"
 
 #: .\core\templates\core\home.html:144 .\core\templates\core\home.html:151
 msgid "Start Project Now"
-msgstr "Commencer le projet maintenant"
+msgstr "Démarrer le projet maintenant"
 
 #: .\core\templates\core\home.html:167
 msgid "Live Demo"
@@ -635,7 +636,7 @@ msgstr "Démo en direct"
 
 #: .\core\templates\core\home.html:208
 msgid "Excel Live: Data Magic"
-msgstr "Excel En Direct: Magie des Données"
+msgstr "Excel Live : la magie des données"
 
 #: .\core\templates\core\home.html:216
 msgid "Practical"
@@ -643,7 +644,7 @@ msgstr "Pratique"
 
 #: .\core\templates\core\home.html:228
 msgid "Module 02: Smart Spreadsheets"
-msgstr "Module 02 : Tableurs intelligents"
+msgstr "Module 02 : Feuilles de calcul intelligentes"
 
 #: .\core\templates\core\home.html:231
 msgid "Numbers Don't"
@@ -659,8 +660,9 @@ msgid ""
 "Stop manual typing. We teach you how to make Excel do the heavy lifting—from"
 " simple lists to automated dashboards."
 msgstr ""
-"Arrêtez la saisie manuelle. Nous vous apprenons à faire faire le gros du "
-"travail à Excel — des listes simples aux tableaux de bord automatisés."
+"Arrêtez la saisie manuelle. Nous vous apprenons à faire en sorte qu'Excel "
+"fasse le gros du travail, des simples listes aux tableaux de bord "
+"automatisés."
 
 #: .\core\templates\core\home.html:237
 msgid "Automated Formulas"
@@ -672,11 +674,11 @@ msgstr "Graphiques dynamiques"
 
 #: .\core\templates\core\home.html:243
 msgid "Unlock Data Mastery"
-msgstr "Débloquer la maîtrise des données"
+msgstr "Débloquez la maîtrise des données"
 
 #: .\core\templates\core\home.html:256
 msgid "In-Browser Practice"
-msgstr "Pratique en ligne"
+msgstr "Pratique dans le navigateur"
 
 #: .\core\templates\core\home.html:257
 msgid ""
@@ -695,24 +697,24 @@ msgid ""
 "Complete real-world tasks like building automated payrolls or professional "
 "pitch decks."
 msgstr ""
-"Accomplissez des tâches du monde réel comme construire des paies "
-"automatisées ou des présentations professionnelles."
+"Effectuez des tâches réelles telles que la création de paies automatisées ou"
+" de présentations professionnelles."
 
 #: .\core\templates\core\home.html:270
 msgid "Instant Feedback"
-msgstr "Retour instantané"
+msgstr "Commentaires instantanés"
 
 #: .\core\templates\core\home.html:271
 msgid ""
 "Our system checks your work instantly and guides you through every step of "
 "the quiz."
 msgstr ""
-"Notre système vérifie votre travail instantanément et vous guide à travers "
-"chaque étape du quiz."
+"Notre système vérifie instantanément votre travail et vous guide à chaque "
+"étape du quiz."
 
 #: .\core\templates\core\home.html:315
 msgid "Module 03: Presentation Pro"
-msgstr "Module 03 : Pro de la présentation"
+msgstr "Module 03 : Présentation Pro"
 
 #: .\core\templates\core\home.html:319
 msgid "Present Like"
@@ -737,7 +739,7 @@ msgstr ""
 
 #: .\core\templates\core\home.html:327
 msgid "Slide Morphing"
-msgstr "Morphing de diapositives"
+msgstr "Morphing de diapositive"
 
 #: .\core\templates\core\home.html:329
 msgid "Visual Storytelling"
@@ -745,11 +747,11 @@ msgstr "Narration visuelle"
 
 #: .\core\templates\core\home.html:334
 msgid "Become a Pro Speaker"
-msgstr "Devenez un orateur pro"
+msgstr "Devenez un conférencier professionnel"
 
 #: .\core\templates\core\home.html:353
 msgid "Live: Pitch Deck Magic"
-msgstr "En Direct: Magie du Pitch Deck"
+msgstr "En direct : La magie du Pitch Deck"
 
 #: .\courses\templates\courses\excel.html:23
 #: .\courses\templates\courses\powerpoint.html:25
@@ -760,7 +762,7 @@ msgstr "Progression du cours"
 #: .\courses\templates\courses\excel.html:62
 #: .\courses\templates\courses\powerpoint.html:64
 msgid "Excellent!"
-msgstr "Excellent !"
+msgstr "Excellent!"
 
 #: .\courses\templates\courses\excel.html:63
 #: .\courses\templates\courses\powerpoint.html:65
@@ -771,7 +773,7 @@ msgstr "Continuer"
 #: .\courses\templates\courses\powerpoint.html:70
 #: .\courses\templates\courses\word.html:68
 msgid "Try Again"
-msgstr "Réessayer"
+msgstr "Essayer à nouveau"
 
 #: .\courses\templates\courses\excel.html:70
 #: .\courses\templates\courses\powerpoint.html:72
@@ -781,13 +783,13 @@ msgstr "Revoir"
 
 #: .\courses\templates\courses\excel.html:87
 msgid "Excel Practice IDE"
-msgstr "IDE de Pratique Excel"
+msgstr "EDI de pratique Excel"
 
 #: .\courses\templates\courses\excel.html:90
 #: .\courses\templates\courses\powerpoint.html:93
 #: .\courses\templates\courses\word.html:90
 msgid "Practice Mode"
-msgstr "Mode Entraînement"
+msgstr "Mode entraînement"
 
 #: .\courses\templates\courses\excel.html:185
 #: .\courses\templates\courses\powerpoint.html:189
@@ -797,19 +799,19 @@ msgstr "Soumettre les réponses"
 
 #: .\courses\templates\courses\powerpoint.html:90
 msgid "PowerPoint Practice IDE"
-msgstr "IDE de Pratique PowerPoint"
+msgstr "IDE de pratique PowerPoint"
 
 #: .\courses\templates\courses\word.html:87
 msgid "Word Practice IDE"
-msgstr "IDE de Pratique Word"
+msgstr "IDE de pratique des mots"
 
 #: .\courses\templates\courses\word.html:169
 msgid "Clear"
-msgstr "Effacer"
+msgstr "Clair"
 
 #: .\courses\templates\courses\word.html:172
 msgid "Save"
-msgstr "Enregistrer"
+msgstr "Sauvegarder"
 
 #: .\my_project\settings.py:115
 msgid "English"
@@ -829,11 +831,11 @@ msgstr "hindi"
 
 #: .\templates\base.html:8 .\templates\base.html:17
 msgid "OfficeEase"
-msgstr "OfficeEase"
+msgstr "BureauEase"
 
 #: .\templates\base.html:19
 msgid "Home"
-msgstr "Accueil"
+msgstr "Maison"
 
 #: .\templates\base.html:23 .\templates\base.html:52
 msgid "Courses"
@@ -861,7 +863,7 @@ msgstr "Modules"
 
 #: .\templates\base.html:112 .\templates\base.html:117
 msgid "Interactive IDE"
-msgstr "IDE Interactif"
+msgstr "EDI interactif"
 
 #: .\templates\base.html:122
 msgid "Resources"
@@ -869,19 +871,110 @@ msgstr "Ressources"
 
 #: .\templates\base.html:124
 msgid "Lab Documentation"
-msgstr "Documentation de lab"
+msgstr "Documentation de laboratoire"
 
 #: .\templates\base.html:129
 msgid "Support"
-msgstr "Support"
+msgstr "Soutien"
 
 #: .\templates\base.html:131
 msgid "hello@office-ease.com"
-msgstr "hello@office-ease.com"
+msgstr "bonjour@office-ease.com"
 
 #: .\templates\base.html:136
 msgid "© 2026 OfficeEase Learning Platform. All rights reserved."
 msgstr "© 2026 Plateforme d'apprentissage OfficeEase. Tous droits réservés."
+
+#: template:auto
+msgid "UI/UX & Experience"
+msgstr "UI/UX et expérience"
+
+#: template:auto
+msgid "Server Logic & APIs"
+msgstr "Logique du serveur et API"
+
+#: template:auto
+msgid "My Dashboard"
+msgstr "Mon tableau de bord"
+
+#: template:auto
+msgid "Driven by"
+msgstr "Poussé par"
+
+#: template:auto
+msgid "Intuitive interfaces making learning engaging and accessible."
+msgstr ""
+"Des interfaces intuitives rendant l’apprentissage engageant et accessible."
+
+#: template:auto
+msgid "Architecture & Full Integration"
+msgstr "Architecture et intégration complète"
+
+#: template:auto
+msgid "My Certificates"
+msgstr "Mes certificats"
+
+#: template:auto
+msgid "End-to-end expertise orchestrating seamless platform integration."
+msgstr ""
+"Une expertise de bout en bout orchestrant une intégration transparente de la"
+" plateforme."
+
+#: template:auto
+msgid "Frontend Developer"
+msgstr "Développeur front-end"
+
+#: template:auto
+msgid "Data Architecture & Optimization"
+msgstr "Architecture et optimisation des données"
+
+#: template:auto
+msgid "People."
+msgstr "Personnes."
+
+#: template:auto
+msgid "Robust server architecture powering OfficeEase excellence."
+msgstr ""
+"Architecture de serveur robuste qui soutient l'excellence d'OfficeEase."
+
+#: template:auto
+msgid "Built with"
+msgstr "Construit avec"
+
+#: template:auto
+msgid "Purpose."
+msgstr "But."
+
+#: template:auto
+msgid "Full Stack Developer"
+msgstr "Développeur Full Stack"
+
+#: template:auto
+msgid "Data integrity and scalability supporting rapid platform growth."
+msgstr ""
+"Intégrité des données et évolutivité permettant une croissance rapide de la "
+"plateforme."
+
+#: template:auto
+msgid "Database Specialist"
+msgstr "Spécialiste des bases de données"
+
+#: template:auto
+msgid "Backend Developer"
+msgstr "Développeur back-end"
+
+#: template:auto
+msgid "Log Out"
+msgstr "Se déconnecter"
+
+#: template:auto
+msgid "Account Settings"
+msgstr "Paramètres du compte"
+
+#: template:auto
+msgid "Don't have an account?<br/>Join us and get started today."
+msgstr ""
+"Vous n'avez pas de compte ?<br/>Rejoignez-nous et commencez dès aujourd'hui."
 
 #~ msgid "Present Like <br/>a Storyteller."
 #~ msgstr "Présentez comme <br/>un conteur."

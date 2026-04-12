@@ -96,7 +96,7 @@ msgstr "या जारी रखें"
 
 #: .\accounts\templates\accounts\auth.html:282
 msgid "Hello,<br/>Welcome!"
-msgstr "नमस्कार,<br/>स्वागत है!"
+msgstr "नमस्ते, स्वागत है!"
 
 #: .\accounts\templates\accounts\auth.html:284
 msgid "Don\\'t have an account?<br/>Join us and get started today."
@@ -109,7 +109,7 @@ msgstr "साइन अप करें"
 #: .\accounts\templates\accounts\auth.html:297
 msgid "Already have an account?<br/>Sign in to continue."
 msgstr ""
-"क्या आपके पास पहले से ही एक खाता है?<br/>जारी रखने के लिए साइन इन करें।"
+"क्या आपके पास पहले से एक खाता मौजूद है?<br/>जारी रखने के लिए साइन इन करें."
 
 #: .\core\templates\core\AboutUs.html:18
 msgid "Meet the Team"
@@ -271,7 +271,7 @@ msgstr "यह काम किस प्रकार करता है"
 
 #: .\core\templates\core\HowItWorks.html:22
 msgid "Learn Microsoft Office <br/>"
-msgstr "माइक्रोसॉफ्ट ऑफिस सीखें <br/>"
+msgstr "माइक्रोसॉफ्ट ऑफिस सीखें"
 
 #: .\core\templates\core\HowItWorks.html:23
 msgid "<span class=\\'text-emerald-600 italic\\'>Step by Step.</span>"
@@ -882,6 +882,93 @@ msgstr "hello@office-ease.com"
 #: .\templates\base.html:136
 msgid "© 2026 OfficeEase Learning Platform. All rights reserved."
 msgstr "© 2026 OfficeEase लर्निंग प्लेटफ़ॉर्म। सर्वाधिकार सुरक्षित।"
+
+#: template:auto
+msgid "UI/UX & Experience"
+msgstr "यूआई/यूएक्स और अनुभव"
+
+#: template:auto
+msgid "Server Logic & APIs"
+msgstr "सर्वर लॉजिक और एपीआई"
+
+#: template:auto
+msgid "My Dashboard"
+msgstr "मेरे यंत्र रखने की जगह"
+
+#: template:auto
+msgid "Driven by"
+msgstr "द्वारा संचालित"
+
+#: template:auto
+msgid "Intuitive interfaces making learning engaging and accessible."
+msgstr "सहज ज्ञान युक्त इंटरफ़ेस सीखने को आकर्षक और सुलभ बनाता है।"
+
+#: template:auto
+msgid "Architecture & Full Integration"
+msgstr "वास्तुकला एवं पूर्ण एकीकरण"
+
+#: template:auto
+msgid "My Certificates"
+msgstr "मेरे प्रमाणपत्र"
+
+#: template:auto
+msgid "End-to-end expertise orchestrating seamless platform integration."
+msgstr ""
+"निर्बाध प्लेटफ़ॉर्म एकीकरण को व्यवस्थित करने वाली एंड-टू-एंड विशेषज्ञता।"
+
+#: template:auto
+msgid "Frontend Developer"
+msgstr "अग्रणी डेवलपर"
+
+#: template:auto
+msgid "Data Architecture & Optimization"
+msgstr "डेटा आर्किटेक्चर और अनुकूलन"
+
+#: template:auto
+msgid "People."
+msgstr "लोग।"
+
+#: template:auto
+msgid "Robust server architecture powering OfficeEase excellence."
+msgstr ""
+"OfficeEase उत्कृष्टता को शक्ति प्रदान करने वाला मजबूत सर्वर आर्किटेक्चर।"
+
+#: template:auto
+msgid "Built with"
+msgstr "के साथ निर्मित"
+
+#: template:auto
+msgid "Purpose."
+msgstr "उद्देश्य।"
+
+#: template:auto
+msgid "Full Stack Developer"
+msgstr "फुल स्टैक डेवलपर"
+
+#: template:auto
+msgid "Data integrity and scalability supporting rapid platform growth."
+msgstr ""
+"डेटा अखंडता और स्केलेबिलिटी तेजी से प्लेटफ़ॉर्म विकास का समर्थन करती है।"
+
+#: template:auto
+msgid "Database Specialist"
+msgstr "डेटाबेस विशेषज्ञ"
+
+#: template:auto
+msgid "Backend Developer"
+msgstr "बैकएंड डेवलपर"
+
+#: template:auto
+msgid "Log Out"
+msgstr "लॉग आउट"
+
+#: template:auto
+msgid "Account Settings"
+msgstr "अकाउंट सेटिंग"
+
+#: template:auto
+msgid "Don't have an account?<br/>Join us and get started today."
+msgstr "कोई खाता नहीं है?<br/>हमसे जुड़ें और आज ही शुरुआत करें।"
 
 #~ msgid "The Art of <br/>the Page."
 #~ msgstr "पेज की कला।"

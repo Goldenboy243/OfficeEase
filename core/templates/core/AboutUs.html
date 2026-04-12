@@ -2,187 +2,147 @@
 {% load static %}
 {% load i18n %}
 
-{% block content %}  
-  <section class="hero-bg grid-texture relative overflow-hidden pt-20 pb-24 mt-6">
-    <!-- Decorative blobs -->
+{% block content %}
+  {# Hero Section #}
+  <section class="relative overflow-hidden pt-20 pb-24 mt-6 hero-bg grid-texture">
+    {# Decorative blobs #}
     <div class="absolute -top-10 -right-10 w-80 h-80 bg-blue-100 rounded-full blur-[80px] opacity-60 pointer-events-none"></div>
     <div class="absolute bottom-0 left-1/4 w-60 h-60 bg-indigo-100 rounded-full blur-[80px] opacity-40 pointer-events-none"></div>
 
-    <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
-      <!-- eyebrow -->
-      <div class="reveal reveal-1 inline-flex items-center gap-2.5 px-4 py-1.5 bg-white border border-blue-100 rounded-full mb-6 shadow-sm">
+    <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+      {# Eyebrow #}
+      <div class="reveal reveal-1 inline-flex items-center gap-2.5 px-4 py-1.5 mb-6 bg-white border border-blue-100 rounded-full shadow-sm">
         <span class="relative flex h-2 w-2">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
+          <span class="absolute animate-ping inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+          <span class="relative inline-flex h-2 w-2 rounded-full bg-blue-600"></span>
         </span>
-        <span class="text-[10px] font-black text-blue-700 uppercase tracking-[0.2em]" >{% trans "Meet the Team" %}</span>
+        <span class="text-[10px] font-black text-blue-700 uppercase tracking-[0.2em]">{% trans "Meet the Team" %}</span>
       </div>
 
-      <h1 class="reveal reveal-2 text-5xl lg:text-7xl font-black text-slate-900 leading-[1.05] mb-6 tracking-tight">
-        <span >{% trans "Built with <span class=\'text-blue-600 italic\'>Purpose.</span>" %}<span class="text-blue-600 italic">Purpose.</span></span><br/>
-        <span >{% trans "Driven by <span class=\'text-orange-600 italic\'>People.</span>" %}<span class="text-orange-600 italic">People.</span></span>
+      {# Heading #}
+      <h1 class="reveal reveal-2 mb-6 text-5xl lg:text-7xl font-black text-slate-900 leading-[1.05] tracking-tight">
+        <span>{% trans "Built with" %} <span class="text-blue-600 italic">{% trans "Purpose." %}</span></span><br />
+        <span>{% trans "Driven by" %} <span class="text-orange-600 italic">{% trans "People." %}</span></span>
       </h1>
 
-      <p class="reveal reveal-3 text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed" >{% trans "We are dedicated to delivering innovative solutions that transform ideas into reality. Our mission is to create meaningful impact through technology and collaborative teamwork." %}</p>
+      {# Subheading #}
+      <p class="reveal reveal-3 mx-auto max-w-2xl text-lg text-slate-500 leading-relaxed">
+        {% trans "We are dedicated to delivering innovative solutions that transform ideas into reality. Our mission is to create meaningful impact through technology and collaborative teamwork." %}
+      </p>
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════
-       MISSION PILLARS
-  ══════════════════════════════════════ -->
+  {# Mission Pillars Section #}
+  <section class="py-20 px-6">
+    <div class="mx-auto max-w-5xl">
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
 
-  <section class="max-w-5xl mx-auto px-6 py-20">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-      <!-- Innovation -->
-      <div class="pillar bg-blue-600 border border-slate-100 rounded-2xl p-7 shadow-sm ">
-        <div class="w-12 h-12 bg-blue-700 rounded-xl flex items-center justify-center mb-5 shadow-md">
-          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
-          </svg>
+        {# Innovation Pillar #}
+        <div class="rounded-2xl border border-slate-100 bg-blue-600 p-7 shadow-sm">
+          <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-700 shadow-md">
+            <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+            </svg>
+          </div>
+          <h3 class="mb-2 text-lg font-bold text-white">{% trans "Innovation First" %}</h3>
+          <p class="text-sm leading-relaxed text-white">{% trans "Cutting-edge technologies solving real-world problems while maintaining simplicity and accessibility." %}</p>
         </div>
-        <h3 class="text-lg font-bold text-white mb-2" >{% trans "Innovation First" %}</h3>
-        <p class="text-sm text-white leading-relaxed" >{% trans "Cutting-edge technologies solving real-world problems while maintaining simplicity and accessibility." %}</p>
-      </div>
 
-      <!-- Collaboration -->
-      <div class="pillar bg-orange-700 rounded-2xl p-7 shadow-sm">
-        <div class="w-12 h-12  bg-orange-800 rounded-xl flex items-center justify-center mb-5">
-          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
-          </svg>
+        {# Collaboration Pillar #}
+        <div class="rounded-2xl bg-orange-700 p-7 shadow-sm">
+          <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-orange-800">
+            <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+          <h3 class="mb-2 text-lg font-bold text-white">{% trans "Team Collaboration" %}</h3>
+          <p class="text-sm leading-relaxed text-white">{% trans "A diverse team united by one goal — making Microsoft Office learning effortless for everyone." %}</p>
         </div>
-        <h3 class="text-lg font-bold mb-2 text-white" >{% trans "Team Collaboration" %}</h3>
-        <p class="text-sm text-white leading-relaxed" >{% trans "A diverse team united by one goal — making Microsoft Office learning effortless for everyone." %}</p>
-      </div>
 
-      <!-- Impact -->
-      <div class="pillar bg-green-700 border border-slate-100 rounded-2xl p-7 shadow-sm">
-        <div class="w-12 h-12 bg-emerald-800 rounded-xl flex items-center justify-center mb-5 shadow-md">
-          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-          </svg>
+        {# Impact Pillar #}
+        <div class="rounded-2xl border border-slate-100 bg-green-700 p-7 shadow-sm">
+          <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-800 shadow-md">
+            <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="mb-2 text-lg font-bold text-white">{% trans "Real Impact" %}</h3>
+          <p class="text-sm leading-relaxed text-white">{% trans "From zero to pro — our learners gain job-ready skills through hands-on labs and structured modules." %}</p>
         </div>
-        <h3 class="text-lg font-bold text-white mb-2" >{% trans "Real Impact" %}</h3>
-        <p class="text-sm text-white leading-relaxed" >{% trans "From zero to pro — our learners gain job-ready skills through hands-on labs and structured modules." %}</p>
-      </div>
 
+      </div>
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════
-       TEAM SECTION
-  ══════════════════════════════════════ -->
-  <section class="max-w-5xl mx-auto px-6 pb-28">
-
-    <div class="text-center mb-14">
-      <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.25em] mb-3" >{% trans "The Humans Behind It" %}</p>
-      <h2 class="text-4xl lg:text-5xl font-black text-slate-900 tracking-tight" >{% trans "Our Team" %}</h2>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-
-      <!-- ── WORD (Blue) ── -->
-      <div class="team-card relative bg-white rounded-2xl overflow-hidden shadow-md border border-slate-100 cursor-pointer">
-        <!-- Colored header band -->
-        <div class="h-44 relative overflow-hidden"
-             style="background: linear-gradient(135deg, #2b579a 0%, #1e3a8a 100%);">
-          <!-- subtle dot pattern -->
-          <div class="absolute inset-0 opacity-10"
-               style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 18px 18px;"></div>
-          <!-- App icon badge -->
-          <div class="app-icon absolute top-5 left-5 w-11 h-11 bg-white rounded-xl shadow-lg flex items-center justify-center">
-            <span class="text-[#2b579a] font-black text-xl leading-none">W</span>
-          </div>
-          <!-- big faded letter bg -->
-          <span class="absolute -bottom-4 -right-2 text-[120px] font-black text-white/10 leading-none select-none">W</span>
-        </div>
-        <div class="p-6 relative">
-          <div class="card-stripe rounded-full" style="background:#2b579a;"></div>
-          <h3 class="text-xl font-bold text-slate-900 mb-1" >{% trans "Member Name" %}</h3>
-          <p class="text-sm font-semibold mb-3" style="color:#2b579a;" >{% trans "Role — Word Module" %}</p>
-          <p class="text-sm text-slate-500 leading-relaxed" >{% trans "Member description goes here. They bring expertise in document design and content architecture." %}</p>
-          <div class="mt-5 flex gap-2">
-            <span class="px-3 py-1 text-xs font-bold rounded-full text-white" style="background:#2b579a;" >{% trans "Word" %}</span>
-            <span class="px-3 py-1 text-xs font-bold rounded-full bg-slate-100 text-slate-600" >{% trans "Documentation" %}</span>
-          </div>
-        </div>
+  {# Team Section #}
+  <section class="px-6 pb-28">
+    <div class="mx-auto max-w-5xl">
+      {# Section Header #}
+      <div class="mb-14 text-center">
+        <p class="mb-3 text-[10px] font-black text-slate-400 uppercase tracking-[0.25em]">{% trans "The Humans Behind It" %}</p>
+        <h2 class="text-4xl font-black text-slate-900 tracking-tight lg:text-5xl">{% trans "Our Team" %}</h2>
       </div>
 
-      <!-- ── POWERPOINT (Orange) ── -->
-      <div class="team-card relative bg-white rounded-2xl overflow-hidden shadow-md border border-slate-100 cursor-pointer">
-        <div class="h-44 relative overflow-hidden"
-             style="background: linear-gradient(135deg, #c43e1c 0%, #a83318 100%);">
-          <div class="absolute inset-0 opacity-10"
-               style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 18px 18px;"></div>
-          <div class="app-icon absolute top-5 left-5 w-11 h-11 bg-white rounded-xl shadow-lg flex items-center justify-center">
-            <span class="font-black text-xl leading-none" style="color:#c43e1c;">P</span>
-          </div>
-          <span class="absolute -bottom-4 -right-2 text-[120px] font-black text-white/10 leading-none select-none">P</span>
-        </div>
-        <div class="p-6 relative">
-          <div class="card-stripe rounded-full" style="background:#c43e1c;"></div>
-          <h3 class="text-xl font-bold text-slate-900 mb-1" >{% trans "Member Name" %}</h3>
-          <p class="text-sm font-semibold mb-3" style="color:#c43e1c;" >{% trans "Role — PowerPoint Module" %}</p>
-          <p class="text-sm text-slate-500 leading-relaxed" >{% trans "Member description goes here. They specialise in visual storytelling and presentation design systems." %}</p>
-          <div class="mt-5 flex gap-2">
-            <span class="px-3 py-1 text-xs font-bold rounded-full text-white" style="background:#c43e1c;" >{% trans "PowerPoint" %}</span>
-            <span class="px-3 py-1 text-xs font-bold rounded-full bg-slate-100 text-slate-600" >{% trans "Design" %}</span>
-          </div>
-        </div>
-      </div>
+      {# Team Grid #}
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
 
-      <!-- ── EXCEL (Green) ── -->
-      <div class="team-card relative bg-white rounded-2xl overflow-hidden shadow-md border border-slate-100 cursor-pointer">
-        <div class="h-44 relative overflow-hidden"
-             style="background: linear-gradient(135deg, #217346 0%, #185c37 100%);">
-          <div class="absolute inset-0 opacity-10"
-               style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 18px 18px;"></div>
-          <div class="app-icon absolute top-5 left-5 w-11 h-11 bg-white rounded-xl shadow-lg flex items-center justify-center">
-            <span class="font-black text-xl leading-none" style="color:#217346;">X</span>
+        {# Team Member 1: Full Stack Developer #}
+        <div class="group text-center">
+          <div class="relative mb-6 mx-auto h-48 w-48 overflow-hidden rounded-full border-4 border-white bg-slate-100 shadow-xl transition-transform duration-300 group-hover:-translate-y-2">
+            <div class="absolute inset-0 flex items-center justify-center bg-indigo-50 text-indigo-300 transition-colors group-hover:bg-indigo-100">
+              <svg class="h-20 w-20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
           </div>
-          <span class="absolute -bottom-4 -right-2 text-[120px] font-black text-white/10 leading-none select-none">X</span>
+          <h3 class="mb-1 text-2xl font-bold text-slate-900">{% trans "Full Stack Developer" %}</h3>
+          <p class="mb-3 font-medium text-indigo-600">{% trans "Architecture & Full Integration" %}</p>
+          <p class="text-sm leading-relaxed text-slate-600">{% trans "End-to-end expertise orchestrating seamless platform integration." %}</p>
         </div>
-        <div class="p-6 relative">
-          <div class="card-stripe rounded-full" style="background:#217346;"></div>
-          <h3 class="text-xl font-bold text-slate-900 mb-1" >{% trans "Member Name" %}</h3>
-          <p class="text-sm font-semibold mb-3" style="color:#217346;" >{% trans "Role — Excel Module" %}</p>
-          <p class="text-sm text-slate-500 leading-relaxed" >{% trans "Member description goes here. They craft data-driven exercises and formula-based lab challenges." %}</p>
-          <div class="mt-5 flex gap-2">
-            <span class="px-3 py-1 text-xs font-bold rounded-full text-white" style="background:#217346;" >{% trans "Excel" %}</span>
-            <span class="px-3 py-1 text-xs font-bold rounded-full bg-slate-100 text-slate-600" >{% trans "Data" %}</span>
-          </div>
-        </div>
-      </div>
 
-      <!-- ── ONENOTE (Purple) ── -->
-      <div class="team-card relative bg-white rounded-2xl overflow-hidden shadow-md border border-slate-100 cursor-pointer">
-        <div class="h-44 relative overflow-hidden"
-             style="background: linear-gradient(135deg, #7719aa 0%, #5c1282 100%);">
-          <div class="absolute inset-0 opacity-10"
-               style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 18px 18px;"></div>
-          <div class="app-icon absolute top-5 left-5 w-11 h-11 bg-white rounded-xl shadow-lg flex items-center justify-center">
-            <span class="font-black text-xl leading-none" style="color:#7719aa;">N</span>
+        {# Team Member 2: Backend Developer #}
+        <div class="group text-center">
+          <div class="relative mb-6 mx-auto h-48 w-48 overflow-hidden rounded-full border-4 border-white bg-slate-100 shadow-xl transition-transform duration-300 group-hover:-translate-y-2">
+            <div class="absolute inset-0 flex items-center justify-center bg-orange-50 text-orange-300 transition-colors group-hover:bg-orange-100">
+              <svg class="h-20 w-20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
           </div>
-          <span class="absolute -bottom-4 -right-2 text-[120px] font-black text-white/10 leading-none select-none">N</span>
+          <h3 class="mb-1 text-2xl font-bold text-slate-900">{% trans "Backend Developer" %}</h3>
+          <p class="mb-3 font-medium text-orange-600">{% trans "Server Logic & APIs" %}</p>
+          <p class="text-sm leading-relaxed text-slate-600">{% trans "Robust server architecture powering OfficeEase excellence." %}</p>
         </div>
-        <div class="p-6 relative">
-          <div class="card-stripe rounded-full" style="background:#7719aa;"></div>
-          <h3 class="text-xl font-bold text-slate-900 mb-1" >{% trans "Member Name" %}</h3>
-          <p class="text-sm font-semibold mb-3" style="color:#7719aa;" >{% trans "Role — OneNote Module" %}</p>
-          <p class="text-sm text-slate-500 leading-relaxed" >{% trans "Member description goes here. They build structured note-taking workflows and knowledge management labs." %}</p>
-          <div class="mt-5 flex gap-2">
-            <span class="px-3 py-1 text-xs font-bold rounded-full text-white" style="background:#7719aa;" >{% trans "OneNote" %}</span>
-            <span class="px-3 py-1 text-xs font-bold rounded-full bg-slate-100 text-slate-600" >{% trans "Notes" %}</span>
-          </div>
-        </div>
-      </div>
 
+        {# Team Member 3: Frontend Developer #}
+        <div class="group text-center">
+          <div class="relative mb-6 mx-auto h-48 w-48 overflow-hidden rounded-full border-4 border-white bg-slate-100 shadow-xl transition-transform duration-300 group-hover:-translate-y-2">
+            <div class="absolute inset-0 flex items-center justify-center bg-green-50 text-green-300 transition-colors group-hover:bg-green-100">
+              <svg class="h-20 w-20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+              </svg>
+            </div>
+          </div>
+          <h3 class="mb-1 text-2xl font-bold text-slate-900">{% trans "Frontend Developer" %}</h3>
+          <p class="mb-3 font-medium text-green-600">{% trans "UI/UX & Experience" %}</p>
+          <p class="text-sm leading-relaxed text-slate-600">{% trans "Intuitive interfaces making learning engaging and accessible." %}</p>
+        </div>
+
+        {# Team Member 4: Database Specialist #}
+        <div class="group text-center">
+          <div class="relative mb-6 mx-auto h-48 w-48 overflow-hidden rounded-full border-4 border-white bg-slate-100 shadow-xl transition-transform duration-300 group-hover:-translate-y-2">
+            <div class="absolute inset-0 flex items-center justify-center bg-purple-50 text-purple-300 transition-colors group-hover:bg-purple-100">
+              <svg class="h-20 w-20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+            </div>
+          </div>
+          <h3 class="mb-1 text-2xl font-bold text-slate-900">{% trans "Database Specialist" %}</h3>
+          <p class="mb-3 font-medium text-purple-600">{% trans "Data Architecture & Optimization" %}</p>
+          <p class="text-sm leading-relaxed text-slate-600">{% trans "Data integrity and scalability supporting rapid platform growth." %}</p>
+        </div>
+
+      </div>
     </div>
   </section>
-    {% endblock %}
-
-
-
-</body>
-</html>
+{% endblock %}

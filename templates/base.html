@@ -49,7 +49,6 @@
       {% if user.is_authenticated %}
       <li class="hover:text-black cursor-pointer"><a href="{% url 'how_it_works' %}" >{% trans "How It Works" %}</a></li>
       {% else %}
-      <li class="hover:text-black cursor-pointer"><a href="{% url 'auth' %}?next={{ request.path }}" >{% trans "Courses" %}</a></li>
       <li class="hover:text-black cursor-pointer"><a href="{% url 'auth' %}?next={{ request.path }}" >{% trans "How It Works" %}</a></li>
       {% endif %}
       <li class="hover:text-black cursor-pointer"><a href="{% url 'about_us' %}" >{% trans "About Us" %}</a></li>

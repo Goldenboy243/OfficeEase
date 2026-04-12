@@ -52,24 +52,25 @@
       --ease-slide: cubic-bezier(0.77, 0, 0.175, 1);
     }
 
-    /* Forms wrapper: 2× box width; default shifted to show login (right panel) */
+    /* Forms wrapper: 2× box width; default shows login (left panel) */
     #forms-wrapper {
       width: 1720px;
-      transform: translateX(-860px);
+      transform: translateX(0);
       transition: transform 0.7s var(--ease-slide);
     }
 
     #auth-box.signup-mode #forms-wrapper {
-      transform: translateX(0);
+      transform: translateX(-860px);
     }
 
-    /* Blue panel slides left → right */
+    /* Blue panel slides right → left */
     #blue-panel {
+      left: 50%;
       transition: left 0.7s var(--ease-slide);
     }
 
     #auth-box.signup-mode #blue-panel {
-      left: 50%;
+      left: 0;
     }
 
     /* Panel message cross-fade */
@@ -107,7 +108,69 @@
 
     <div id="forms-wrapper" class="absolute top-0 left-0 h-full flex">
 
+      <!-- ── LOGIN PANEL (left half of wrapper) ── -->
       <div class="w-[860px] h-full shrink-0 flex items-center justify-start pl-[60px]">
+        <form method="POST" action="{% url 'auth' %}?action=login" class="w-[285px]">
+          {% csrf_token %}
+          <input type="hidden" name="action" value="login" />
+
+          <!-- Django's next field for redirect after login -->
+          {% if next %}
+          <input type="hidden" name="next" value="{{ next }}" />
+          {% endif %}
+
+          <h1 class="font-display text-[30px] text-slate-900 mb-6 tracking-[-0.2px]" >{% trans "Welcome Back" %}</h1>
+
+          <!-- Email / Username -->
+          <div class="relative mb-3">
+            <input type="text" name="username" placeholder="{% trans 'Email or username' %}"
+              required class="w-full py-[11.5px] pl-[38px] pr-3 border border-[#d5ddf0] rounded-[10px]
+                          text-[13.5px] text-slate-900 bg-[#f4f7fd] outline-none
+                          focus:border-brand-600 focus:bg-white focus:ring-[3px] focus:ring-brand-600/10
+                          placeholder:text-slate-400 transition-all" />
+            <i class="fa-regular fa-envelope field-icon absolute left-3 top-1/2 -translate-y-1/2 text-[13px] text-slate-400 pointer-events-none transition-colors"></i>
+          </div>
+
+          <!-- Password -->
+          <div class="relative mb-3">
+            <input type="password" name="password" placeholder="{% trans 'Password' %}" required 
+              class="w-full py-[11.5px] pl-[38px] pr-3 border border-[#d5ddf0] rounded-[10px]
+                          text-[13.5px] text-slate-900 bg-[#f4f7fd] outline-none
+                          focus:border-brand-600 focus:bg-white focus:ring-[3px] focus:ring-brand-600/10
+                          placeholder:text-slate-400 transition-all" />
+            <i class="fa-solid fa-lock field-icon absolute left-3 top-1/2 -translate-y-1/2 text-[13px] text-slate-400 pointer-events-none transition-colors"></i>
+          </div>
+
+          <!-- Django auth errors -->
+          {% if form.errors %}
+          <p class="text-red-500 text-[12px] mb-2" >{% trans "Invalid email or password. Please try again." %}</p>
+          {% endif %}
+
+          <!-- Messages framework -->
+          {% for message in messages %}
+          <p class="text-[12px] mb-2
+                      {% if message.tags == 'error' %}text-red-500{% else %}text-green-600{% endif %}">
+            {{ message }}
+          </p>
+          {% endfor %}
+
+          <button type="submit" class="w-full py-3 mt-1 mb-[13px] bg-gradient-to-br from-brand-700 to-brand-500
+                         text-white rounded-[10px] text-[14.5px] font-semibold tracking-[0.2px]
+                         hover:opacity-90 hover:-translate-y-px active:translate-y-0
+                         transition-all duration-150 cursor-pointer border-none" >{% trans "Sign In" %}</button>
+
+          <!-- Divider -->
+          <div class="flex items-center gap-2 mb-3">
+            <hr class="flex-1 border-none border-t border-[#dde4f0]" />
+            <span class="text-[12px] text-slate-400 whitespace-nowrap" >{% trans "or continue with" %}</span>
+            <hr class="flex-1 border-none border-t border-[#dde4f0]" />
+          </div>
+
+        </form>
+      </div><!-- /login-panel -->
+
+      <!-- ── SIGNUP PANEL (right half of wrapper) ── -->
+      <div class="w-[860px] h-full shrink-0 flex items-center justify-end pr-[60px]">
         <form method="POST" action="{% url 'auth' %}?action=register" class="w-[285px]">
           {% csrf_token %}
           <input type="hidden" name="action" value="register" />
@@ -118,50 +181,51 @@
           <!-- First & Last name row -->
           <div class="flex gap-[9px] mb-3">
             <div class="relative flex-1">
-              <input type="text" name="first_name"  placeholder="First name" required
+              <input type="text" name="first_name" placeholder="{% trans 'First name' %}" required
                 class="w-full py-[11.5px] pl-[38px] pr-3 border border-[#d5ddf0] rounded-[10px]
                             text-[13.5px] text-slate-900 bg-[#f4f7fd] outline-none
                             focus:border-brand-600 focus:bg-white focus:ring-[3px] focus:ring-brand-600/10
-                            placeholder:text-slate-400 transition-all" />{% trans "First name" %}<i
-                class="fa-regular fa-user field-icon absolute left-3 top-1/2 -translate-y-1/2 text-[13px] text-slate-400 pointer-events-none transition-colors"></i>
+                            placeholder:text-slate-400 transition-all" />
+              <i class="fa-regular fa-user field-icon absolute left-3 top-1/2 -translate-y-1/2 text-[13px] text-slate-400 pointer-events-none transition-colors"></i>
             </div>
             <div class="relative flex-1">
-              <input type="text" name="last_name"  placeholder="Last name" required
+              <input type="text" name="last_name" placeholder="{% trans 'Last name' %}" required
                 class="w-full py-[11.5px] pl-[38px] pr-3 border border-[#d5ddf0] rounded-[10px]
                             text-[13.5px] text-slate-900 bg-[#f4f7fd] outline-none
                             focus:border-brand-600 focus:bg-white focus:ring-[3px] focus:ring-brand-600/10
-                            placeholder:text-slate-400 transition-all" />{% trans "Last name" %}<i
-                class="fa-regular fa-user field-icon absolute left-3 top-1/2 -translate-y-1/2 text-[13px] text-slate-400 pointer-events-none transition-colors"></i>
+                            placeholder:text-slate-400 transition-all" />
+              <i class="fa-regular fa-user field-icon absolute left-3 top-1/2 -translate-y-1/2 text-[13px] text-slate-400 pointer-events-none transition-colors"></i>
             </div>
           </div>
 
           <!-- Email -->
           <div class="relative mb-3">
-            <input type="email" name="email"  placeholder="Email address" required class="w-full py-[11.5px] pl-[38px] pr-3 border border-[#d5ddf0] rounded-[10px]
+            <input type="email" name="email" placeholder="{% trans 'Email address' %}" required 
+              class="w-full py-[11.5px] pl-[38px] pr-3 border border-[#d5ddf0] rounded-[10px]
                           text-[13.5px] text-slate-900 bg-[#f4f7fd] outline-none
                           focus:border-brand-600 focus:bg-white focus:ring-[3px] focus:ring-brand-600/10
-                          placeholder:text-slate-400 transition-all" id="signup-email" />{% trans "Email address" %}<i
-              class="fa-regular fa-envelope field-icon absolute left-3 top-1/2 -translate-y-1/2 text-[13px] text-slate-400 pointer-events-none transition-colors"></i>
+                          placeholder:text-slate-400 transition-all" id="signup-email" />
+            <i class="fa-regular fa-envelope field-icon absolute left-3 top-1/2 -translate-y-1/2 text-[13px] text-slate-400 pointer-events-none transition-colors"></i>
           </div>
-          <div id="email-error" class="hidden text-red-500 text-xs mb-2" >{% trans "Email already exists." %}</div>
+          <div id="email-error" class="hidden text-red-500 text-xs mb-2">{% trans "Email already exists." %}</div>
 
           <!-- Password & Confirm row -->
           <div class="flex gap-[9px] mb-3">
             <div class="relative flex-1">
-              <input type="password" name="password1"  placeholder="Password" required
+              <input type="password" name="password1" placeholder="{% trans 'Password' %}" required
                 class="w-full py-[11.5px] pl-[38px] pr-3 border border-[#d5ddf0] rounded-[10px]
                             text-[13.5px] text-slate-900 bg-[#f4f7fd] outline-none
                             focus:border-brand-600 focus:bg-white focus:ring-[3px] focus:ring-brand-600/10
-                            placeholder:text-slate-400 transition-all" />{% trans "Password" %}<i
-                class="fa-solid fa-lock field-icon absolute left-3 top-1/2 -translate-y-1/2 text-[13px] text-slate-400 pointer-events-none transition-colors"></i>
+                            placeholder:text-slate-400 transition-all" />
+              <i class="fa-solid fa-lock field-icon absolute left-3 top-1/2 -translate-y-1/2 text-[13px] text-slate-400 pointer-events-none transition-colors"></i>
             </div>
             <div class="relative flex-1">
-              <input type="password" name="password2"  placeholder="Confirm"
-                required class="w-full py-[11.5px] pl-[38px] pr-3 border border-[#d5ddf0] rounded-[10px]
+              <input type="password" name="password2" placeholder="{% trans 'Confirm' %}" required 
+                class="w-full py-[11.5px] pl-[38px] pr-3 border border-[#d5ddf0] rounded-[10px]
                             text-[13.5px] text-slate-900 bg-[#f4f7fd] outline-none
                             focus:border-brand-600 focus:bg-white focus:ring-[3px] focus:ring-brand-600/10
-                            placeholder:text-slate-400 transition-all" />{% trans "Confirm" %}<i
-                class="fa-solid fa-lock field-icon absolute left-3 top-1/2 -translate-y-1/2 text-[13px] text-slate-400 pointer-events-none transition-colors"></i>
+                            placeholder:text-slate-400 transition-all" />
+              <i class="fa-solid fa-lock field-icon absolute left-3 top-1/2 -translate-y-1/2 text-[13px] text-slate-400 pointer-events-none transition-colors"></i>
             </div>
           </div>
 
@@ -191,68 +255,6 @@
         </form>
       </div><!-- /signup-panel -->
 
-      <!-- ── LOGIN PANEL (right half of wrapper) ── -->
-      <div class="w-[860px] h-full shrink-0 flex items-center justify-end pr-[60px]">
-        <form method="POST" action="{% url 'auth' %}?action=login" class="w-[285px]">
-          {% csrf_token %}
-          <input type="hidden" name="action" value="login" />
-
-          <!-- Django's next field for redirect after login -->
-          {% if next %}
-          <input type="hidden" name="next" value="{{ next }}" />
-          {% endif %}
-
-          <h1 class="font-display text-[30px] text-slate-900 mb-6 tracking-[-0.2px]" >{% trans "Welcome Back" %}</h1>
-
-          <!-- Email / Username -->
-          <div class="relative mb-3">
-            <input type="text" name="username"  placeholder="Email or username"
-              required class="w-full py-[11.5px] pl-[38px] pr-3 border border-[#d5ddf0] rounded-[10px]
-                          text-[13.5px] text-slate-900 bg-[#f4f7fd] outline-none
-                          focus:border-brand-600 focus:bg-white focus:ring-[3px] focus:ring-brand-600/10
-                          placeholder:text-slate-400 transition-all" />{% trans "Email or username" %}<i
-              class="fa-regular fa-envelope field-icon absolute left-3 top-1/2 -translate-y-1/2 text-[13px] text-slate-400 pointer-events-none transition-colors"></i>
-          </div>
-
-          <!-- Password -->
-          <div class="relative mb-3">
-            <input type="password" name="password"  placeholder="Password" required class="w-full py-[11.5px] pl-[38px] pr-3 border border-[#d5ddf0] rounded-[10px]
-                          text-[13.5px] text-slate-900 bg-[#f4f7fd] outline-none
-                          focus:border-brand-600 focus:bg-white focus:ring-[3px] focus:ring-brand-600/10
-                          placeholder:text-slate-400 transition-all" />{% trans "Password" %}<i
-              class="fa-solid fa-lock field-icon absolute left-3 top-1/2 -translate-y-1/2 text-[13px] text-slate-400 pointer-events-none transition-colors"></i>
-          </div>
-
-          <!-- Django auth errors -->
-          {% if form.errors %}
-          <p class="text-red-500 text-[12px] mb-2" >{% trans "Invalid email or password. Please try again." %}</p>
-          {% endif %}
-
-          <!-- Messages framework -->
-          {% for message in messages %}
-          <p class="text-[12px] mb-2
-                      {% if message.tags == 'error' %}text-red-500{% else %}text-green-600{% endif %}">
-            {{ message }}
-          </p>
-          {% endfor %}
-
-          <button type="submit" class="w-full py-3 mt-1 mb-[13px] bg-gradient-to-br from-brand-700 to-brand-500
-                         text-white rounded-[10px] text-[14.5px] font-semibold tracking-[0.2px]
-                         hover:opacity-90 hover:-translate-y-px active:translate-y-0
-                         transition-all duration-150 cursor-pointer border-none" >{% trans "Sign In" %}</button>
-
-          <!-- Divider -->
-          <div class="flex items-center gap-2 mb-3">
-            <hr class="flex-1 border-none border-t border-[#dde4f0]" />
-            <span class="text-[12px] text-slate-400 whitespace-nowrap" >{% trans "or continue with" %}</span>
-            <hr class="flex-1 border-none border-t border-[#dde4f0]" />
-          </div>
-
-
-
-        </form>
-      </div><!-- /login-panel -->
-
     </div><!-- /forms-wrapper -->
 
 
@@ -279,10 +281,8 @@
 
         <!-- Login mode message -->
         <div id="msg-login" class="flex flex-col items-center gap-0">
-          <h2 class="font-display text-[30px] leading-tight mb-[11px]" >{% trans "Hello,<br/>Welcome!" %}<br />Welcome!
-          </h2>
-          <p class="text-[13.5px] opacity-80 leading-relaxed mb-7" >{% trans "Don\'t have an account?<br/>Join us and get started today." %}<br />Join us and get started today.
-          </p>
+          <h2 class="font-display text-[30px] leading-tight mb-[11px]">{% trans "Hello,<br/>Welcome!" %}</h2>
+          <p class="text-[13.5px] opacity-80 leading-relaxed mb-7">{% trans "Don't have an account?<br/>Join us and get started today." %}</p>
           <button onclick="switchTo('signup')" class="px-8 py-[10.5px] border-2 border-white/80 rounded-full bg-transparent
                          text-white text-[14px] font-semibold tracking-[0.3px]
                          hover:bg-white/90 hover:text-brand-600 transition-all cursor-pointer"
@@ -292,10 +292,8 @@
         <!-- Signup mode message -->
         <div id="msg-signup" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%]
                     flex flex-col items-center gap-0">
-          <h2 class="font-display text-[30px] leading-tight mb-[11px]" >{% trans "Welcome Back" %}<br />Back!
-          </h2>
-          <p class="text-[13.5px] opacity-80 leading-relaxed mb-7" >{% trans "Already have an account?<br/>Sign in to continue." %}<br />Sign in to continue.
-          </p>
+          <h2 class="font-display text-[30px] leading-tight mb-[11px]">{% trans "Welcome Back" %}</h2>
+          <p class="text-[13.5px] opacity-80 leading-relaxed mb-7">{% trans "Already have an account?<br/>Sign in to continue." %}</p>
           <button onclick="switchTo('login')" class="px-8 py-[10.5px] border-2 border-white/80 rounded-full bg-transparent
                          text-white text-[14px] font-semibold tracking-[0.3px]
                          hover:bg-white/90 hover:text-brand-600 transition-all cursor-pointer"

@@ -83,8 +83,7 @@
           </div>
         </div>
       {% else %}
-        <a href="{% url 'auth' %}" class="text-sm border border-slate-500 py-3 px-8 inline-flex items-center justify-center" >{% trans "Sign In" %}</a>
-        <a href="{% url 'auth' %}#signup" class="text-sm bg-blue-600 px-8 py-3 text-white inline-flex items-center justify-center" >{% trans "Sign Up" %}</a>
+        <a href="{% url 'auth' %}" class="text-sm font-medium bg-blue-600 hover:bg-blue-700 text-white py-2.5 px-7 rounded-xl transition-all shadow-sm">{% trans "Sign In" %}</a>
       {% endif %}
     </div>
   </nav>

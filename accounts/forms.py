@@ -11,6 +11,12 @@ class RegisterForm(forms.Form):
     password1 = forms.CharField(widget=forms.PasswordInput, required=True)
     password2 = forms.CharField(widget=forms.PasswordInput, required=True)
 
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if User.objects.filter(email__iexact=email).exists():
+            raise forms.ValidationError('An account with this email already exists.')
+        return email
+
     def clean_password1(self):
         password = self.cleaned_data.get('password1')
         if len(password) < 8:

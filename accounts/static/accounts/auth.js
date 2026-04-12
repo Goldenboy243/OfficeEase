@@ -1,4 +1,4 @@
-function switchTo(mode) {
+window.switchTo = function switchTo(mode) {
   document.getElementById('auth-box').classList.toggle('signup-mode', mode === 'signup');
 }
 
@@ -25,6 +25,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     confirmPasswordInput.addEventListener('input', () => {
       document.getElementById('password-match-error').classList.add('hidden');
+    });
+  }
+
+  const signupEmailInput = document.getElementById('signup-email');
+  if (signupEmailInput) {
+    signupEmailInput.addEventListener('blur', async () => {
+      const email = signupEmailInput.value;
+      if (!email) return;
+      try {
+        const response = await fetch(`/check-email/?email=${encodeURIComponent(email)}`);
+        if (response.ok) {
+          const data = await response.json();
+          document.getElementById('email-error').classList.toggle('hidden', !data.exists);
+        }
+      } catch (e) {
+        console.error(e);
+      }
     });
   }
 });

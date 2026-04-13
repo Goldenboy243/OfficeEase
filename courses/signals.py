@@ -1,6 +1,6 @@
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
-from .models import Course, Module, Lesson, Question
+from .models import Course, Module, Lesson, Question, Topic, Step, PracticeTask, ValidationRule
 from deep_translator import GoogleTranslator
 
 # Helper to automatically translate specific fields
@@ -38,3 +38,23 @@ def translate_lesson(sender, instance, **kwargs):
 @receiver(pre_save, sender=Question)
 def translate_question(sender, instance, **kwargs):
     auto_translate(instance, ['question_text', 'option_1', 'option_2'])
+
+
+@receiver(pre_save, sender=Topic)
+def translate_topic(sender, instance, **kwargs):
+    auto_translate(instance, ['title'])
+
+
+@receiver(pre_save, sender=Step)
+def translate_step(sender, instance, **kwargs):
+    auto_translate(instance, ['title', 'content'])
+
+
+@receiver(pre_save, sender=PracticeTask)
+def translate_practice_task(sender, instance, **kwargs):
+    auto_translate(instance, ['instruction', 'success_message'])
+
+
+@receiver(pre_save, sender=ValidationRule)
+def translate_validation_rule(sender, instance, **kwargs):
+    auto_translate(instance, ['name', 'expected_value'])

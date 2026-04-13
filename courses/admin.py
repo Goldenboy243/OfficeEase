@@ -1,6 +1,17 @@
 from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
-from .models import Course, Module, Lesson, Question
+from .models import (
+    Course,
+    Module,
+    Lesson,
+    Question,
+    Topic,
+    Step,
+    PracticeTask,
+    ValidationRule,
+    UserStepProgress,
+    PracticeSubmission,
+)
 
 class QuestionInline(TranslationTabularInline):
     model = Question
@@ -12,6 +23,38 @@ class LessonAdmin(TranslationAdmin):
     list_display = ('label', 'title', 'module')
     list_filter = ('module',)
 
+
+class StepInline(admin.TabularInline):
+    model = Step
+    extra = 1
+
+
+class TopicAdmin(admin.ModelAdmin):
+    list_display = ('title', 'module', 'order', 'is_published')
+    list_filter = ('module__course', 'module', 'is_published')
+    inlines = [StepInline]
+
+
+class ValidationRuleInline(admin.TabularInline):
+    model = ValidationRule
+    extra = 1
+
+
+class PracticeTaskAdmin(admin.ModelAdmin):
+    list_display = ('step', 'instruction')
+    list_filter = ('step__topic__module__course',)
+    inlines = [ValidationRuleInline]
+
+
+class UserStepProgressAdmin(admin.ModelAdmin):
+    list_display = ('user', 'step', 'status', 'completed_at')
+    list_filter = ('status', 'step__topic__module__course')
+
+
+class PracticeSubmissionAdmin(admin.ModelAdmin):
+    list_display = ('user', 'step', 'is_passed', 'created_at')
+    list_filter = ('is_passed', 'step__topic__module__course')
+
 class ModuleAdmin(TranslationAdmin):
     list_display = ('title', 'course', 'order')
     list_filter = ('course',)
@@ -22,3 +65,7 @@ class CourseAdmin(TranslationAdmin):
 admin.site.register(Course, CourseAdmin)
 admin.site.register(Module, ModuleAdmin)
 admin.site.register(Lesson, LessonAdmin)
+admin.site.register(Topic, TopicAdmin)
+admin.site.register(PracticeTask, PracticeTaskAdmin)
+admin.site.register(UserStepProgress, UserStepProgressAdmin)
+admin.site.register(PracticeSubmission, PracticeSubmissionAdmin)

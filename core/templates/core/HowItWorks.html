@@ -19,8 +19,8 @@
     </div>
 
     <h1 class="reveal reveal-2 text-5xl lg:text-7xl font-black text-slate-900 leading-[1.05] mb-6 tracking-tight">
-      <span >{% trans "Learn Microsoft Office <br/>" %}<br/></span>
-      <span class="text-emerald-600 italic" >{% trans "<span class=\'text-emerald-600 italic\'>Step by Step.</span>" %}</span>
+      <span>{% trans "Learn Microsoft Office" %}</span><br/>
+      <span class="text-emerald-600 italic">{% trans "Step by Step." %}</span>
     </h1>
 
     <p class="reveal reveal-3 text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed" >{% trans "Our interactive learning platform guides you through practical exercises, real-world projects, and instant feedback to master Word, Excel, and PowerPoint with confidence." %}</p>
@@ -33,6 +33,7 @@
 
 <section class="max-w-6xl mx-auto px-6 py-20">
   <div class="text-center mb-16">
+    <p class="mb-3 text-[10px] font-black text-slate-400 uppercase tracking-[0.25em]">{% trans "Proven Workflow" %}</p>
     <h2 class="text-4xl lg:text-5xl font-black text-slate-900 tracking-tight mb-6" >{% trans "Your Learning Journey" %}</h2>
     <p class="text-lg text-slate-500 max-w-2xl mx-auto" >{% trans "Follow our proven 4-step process designed to take you from beginner to expert" %}</p>
   </div>
@@ -40,12 +41,12 @@
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 
     <!-- Step 1 -->
-    <div class="text-center group">
+    <div class="group rounded-3xl border border-slate-100 bg-white p-6 text-center shadow-[0_12px_35px_-12px_rgba(15,23,42,0.25)] hover:-translate-y-2 transition-all duration-300">
       <div class="relative mb-6">
         <div class="w-20 h-20 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:scale-110 transition-transform">
           <span class="text-2xl font-black text-white">1</span>
         </div>
-        <div class="absolute -top-2 -right-2 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+        <div class="absolute -top-2 right-10 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
           <i class="fa-solid fa-book-open text-blue-600 text-sm"></i>
         </div>
       </div>
@@ -54,12 +55,12 @@
     </div>
 
     <!-- Step 2 -->
-    <div class="text-center group">
+    <div class="group rounded-3xl border border-slate-100 bg-white p-6 text-center shadow-[0_12px_35px_-12px_rgba(15,23,42,0.25)] hover:-translate-y-2 transition-all duration-300">
       <div class="relative mb-6">
         <div class="w-20 h-20 bg-emerald-600 rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:scale-110 transition-transform">
           <span class="text-2xl font-black text-white">2</span>
         </div>
-        <div class="absolute -top-2 -right-2 w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center">
+        <div class="absolute -top-2 right-10 w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center">
           <i class="fa-solid fa-laptop-code text-emerald-600 text-sm"></i>
         </div>
       </div>
@@ -68,12 +69,12 @@
     </div>
 
     <!-- Step 3 -->
-    <div class="text-center group">
+    <div class="group rounded-3xl border border-slate-100 bg-white p-6 text-center shadow-[0_12px_35px_-12px_rgba(15,23,42,0.25)] hover:-translate-y-2 transition-all duration-300">
       <div class="relative mb-6">
         <div class="w-20 h-20 bg-orange-600 rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:scale-110 transition-transform">
           <span class="text-2xl font-black text-white">3</span>
         </div>
-        <div class="absolute -top-2 -right-2 w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
+        <div class="absolute -top-2 right-10 w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
           <i class="fa-solid fa-brain text-orange-600 text-sm"></i>
         </div>
       </div>
@@ -82,12 +83,12 @@
     </div>
 
     <!-- Step 4 -->
-    <div class="text-center group">
+    <div class="group rounded-3xl border border-slate-100 bg-white p-6 text-center shadow-[0_12px_35px_-12px_rgba(15,23,42,0.25)] hover:-translate-y-2 transition-all duration-300">
       <div class="relative mb-6">
         <div class="w-20 h-20 bg-purple-600 rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:scale-110 transition-transform">
           <span class="text-2xl font-black text-white">4</span>
         </div>
-        <div class="absolute -top-2 -right-2 w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+        <div class="absolute -top-2 right-10 w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
           <i class="fa-solid fa-rocket text-purple-600 text-sm"></i>
         </div>
       </div>
@@ -102,9 +103,12 @@
      FEATURES SECTION
 ══════════════════════════════════════ -->
 
-<section class="bg-slate-50 py-20">
+<section class="bg-slate-50 py-20 relative overflow-hidden">
+  <div class="absolute -top-8 -left-8 w-52 h-52 bg-blue-100 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+  <div class="absolute -bottom-8 right-6 w-44 h-44 bg-emerald-100 rounded-full blur-3xl opacity-40 pointer-events-none"></div>
   <div class="max-w-6xl mx-auto px-6">
     <div class="text-center mb-16">
+      <p class="mb-3 text-[10px] font-black text-slate-400 uppercase tracking-[0.25em]">{% trans "Why Learners Choose Us" %}</p>
       <h2 class="text-4xl lg:text-5xl font-black text-slate-900 tracking-tight mb-6" >{% trans "Why Choose OfficeEase?" %}</h2>
       <p class="text-lg text-slate-500 max-w-2xl mx-auto" >{% trans "Our platform combines the best of traditional learning with modern technology" %}</p>
     </div>
@@ -112,7 +116,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
       <!-- Feature 1 -->
-      <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100">
+      <div class="bg-white rounded-3xl p-8 shadow-[0_14px_30px_-14px_rgba(2,132,199,0.45)] border border-slate-100 hover:-translate-y-1 transition-all duration-300">
         <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
           <i class="fa-solid fa-globe text-blue-600 text-xl"></i>
         </div>
@@ -121,7 +125,7 @@
       </div>
 
       <!-- Feature 2 -->
-      <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100">
+      <div class="bg-white rounded-3xl p-8 shadow-[0_14px_30px_-14px_rgba(16,185,129,0.45)] border border-slate-100 hover:-translate-y-1 transition-all duration-300">
         <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mb-6">
           <i class="fa-solid fa-clock text-emerald-600 text-xl"></i>
         </div>
@@ -130,7 +134,7 @@
       </div>
 
       <!-- Feature 3 -->
-      <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100">
+      <div class="bg-white rounded-3xl p-8 shadow-[0_14px_30px_-14px_rgba(249,115,22,0.45)] border border-slate-100 hover:-translate-y-1 transition-all duration-300">
         <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-6">
           <i class="fa-solid fa-mobile-screen-button text-orange-600 text-xl"></i>
         </div>
@@ -139,7 +143,7 @@
       </div>
 
       <!-- Feature 4 -->
-      <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100">
+      <div class="bg-white rounded-3xl p-8 shadow-[0_14px_30px_-14px_rgba(147,51,234,0.45)] border border-slate-100 hover:-translate-y-1 transition-all duration-300">
         <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
           <i class="fa-solid fa-chart-line text-purple-600 text-xl"></i>
         </div>
@@ -148,7 +152,7 @@
       </div>
 
       <!-- Feature 5 -->
-      <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100">
+      <div class="bg-white rounded-3xl p-8 shadow-[0_14px_30px_-14px_rgba(239,68,68,0.45)] border border-slate-100 hover:-translate-y-1 transition-all duration-300">
         <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mb-6">
           <i class="fa-solid fa-users text-red-600 text-xl"></i>
         </div>
@@ -157,7 +161,7 @@
       </div>
 
       <!-- Feature 6 -->
-      <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100">
+      <div class="bg-white rounded-3xl p-8 shadow-[0_14px_30px_-14px_rgba(99,102,241,0.45)] border border-slate-100 hover:-translate-y-1 transition-all duration-300">
         <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center mb-6">
           <i class="fa-solid fa-certificate text-indigo-600 text-xl"></i>
         </div>
@@ -296,7 +300,9 @@
      CALL TO ACTION
 ══════════════════════════════════════ -->
 
-<section class="bg-gradient-to-br from-blue-600 to-indigo-800 text-white py-20">
+<section class="bg-gradient-to-br from-blue-600 to-indigo-800 text-white py-20 relative overflow-hidden">
+  <div class="absolute top-0 right-0 w-80 h-80 bg-white/10 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
+  <div class="absolute bottom-0 left-0 w-72 h-72 bg-cyan-300/20 rounded-full blur-3xl -translate-x-1/4 translate-y-1/4 pointer-events-none"></div>
   <div class="max-w-4xl mx-auto px-6 text-center">
     <h2 class="text-4xl lg:text-5xl font-black mb-6" >{% trans "Ready to Start Your Journey?" %}</h2>
     <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto" >{% trans "Join thousands of learners who have mastered Microsoft Office with our proven method. Start learning today with our free trial." %}</p>

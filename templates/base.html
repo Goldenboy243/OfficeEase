@@ -18,33 +18,50 @@
     <ul class="md:flex gap-8 text-sm">
       <li class="hover:text-black cursor-pointer"><a href="{% url 'home' %}" >{% trans "Home" %}</a></li>
       
-      <li class="relative group cursor-pointer">
-        <div class="flex items-center gap-1 hover:text-black transition-colors">
-          <a href="#" >{% trans "Courses" %}</a>
-          <i class="fa-solid fa-chevron-down text-[10px] opacity-50 group-hover:rotate-180 transition-transform"></i>
-        </div>
+            <li class="relative group cursor-pointer">
+                <div class="flex items-center gap-1 hover:text-black transition-colors py-1">
+                    <a href="#" class="font-semibold text-slate-600 group-hover:text-indigo-600 transition-colors">{% trans "Courses" %}</a>
+                    <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 group-hover:rotate-180 transition-transform"></i>
+                </div>
 
-        <ul class="absolute left-0 mt-2 w-48 bg-white border border-slate-100 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-[100] p-2">
-            <li>
-                <a href="{% url 'word_course' %}" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-all">
-                    <i class="fa-solid fa-file-word text-blue-500"></i>
-                    <span class="font-medium" >{% trans "Microsoft Word" %}</span>
-                </a>
+                <div class="absolute top-[85%] left-1/2 -translate-x-1/2 w-[760px] bg-white rounded-[1.75rem] shadow-2xl border border-slate-100 p-7 opacity-0 invisible translate-y-4 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 z-[120]">
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                            <h3 class="text-xs font-extrabold text-slate-900 tracking-widest uppercase mb-1">{% trans "Learning Modules" %}</h3>
+                            <p class="text-sm text-slate-500 font-medium">{% trans "Select an application to start your interactive lab." %}</p>
+                        </div>
+                        <div class="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center border border-slate-100 shrink-0">
+                            <i class="fa-solid fa-table-cells-large text-slate-400 text-sm"></i>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-5">
+                        <a href="{% url 'word_course' %}" class="bg-white rounded-3xl p-6 shadow-[0_8px_30px_-4px_rgba(0,0,0,0.05)] border border-slate-50 hover:shadow-[0_12px_40px_-4px_rgba(0,0,0,0.1)] hover:-translate-y-1 transition-all">
+                            <div class="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center mb-5">
+                                <i class="fa-solid fa-file-word text-blue-600 text-2xl"></i>
+                            </div>
+                            <h4 class="font-extrabold text-slate-900 text-xl mb-1">{% trans "Word" %}</h4>
+                            <p class="text-sm text-slate-500 font-medium leading-relaxed">{% trans "Master professional documents." %}</p>
+                        </a>
+
+                        <a href="{% url 'excel_course' %}" class="bg-white rounded-3xl p-6 shadow-[0_8px_30px_-4px_rgba(0,0,0,0.05)] border border-slate-50 hover:shadow-[0_12px_40px_-4px_rgba(0,0,0,0.1)] hover:-translate-y-1 transition-all">
+                            <div class="w-14 h-14 rounded-2xl bg-emerald-50 flex items-center justify-center mb-5">
+                                <i class="fa-solid fa-file-excel text-emerald-600 text-2xl"></i>
+                            </div>
+                            <h4 class="font-extrabold text-slate-900 text-xl mb-1">{% trans "Excel" %}</h4>
+                            <p class="text-sm text-slate-500 font-medium leading-relaxed">{% trans "Crunch data and visual charts." %}</p>
+                        </a>
+
+                        <a href="{% url 'powerpoint_course' %}" class="bg-white rounded-3xl p-6 shadow-[0_8px_30px_-4px_rgba(0,0,0,0.05)] border border-slate-50 hover:shadow-[0_12px_40px_-4px_rgba(0,0,0,0.1)] hover:-translate-y-1 transition-all">
+                            <div class="w-14 h-14 rounded-2xl bg-orange-50 flex items-center justify-center mb-5">
+                                <i class="fa-solid fa-file-powerpoint text-orange-600 text-2xl"></i>
+                            </div>
+                            <h4 class="font-extrabold text-slate-900 text-xl mb-1">{% trans "PowerPoint" %}</h4>
+                            <p class="text-sm text-slate-500 font-medium leading-relaxed">{% trans "Design stunning slide pitches." %}</p>
+                        </a>
+                    </div>
+                </div>
             </li>
-            <li>
-                <a href="{% url 'excel_course' %}" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-emerald-50 hover:text-emerald-600 rounded-lg transition-all">
-                    <i class="fa-solid fa-file-excel text-emerald-500"></i>
-                    <span class="font-medium" >{% trans "Microsoft Excel" %}</span>
-                </a>
-            </li>
-            <li>
-                <a href="{% url 'powerpoint_course' %}" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-orange-50 hover:text-orange-600 rounded-lg transition-all">
-                    <i class="fa-solid fa-file-powerpoint text-orange-500"></i>
-                    <span class="font-medium" >{% trans "Microsoft PowerPoint" %}</span>
-                </a>
-            </li>
-        </ul>
-      </li>
 
       {% if user.is_authenticated %}
       <li class="hover:text-black cursor-pointer"><a href="{% url 'how_it_works' %}" >{% trans "How It Works" %}</a></li>

@@ -86,18 +86,22 @@
                     <div class="grid grid-cols-1 gap-3 md:grid-cols-3 mb-5">
                         <div class="rounded-2xl border border-blue-100 bg-white p-4">
                             <p class="text-[10px] font-bold uppercase tracking-widest text-blue-600 mb-1">{% trans "Focus" %}</p>
-                            <p class="text-sm font-semibold text-slate-700">{% trans "Formatting Mastery" %}</p>
+                            <p id="lesson-focus" class="text-sm font-semibold text-slate-700">{% trans "Formatting Mastery" %}</p>
                         </div>
                         <div class="rounded-2xl border border-blue-100 bg-white p-4">
                             <p class="text-[10px] font-bold uppercase tracking-widest text-blue-600 mb-1">{% trans "Goal" %}</p>
-                            <p class="text-sm font-semibold text-slate-700">{% trans "Build professional documents" %}</p>
+                            <p id="lesson-goal" class="text-sm font-semibold text-slate-700">{% trans "Build professional documents" %}</p>
                         </div>
                         <div class="rounded-2xl border border-blue-100 bg-white p-4">
                             <p class="text-[10px] font-bold uppercase tracking-widest text-blue-600 mb-1">{% trans "Outcome" %}</p>
-                            <p class="text-sm font-semibold text-slate-700">{% trans "Apply in real workplace tasks" %}</p>
+                            <p id="lesson-outcome" class="text-sm font-semibold text-slate-700">{% trans "Apply in real workplace tasks" %}</p>
                         </div>
                     </div>
                     <div id="lesson-theory" class="text-slate-600 text-lg leading-relaxed"></div>
+                    <div class="mt-5 rounded-2xl border border-blue-100 bg-white p-5">
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-blue-600 mb-3">{% trans "Practical Checklist" %}</p>
+                        <ul id="lesson-checklist" class="space-y-2 text-sm text-slate-600"></ul>
+                    </div>
                 </div>
                 <!-- Word IDE Section -->
                 <div class="mb-12 bg-white rounded-2xl border border-slate-200 shadow-lg overflow-hidden">

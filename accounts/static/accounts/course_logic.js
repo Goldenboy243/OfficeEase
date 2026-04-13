@@ -2,6 +2,92 @@
 let currentIdx = 0;
 let completedLessons = []; // Stores IDs of finished lessons
 
+function stripHtml(input) {
+    const tmp = document.createElement('div');
+    tmp.innerHTML = input || '';
+    return (tmp.textContent || tmp.innerText || '').trim();
+}
+
+function getCourseType() {
+    const path = window.location.pathname.toLowerCase();
+    if (path.includes('excel')) return 'excel';
+    if (path.includes('powerpoint')) return 'powerpoint';
+    return 'word';
+}
+
+function getDefaultContentByCourse(type) {
+    const defaults = {
+        word: {
+            focus: 'Formatting Mastery',
+            goal: 'Build professional documents',
+            outcome: 'Apply in real workplace tasks',
+            checklist: [
+                'Open the editor and structure your heading and body text.',
+                'Apply at least one text format (bold, align, or list).',
+                'Complete the quiz and verify your understanding.'
+            ]
+        },
+        excel: {
+            focus: 'Data and Formula Skills',
+            goal: 'Build accurate spreadsheets',
+            outcome: 'Analyze and present data clearly',
+            checklist: [
+                'Create a small table and organize rows/columns clearly.',
+                'Format key cells for readability and emphasis.',
+                'Finish the quiz to validate your knowledge.'
+            ]
+        },
+        powerpoint: {
+            focus: 'Storytelling with Slides',
+            goal: 'Design persuasive presentations',
+            outcome: 'Deliver clear visual messages',
+            checklist: [
+                'Draft a strong slide title and a concise key message.',
+                'Adjust typography and colors for visual hierarchy.',
+                'Answer all quiz questions to complete the lesson.'
+            ]
+        }
+    };
+    return defaults[type] || defaults.word;
+}
+
+function renderLessonWorkspace(lesson) {
+    const theoryText = stripHtml(lesson.theory);
+    const sentences = theoryText
+        .split(/(?<=[.!?])\s+/)
+        .map(s => s.trim())
+        .filter(Boolean);
+
+    const courseType = getCourseType();
+    const defaults = getDefaultContentByCourse(courseType);
+
+    const focusEl = document.getElementById('lesson-focus');
+    const goalEl = document.getElementById('lesson-goal');
+    const outcomeEl = document.getElementById('lesson-outcome');
+    const checklistEl = document.getElementById('lesson-checklist');
+
+    if (focusEl) {
+        focusEl.innerText = lesson.title || defaults.focus;
+    }
+    if (goalEl) {
+        goalEl.innerText = sentences[0] || defaults.goal;
+    }
+    if (outcomeEl) {
+        outcomeEl.innerText = sentences[1] || defaults.outcome;
+    }
+
+    if (checklistEl) {
+        const lessonDrivenItem = sentences[2] || 'Practice the task inside the lab editor for this lesson.';
+        const items = [defaults.checklist[0], lessonDrivenItem, defaults.checklist[2]];
+        checklistEl.innerHTML = items.map(item => `
+            <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5"></i>
+                <span>${item}</span>
+            </li>
+        `).join('');
+    }
+}
+
 function loadLesson(idx) {
     if (idx < 0 || idx >= dbLessons.length) return;
     
@@ -12,6 +98,7 @@ function loadLesson(idx) {
     document.getElementById('module-label').innerText = "Module " + l.moduleIndex + " • Lesson " + l.label;
     document.getElementById('lesson-title').innerText = l.title;
     document.getElementById('lesson-theory').innerHTML = l.theory;
+    renderLessonWorkspace(l);
     
     // 2. Update Iframe
     const frame = document.getElementById('word-frame');

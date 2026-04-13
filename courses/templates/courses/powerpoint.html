@@ -80,7 +80,27 @@
                     <h1 id="lesson-title" class="text-5xl font-black text-slate-900 leading-tight"></h1>
                 </div>
 
-                <div id="lesson-theory" class="text-slate-600 mb-10 text-lg leading-relaxed"></div>
+                <div class="mb-10 rounded-3xl border border-orange-100 bg-gradient-to-br from-orange-50 to-white p-6 shadow-sm">
+                    <div class="mb-4 flex items-center justify-between">
+                        <h2 class="text-xl font-black text-slate-900">{% trans "Lesson Workspace" %}</h2>
+                        <span class="rounded-full bg-orange-100 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-orange-700">{% trans "PowerPoint Lab" %}</span>
+                    </div>
+                    <div class="grid grid-cols-1 gap-3 md:grid-cols-3 mb-5">
+                        <div class="rounded-2xl border border-orange-100 bg-white p-4">
+                            <p class="text-[10px] font-bold uppercase tracking-widest text-orange-600 mb-1">{% trans "Focus" %}</p>
+                            <p class="text-sm font-semibold text-slate-700">{% trans "Storytelling with Slides" %}</p>
+                        </div>
+                        <div class="rounded-2xl border border-orange-100 bg-white p-4">
+                            <p class="text-[10px] font-bold uppercase tracking-widest text-orange-600 mb-1">{% trans "Goal" %}</p>
+                            <p class="text-sm font-semibold text-slate-700">{% trans "Design persuasive presentations" %}</p>
+                        </div>
+                        <div class="rounded-2xl border border-orange-100 bg-white p-4">
+                            <p class="text-[10px] font-bold uppercase tracking-widest text-orange-600 mb-1">{% trans "Outcome" %}</p>
+                            <p class="text-sm font-semibold text-slate-700">{% trans "Deliver clear visual messages" %}</p>
+                        </div>
+                    </div>
+                    <div id="lesson-theory" class="text-slate-600 text-lg leading-relaxed"></div>
+                </div>
                 
                 <!-- PowerPoint IDE Section -->
                 <div class="mb-12 bg-white rounded-2xl border border-slate-200 shadow-lg overflow-hidden">

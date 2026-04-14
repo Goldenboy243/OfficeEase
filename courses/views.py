@@ -137,6 +137,21 @@ def structured_course(request, course_id):
     )
 
 
+def structured_word_course(request):
+    course = get_object_or_404(Course, name='Microsoft Word')
+    return structured_course(request, course.id)
+
+
+def structured_excel_course(request):
+    course = get_object_or_404(Course, name='Microsoft Excel')
+    return structured_course(request, course.id)
+
+
+def structured_powerpoint_course(request):
+    course = get_object_or_404(Course, name='Microsoft PowerPoint')
+    return structured_course(request, course.id)
+
+
 @login_required
 @require_POST
 def complete_theory_step(request, step_id):

@@ -16,6 +16,9 @@
     quizOptions: document.getElementById('quiz-options'),
     workshopPanel: document.getElementById('workshop-panel'),
     workshopNote: document.getElementById('workshop-note'),
+    workshopFile: document.getElementById('workshop-file'),
+    submitWorkshopBtn: document.getElementById('submit-workshop-btn'),
+    workshopResult: document.getElementById('workshop-result'),
     prevStepBtn: document.getElementById('prev-step-btn'),
     nextStepBtn: document.getElementById('next-step-btn'),
     progressBar: document.getElementById('progress-bar'),
@@ -92,10 +95,17 @@
     const step = steps[currentIndex];
     els.stepBadge.innerText = `Step ${step.index} • ${step.type}`;
     els.stepTitle.innerText = step.title;
-    els.stepContent.innerHTML = step.content || '<p>No content yet for this step.</p>';
 
-    const isQuiz = step.type === 'quiz';
+    const isQuiz = step.type === 'quiz' || Boolean(step.quiz && step.quiz.question);
     const isWorkshop = step.type === 'workshop';
+
+    if (isQuiz) {
+      els.stepContent.innerHTML = '<p>Read the question below and choose one answer to continue.</p>';
+    } else if (isWorkshop) {
+      els.stepContent.innerHTML = step.content || '<p>Complete the workshop activity described below.</p>';
+    } else {
+      els.stepContent.innerHTML = step.content || '<p>Review this step and click Next to continue.</p>';
+    }
 
     els.quizPanel.classList.toggle('hidden', !isQuiz);
     els.workshopPanel.classList.toggle('hidden', !isWorkshop);
@@ -112,7 +122,14 @@
     }
 
     if (isWorkshop) {
-      els.workshopNote.innerText = 'Complete the workshop objective, then click Next to mark this workshop as passed.';
+      const minWords = (step.workshop && step.workshop.min_words) || 20;
+      const requiredText = step.workshop && step.workshop.required_text
+        ? `Required text: "${step.workshop.required_text}".`
+        : '';
+      els.workshopNote.innerText = `Create the task in Microsoft Word and upload a .docx file. Minimum ${minWords} words. ${requiredText}`.trim();
+      if (els.workshopResult) {
+        els.workshopResult.innerText = step.status === 'passed' ? 'Workshop already passed.' : '';
+      }
     }
 
     const isLocked = step.status === 'locked';
@@ -122,6 +139,43 @@
 
     els.prevStepBtn.disabled = currentIndex === 0;
     els.prevStepBtn.classList.toggle('opacity-50', currentIndex === 0);
+  }
+
+  async function submitWorkshopStep(step) {
+    const file = els.workshopFile && els.workshopFile.files ? els.workshopFile.files[0] : null;
+    if (!file) {
+      alert('Please choose a .docx file to upload.');
+      return;
+    }
+
+    const body = new FormData();
+    body.append('workshop_file', file);
+
+    const response = await fetch(`/steps/${step.id}/submit-workshop/`, {
+      method: 'POST',
+      headers: {
+        'X-CSRFToken': getCsrfToken(),
+      },
+      body,
+    });
+
+    const data = await response.json();
+    if (!response.ok || !data.ok) {
+      alert(data.error || 'Could not validate workshop file.');
+      return;
+    }
+
+    if (els.workshopResult) {
+      els.workshopResult.innerText = data.feedback || '';
+    }
+
+    if (data.passed) {
+      step.status = 'passed';
+      const next = steps.find((s) => s.id === data.next_step_id);
+      if (next && next.status === 'locked') next.status = 'unlocked';
+      updateProgress(data.progress);
+      render();
+    }
   }
 
   function updateProgress(summary) {
@@ -183,6 +237,11 @@
         return;
       }
 
+      if (step.type === 'workshop' && step.status !== 'passed') {
+        alert('Upload and pass the workshop file first.');
+        return;
+      }
+
       if (step.status === 'passed') {
         if (currentIndex < steps.length - 1) {
           currentIndex += 1;
@@ -197,6 +256,20 @@
       }
       await completeTheoryStep(step, payload);
     });
+
+    if (els.submitWorkshopBtn) {
+      els.submitWorkshopBtn.addEventListener('click', async () => {
+        const step = steps[currentIndex];
+        if (step.type !== 'workshop') {
+          return;
+        }
+        if (step.status === 'locked') {
+          alert('This workshop is locked. Complete previous steps first.');
+          return;
+        }
+        await submitWorkshopStep(step);
+      });
+    }
   }
 
   function render() {

@@ -1,4 +1,7 @@
 import re
+import zipfile
+from html import unescape
+from io import BytesIO
 
 from django.contrib.auth.decorators import login_required
 from django.db.models import Prefetch
@@ -15,6 +18,7 @@ from .models import (
     Topic,
     UserStepProgress,
     ValidationRule,
+    WorkshopSubmission,
 )
 
 def word_course(request):
@@ -157,6 +161,10 @@ def structured_course(request, course_id):
                     'question': step.quiz_question,
                     'options': [step.quiz_option_1, step.quiz_option_2],
                 },
+                'workshop': {
+                    'required_text': step.workshop_required_text,
+                    'min_words': step.workshop_min_words,
+                },
             })
 
     progress = {'passed': 0, 'total': 0, 'percent': 0}
@@ -199,7 +207,7 @@ def complete_theory_step(request, step_id):
     if step.step_type == Step.PRACTICE:
         return JsonResponse({'ok': False, 'error': 'Practice IDE steps are disabled in the current curriculum.'}, status=400)
 
-    if step.step_type not in [Step.THEORY, Step.QUIZ, Step.WORKSHOP]:
+    if step.step_type not in [Step.THEORY, Step.QUIZ]:
         return JsonResponse({'ok': False, 'error': 'Unsupported step type.'}, status=400)
 
     progress, _ = UserStepProgress.objects.get_or_create(user=request.user, step=step)
@@ -222,6 +230,86 @@ def complete_theory_step(request, step_id):
 
     return JsonResponse({
         'ok': True,
+        'next_step_id': next_step.id if next_step else None,
+        'progress': summary,
+    })
+
+
+def _extract_docx_plain_text(uploaded_file):
+    payload = uploaded_file.read()
+    if not payload:
+        return ''
+
+    with zipfile.ZipFile(BytesIO(payload)) as archive:
+        xml_bytes = archive.read('word/document.xml')
+
+    xml_text = xml_bytes.decode('utf-8', errors='ignore')
+    chunks = re.findall(r'<w:t[^>]*>(.*?)</w:t>', xml_text, flags=re.DOTALL)
+    return unescape(' '.join(chunks))
+
+
+@login_required
+@require_POST
+def submit_workshop_step(request, step_id):
+    step = get_object_or_404(Step, id=step_id)
+    if step.step_type != Step.WORKSHOP:
+        return JsonResponse({'ok': False, 'error': 'This is not a workshop step.'}, status=400)
+
+    progress, _ = UserStepProgress.objects.get_or_create(user=request.user, step=step)
+    if progress.status == UserStepProgress.LOCKED:
+        return JsonResponse({'ok': False, 'error': 'Step is still locked.'}, status=400)
+
+    uploaded_file = request.FILES.get('workshop_file')
+    if not uploaded_file:
+        return JsonResponse({'ok': False, 'error': 'Please upload a Word file.'}, status=400)
+
+    if not uploaded_file.name.lower().endswith('.docx'):
+        return JsonResponse({'ok': False, 'error': 'Please upload a .docx file.'}, status=400)
+
+    try:
+        plain_text = _extract_docx_plain_text(uploaded_file)
+    except Exception:
+        return JsonResponse({'ok': False, 'error': 'Could not read the uploaded file. Please upload a valid .docx document.'}, status=400)
+
+    word_count = len(plain_text.split())
+    min_words = max(step.workshop_min_words, 1)
+    required_text = (step.workshop_required_text or '').strip()
+
+    passed = word_count >= min_words
+    feedback_parts = []
+    if not passed:
+        feedback_parts.append(f'The file has {word_count} words. At least {min_words} words are required.')
+
+    if required_text and required_text.lower() not in plain_text.lower():
+        passed = False
+        feedback_parts.append(f"The required text '{required_text}' was not found in the document.")
+
+    if passed:
+        feedback = 'Workshop passed. Great job.'
+    else:
+        feedback = ' '.join(feedback_parts)
+
+    uploaded_file.seek(0)
+    WorkshopSubmission.objects.create(
+        user=request.user,
+        step=step,
+        uploaded_file=uploaded_file,
+        is_passed=passed,
+        feedback=feedback,
+    )
+
+    next_step = None
+    if passed:
+        progress.status = UserStepProgress.PASSED
+        progress.completed_at = timezone.now()
+        progress.save(update_fields=['status', 'completed_at'])
+        next_step = _unlock_next_step(request.user, step)
+
+    summary = _progress_summary(request.user, step.topic.module.course)
+    return JsonResponse({
+        'ok': True,
+        'passed': passed,
+        'feedback': feedback,
         'next_step_id': next_step.id if next_step else None,
         'progress': summary,
     })

@@ -11,4 +11,5 @@ urlpatterns = [
     path('structured/<int:course_id>/', views.structured_course, name='structured_course'),
     path('steps/<int:step_id>/complete-theory/', views.complete_theory_step, name='complete_theory_step'),
     path('steps/<int:step_id>/submit-practice/', views.submit_practice_step, name='submit_practice_step'),
+    path('steps/<int:step_id>/submit-workshop/', views.submit_workshop_step, name='submit_workshop_step'),
 ]

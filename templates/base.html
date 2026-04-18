@@ -1,14 +1,41 @@
 {% load i18n %}
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ LANGUAGE_CODE|default:'en' }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title >{% trans "OfficeEase" %}</title>
+        <title>{% block meta_title %}{% trans "OfficeEase | Learn Microsoft Office with Structured Practice" %}{% endblock %}</title>
+        <meta name="description" content="{% block meta_description %}{% trans 'OfficeEase helps learners master Microsoft Word, Excel, and PowerPoint through structured lessons, quizzes, workshops, and progress tracking.' %}{% endblock %}">
+        <meta name="keywords" content="{% block meta_keywords %}OfficeEase, Microsoft Word course, Microsoft Excel course, Microsoft PowerPoint course, office skills training, structured learning{% endblock %}">
+        <meta name="robots" content="{% block meta_robots %}index, follow{% endblock %}">
+        <meta name="author" content="OfficeEase">
+
+        <link rel="canonical" href="{% block canonical_url %}{{ request.build_absolute_uri|cut:request.get_full_path }}{{ request.path }}{% endblock %}">
+
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="OfficeEase">
+        <meta property="og:title" content="{% block og_title %}{% trans 'OfficeEase | Learn Microsoft Office with Structured Practice' %}{% endblock %}">
+        <meta property="og:description" content="{% block og_description %}{% trans 'Step-by-step Office training with theory, MCQs, workshops, and progress tracking.' %}{% endblock %}">
+        <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="{% block twitter_title %}{% trans 'OfficeEase | Structured Microsoft Office Learning' %}{% endblock %}">
+        <meta name="twitter:description" content="{% block twitter_description %}{% trans 'Learn Word, Excel, and PowerPoint through structured lessons and practical workshops.' %}{% endblock %}">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'style.css' %}">
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "OfficeEase",
+            "url": "{{ request.build_absolute_uri|cut:request.get_full_path }}/",
+            "description": "Structured Microsoft Office learning platform for Word, Excel, and PowerPoint."
+        }
+        </script>
+        {% block structured_data %}{% endblock %}
     {% block extra_css %}{% endblock %}
 </head>
 <body class="container bg-white text-black pt-1 mx-auto font-sans">

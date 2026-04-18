@@ -2,7 +2,24 @@
 {% load i18n %}
 {% load static %}
 
-{% block title %}OfficeEase - Structured Course{% endblock %}
+{% block meta_title %}{{ course.name }} | {% trans "Structured Course" %} | OfficeEase{% endblock %}
+{% block meta_description %}{% trans "Follow a structured learning path with theory, MCQs, and workshop validation to unlock each next module." %}{% endblock %}
+{% block meta_keywords %}structured course, OfficeEase, module progression, workshop validation, Microsoft Office learning{% endblock %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "{{ course.name|escapejs }}",
+  "description": "Structured theory, quiz, and workshop course path on OfficeEase.",
+  "provider": {
+    "@type": "Organization",
+    "name": "OfficeEase"
+  }
+}
+</script>
+{% endblock %}
 
 {% block content %}
 <main class="max-w-7xl mx-auto mt-8 px-4 lg:px-10 pb-20">
@@ -59,6 +76,11 @@
         <div id="workshop-panel" class="mt-6 hidden rounded-2xl border border-emerald-200 bg-emerald-50 p-4">
           <h3 class="text-lg font-black text-slate-900">{% trans "Workshop" %}</h3>
           <p id="workshop-note" class="mt-2 text-sm text-slate-600"></p>
+          <div class="mt-4 space-y-3">
+            <input id="workshop-file" type="file" accept=".docx" class="block w-full rounded-xl border border-slate-300 bg-white p-2.5 text-sm text-slate-700">
+            <button id="submit-workshop-btn" class="rounded-xl bg-emerald-600 px-5 py-2.5 text-sm font-bold text-white hover:bg-emerald-700">{% trans "Upload and Check" %}</button>
+            <p id="workshop-result" class="text-sm text-slate-700"></p>
+          </div>
         </div>
 
         <div class="mt-8 flex items-center justify-between gap-3">
@@ -76,5 +98,5 @@
 {% block footer %}{% endblock %}
 
 {% block extra_js %}
-<script src="{% static 'accounts/structured_course.js' %}"></script>
+<script src="{% static 'accounts/structured_course.js' %}?v=20260418"></script>
 {% endblock %}

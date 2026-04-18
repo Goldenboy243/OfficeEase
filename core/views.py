@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
@@ -17,3 +18,14 @@ def about_us(request):
 def how_it_works(request):
     """Render the How It Works page."""
     return render(request, "core/HowItWorks.html")
+
+
+def robots_txt(request):
+    lines = [
+        "User-agent: *",
+        "Allow: /",
+        "Disallow: /admin/",
+        "Disallow: /login/",
+        "Sitemap: {}://{}/sitemap.xml".format(request.scheme, request.get_host()),
+    ]
+    return HttpResponse("\n".join(lines), content_type="text/plain")

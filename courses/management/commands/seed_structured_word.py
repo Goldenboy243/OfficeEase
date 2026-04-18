@@ -90,6 +90,8 @@ class Command(BaseCommand):
             title="Workshop",
             step_type=Step.WORKSHOP,
             content=workshop_html,
+            workshop_required_text='Microsoft Word',
+            workshop_min_words=30,
             order=next_order,
             is_required=True,
         )

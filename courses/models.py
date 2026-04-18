@@ -92,6 +92,8 @@ class Step(models.Model):
         blank=True,
         default='',
     )
+    workshop_required_text = models.CharField(max_length=500, blank=True)
+    workshop_min_words = models.PositiveIntegerField(default=20)
     order = models.PositiveIntegerField(default=1)
     is_required = models.BooleanField(default=True)
 
@@ -164,6 +166,21 @@ class PracticeSubmission(models.Model):
     submitted_content = models.TextField()
     is_passed = models.BooleanField(default=False)
     result_snapshot = models.JSONField(default=dict, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-created_at"]
+
+    def __str__(self):
+        return f"{self.user} - {self.step} - {'passed' if self.is_passed else 'failed'}"
+
+
+class WorkshopSubmission(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="workshop_submissions")
+    step = models.ForeignKey(Step, on_delete=models.CASCADE, related_name="workshop_submissions")
+    uploaded_file = models.FileField(upload_to="workshop_submissions/")
+    is_passed = models.BooleanField(default=False)
+    feedback = models.CharField(max_length=500, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:

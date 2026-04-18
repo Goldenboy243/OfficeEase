@@ -6,7 +6,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title >{% trans "Authentication" %}</title>
+  <title>{% trans "Sign In | OfficeEase" %}</title>
+  <meta name="description" content="{% trans 'Sign in or create an OfficeEase account to track progress in Microsoft Office learning modules.' %}">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="{{ request.build_absolute_uri|cut:request.get_full_path }}{{ request.path }}">
 
   <!-- Tailwind CSS CDN (full JIT) -->
   <script src="https://cdn.tailwindcss.com"></script>

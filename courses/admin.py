@@ -11,6 +11,7 @@ from .models import (
     ValidationRule,
     UserStepProgress,
     PracticeSubmission,
+    WorkshopSubmission,
 )
 
 class QuestionInline(TranslationTabularInline):
@@ -27,6 +28,19 @@ class LessonAdmin(TranslationAdmin):
 class StepInline(admin.TabularInline):
     model = Step
     extra = 1
+    fields = (
+        'title',
+        'step_type',
+        'content',
+        'quiz_question',
+        'quiz_option_1',
+        'quiz_option_2',
+        'quiz_correct_answer',
+        'workshop_required_text',
+        'workshop_min_words',
+        'order',
+        'is_required',
+    )
 
 
 class TopicAdmin(admin.ModelAdmin):
@@ -55,6 +69,11 @@ class PracticeSubmissionAdmin(admin.ModelAdmin):
     list_display = ('user', 'step', 'is_passed', 'created_at')
     list_filter = ('is_passed', 'step__topic__module__course')
 
+
+class WorkshopSubmissionAdmin(admin.ModelAdmin):
+    list_display = ('user', 'step', 'is_passed', 'created_at')
+    list_filter = ('is_passed', 'step__topic__module__course')
+
 class ModuleAdmin(TranslationAdmin):
     list_display = ('title', 'course', 'order')
     list_filter = ('course',)
@@ -69,3 +88,4 @@ admin.site.register(Topic, TopicAdmin)
 admin.site.register(PracticeTask, PracticeTaskAdmin)
 admin.site.register(UserStepProgress, UserStepProgressAdmin)
 admin.site.register(PracticeSubmission, PracticeSubmissionAdmin)
+admin.site.register(WorkshopSubmission, WorkshopSubmissionAdmin)

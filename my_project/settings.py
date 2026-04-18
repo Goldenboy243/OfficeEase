@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'modeltranslation',
+    'django.contrib.sitemaps',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -138,6 +139,9 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
     BASE_DIR / 'accounts' / 'static',
 ]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 LOCALE_PATHS = [
     BASE_DIR / 'locale',

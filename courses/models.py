@@ -70,17 +70,28 @@ class Step(models.Model):
     THEORY = "theory"
     PRACTICE = "practice"
     QUIZ = "quiz"
+    WORKSHOP = "workshop"
 
     STEP_TYPE_CHOICES = [
         (THEORY, "Theory"),
         (PRACTICE, "Practice"),
         (QUIZ, "Quiz"),
+        (WORKSHOP, "Workshop"),
     ]
 
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE, related_name="steps")
     title = models.CharField(max_length=200)
     step_type = models.CharField(max_length=20, choices=STEP_TYPE_CHOICES, default=THEORY)
     content = models.TextField(blank=True, help_text="Theory or instruction content (HTML allowed)")
+    quiz_question = models.CharField(max_length=500, blank=True)
+    quiz_option_1 = models.CharField(max_length=200, blank=True)
+    quiz_option_2 = models.CharField(max_length=200, blank=True)
+    quiz_correct_answer = models.CharField(
+        max_length=1,
+        choices=[('0', 'Option 1'), ('1', 'Option 2')],
+        blank=True,
+        default='',
+    )
     order = models.PositiveIntegerField(default=1)
     is_required = models.BooleanField(default=True)
 

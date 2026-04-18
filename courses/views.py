@@ -18,9 +18,7 @@ from .models import (
 )
 
 def word_course(request):
-    # Fetch modules and prefetch their lessons to keep it fast
-    modules = Module.objects.filter(course__name="Microsoft Word").prefetch_related('lessons')
-    return render(request, 'courses/word.html', {'modules': modules})
+    return structured_word_course(request)
 
 def excel_course(request):
     # Fetch modules and prefetch their lessons to keep it fast
@@ -33,13 +31,23 @@ def powerpoint_course(request):
     return render(request, 'courses/powerpoint.html', {'modules': modules})
 
 
-def _unlock_next_step(user, step):
-    next_step = (
+def _ordered_course_steps(course):
+    return list(
         Step.objects
-        .filter(topic=step.topic, order__gt=step.order)
-        .order_by('order')
-        .first()
+        .filter(topic__module__course=course, topic__is_published=True)
+        .select_related('topic', 'topic__module')
+        .order_by('topic__module__order', 'topic__order', 'order', 'id')
     )
+
+
+def _unlock_next_step(user, step):
+    ordered_steps = _ordered_course_steps(step.topic.module.course)
+    next_step = None
+    for idx, candidate in enumerate(ordered_steps):
+        if candidate.id == step.id and idx + 1 < len(ordered_steps):
+            next_step = ordered_steps[idx + 1]
+            break
+
     if next_step:
         progress, _ = UserStepProgress.objects.get_or_create(user=user, step=next_step)
         if progress.status == UserStepProgress.LOCKED:
@@ -48,8 +56,12 @@ def _unlock_next_step(user, step):
     return next_step
 
 
-def _progress_summary(user, topic):
-    step_ids = list(topic.steps.values_list('id', flat=True))
+def _progress_summary(user, course):
+    step_ids = list(
+        Step.objects
+        .filter(topic__module__course=course, topic__is_published=True, is_required=True)
+        .values_list('id', flat=True)
+    )
     total = len(step_ids)
     if total == 0:
         return {'passed': 0, 'total': 0, 'percent': 0}
@@ -65,49 +77,74 @@ def _progress_summary(user, topic):
 
 def structured_course(request, course_id):
     course = get_object_or_404(Course, id=course_id)
-    topics = Topic.objects.filter(module__course=course, is_published=True).prefetch_related(
-        Prefetch('steps', queryset=Step.objects.order_by('order').select_related('practice_task'))
-    ).order_by('module__order', 'order')
+    modules = list(
+        Module.objects.filter(course=course)
+        .prefetch_related(
+            Prefetch(
+                'topics',
+                queryset=Topic.objects.filter(is_published=True).prefetch_related(
+                    Prefetch('steps', queryset=Step.objects.order_by('order'))
+                ).order_by('order')
+            )
+        )
+        .order_by('order')
+    )
 
-    selected_topic = topics.first()
-    topic_id = request.GET.get('topic')
-    if topic_id:
-        selected_topic = topics.filter(id=topic_id).first() or selected_topic
+    module_entries = []
+    for module in modules:
+        module_steps = []
+        for topic in module.topics.all():
+            module_steps.extend(list(topic.steps.all()))
+        module_entries.append({'module': module, 'steps': module_steps})
+
+    status_map = {}
+    if request.user.is_authenticated:
+        status_map = {
+            p.step_id: p.status
+            for p in UserStepProgress.objects.filter(user=request.user, step__topic__module__course=course)
+        }
+
+    def is_module_completed(entry):
+        required_step_ids = [s.id for s in entry['steps'] if s.is_required]
+        if not required_step_ids:
+            return False
+        return all(status_map.get(step_id) == UserStepProgress.PASSED for step_id in required_step_ids)
+
+    previous_completed = True
+    for entry in module_entries:
+        entry['is_completed'] = is_module_completed(entry)
+        entry['is_unlocked'] = previous_completed
+        previous_completed = previous_completed and entry['is_completed']
+
+    selected_module_entry = module_entries[0] if module_entries else None
+    selected_module_id = request.GET.get('module')
+    if selected_module_id:
+        candidate = next((e for e in module_entries if str(e['module'].id) == selected_module_id), None)
+        if candidate and candidate['is_unlocked']:
+            selected_module_entry = candidate
+    else:
+        selected_module_entry = next((e for e in module_entries if e['is_unlocked']), selected_module_entry)
 
     steps_payload = []
-    progress = {'passed': 0, 'total': 0, 'percent': 0}
+    if selected_module_entry:
+        selected_steps = selected_module_entry['steps']
 
-    if selected_topic:
-        steps = list(selected_topic.steps.all())
-        if request.user.is_authenticated and steps:
-            first_step = steps[0]
-            first_progress, _ = UserStepProgress.objects.get_or_create(user=request.user, step=first_step)
-            if first_progress.status == UserStepProgress.LOCKED:
-                first_progress.status = UserStepProgress.UNLOCKED
-                first_progress.save(update_fields=['status'])
+        previous_required_passed = True
+        for idx, step in enumerate(selected_steps):
+            status = status_map.get(step.id, UserStepProgress.LOCKED)
+            if status != UserStepProgress.PASSED:
+                if selected_module_entry['is_unlocked'] and previous_required_passed:
+                    status = UserStepProgress.UNLOCKED
 
-        status_map = {}
-        if request.user.is_authenticated:
-            status_map = {
-                p.step_id: p.status
-                for p in UserStepProgress.objects.filter(user=request.user, step__topic=selected_topic)
-            }
-            progress = _progress_summary(request.user, selected_topic)
+            if request.user.is_authenticated:
+                progress_obj, _ = UserStepProgress.objects.get_or_create(user=request.user, step=step)
+                if status == UserStepProgress.UNLOCKED and progress_obj.status == UserStepProgress.LOCKED:
+                    progress_obj.status = UserStepProgress.UNLOCKED
+                    progress_obj.save(update_fields=['status'])
+                status = progress_obj.status
 
-        for idx, step in enumerate(steps):
-            task = getattr(step, 'practice_task', None)
-            rules = []
-            if task:
-                rules = [
-                    {
-                        'id': r.id,
-                        'name': r.name,
-                        'rule_type': r.rule_type,
-                        'expected_value': r.expected_value,
-                        'is_required': r.is_required,
-                    }
-                    for r in task.rules.all()
-                ]
+            if step.is_required and status != UserStepProgress.PASSED:
+                previous_required_passed = False
 
             steps_payload.append({
                 'id': step.id,
@@ -115,22 +152,24 @@ def structured_course(request, course_id):
                 'title': step.title,
                 'type': step.step_type,
                 'content': step.content,
-                'status': status_map.get(step.id, UserStepProgress.LOCKED),
-                'practice': {
-                    'instruction': task.instruction if task else '',
-                    'starter_content': task.starter_content if task else '',
-                    'success_message': task.success_message if task else '',
-                    'rules': rules,
-                }
+                'status': status,
+                'quiz': {
+                    'question': step.quiz_question,
+                    'options': [step.quiz_option_1, step.quiz_option_2],
+                },
             })
+
+    progress = {'passed': 0, 'total': 0, 'percent': 0}
+    if request.user.is_authenticated:
+        progress = _progress_summary(request.user, course)
 
     return render(
         request,
         'courses/structured_course.html',
         {
             'course': course,
-            'topics': topics,
-            'selected_topic': selected_topic,
+            'modules': module_entries,
+            'selected_module': selected_module_entry['module'] if selected_module_entry else None,
             'steps_payload': steps_payload,
             'progress': progress,
         }
@@ -157,19 +196,29 @@ def structured_powerpoint_course(request):
 def complete_theory_step(request, step_id):
     step = get_object_or_404(Step, id=step_id)
 
-    if step.step_type not in [Step.THEORY, Step.QUIZ]:
-        return JsonResponse({'ok': False, 'error': 'This step must be completed through practice validation.'}, status=400)
+    if step.step_type == Step.PRACTICE:
+        return JsonResponse({'ok': False, 'error': 'Practice IDE steps are disabled in the current curriculum.'}, status=400)
+
+    if step.step_type not in [Step.THEORY, Step.QUIZ, Step.WORKSHOP]:
+        return JsonResponse({'ok': False, 'error': 'Unsupported step type.'}, status=400)
 
     progress, _ = UserStepProgress.objects.get_or_create(user=request.user, step=step)
     if progress.status == UserStepProgress.LOCKED:
         return JsonResponse({'ok': False, 'error': 'Step is still locked.'}, status=400)
+
+    if step.step_type == Step.QUIZ:
+        selected_option = request.POST.get('selected_option', '').strip()
+        if selected_option not in ['0', '1']:
+            return JsonResponse({'ok': False, 'error': 'Please choose one answer before continuing.'}, status=400)
+        if not step.quiz_correct_answer or selected_option != step.quiz_correct_answer:
+            return JsonResponse({'ok': False, 'error': 'Incorrect answer. Please review and try again.'}, status=400)
 
     progress.status = UserStepProgress.PASSED
     progress.completed_at = timezone.now()
     progress.save(update_fields=['status', 'completed_at'])
 
     next_step = _unlock_next_step(request.user, step)
-    summary = _progress_summary(request.user, step.topic)
+    summary = _progress_summary(request.user, step.topic.module.course)
 
     return JsonResponse({
         'ok': True,
@@ -238,7 +287,7 @@ def submit_practice_step(request, step_id):
     else:
         next_step = None
 
-    summary = _progress_summary(request.user, step.topic)
+    summary = _progress_summary(request.user, step.topic.module.course)
     return JsonResponse({
         'ok': True,
         'passed': all_required_passed,

@@ -28,7 +28,7 @@
       <div>
         <p class="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400">{% trans "Structured Learning" %}</p>
         <h1 class="mt-2 text-3xl font-black text-slate-900">{{ course.name }}</h1>
-        <p class="mt-2 text-sm text-slate-500">{% trans "Complete each step in order: Theory, MCQ, then Workshop. You must pass each step before moving to the next module." %}</p>
+        <p class="mt-2 text-sm text-slate-500">{% trans "This is the guided tutorial path. Read the theory, answer the MCQs, upload the workshop file, and only then unlock the next module." %}</p>
       </div>
       <div class="w-full md:w-80">
         <label for="module-select" class="mb-2 block text-xs font-bold uppercase tracking-widest text-slate-500">{% trans "Module" %}</label>
@@ -39,6 +39,29 @@
           </option>
           {% endfor %}
         </select>
+      </div>
+    </div>
+
+    <div class="mt-6 grid gap-4 lg:grid-cols-4">
+      <div class="rounded-2xl border border-blue-100 bg-blue-50 p-4">
+        <p class="text-[10px] font-black uppercase tracking-widest text-blue-600">1</p>
+        <h3 class="mt-2 text-sm font-black text-slate-900">{% trans "Read the theory" %}</h3>
+        <p class="mt-1 text-xs text-slate-600">{% trans "Start with short lesson blocks that explain the concept clearly." %}</p>
+      </div>
+      <div class="rounded-2xl border border-indigo-100 bg-indigo-50 p-4">
+        <p class="text-[10px] font-black uppercase tracking-widest text-indigo-600">2</p>
+        <h3 class="mt-2 text-sm font-black text-slate-900">{% trans "Answer MCQs" %}</h3>
+        <p class="mt-1 text-xs text-slate-600">{% trans "Each checkpoint confirms understanding before you move forward." %}</p>
+      </div>
+      <div class="rounded-2xl border border-emerald-100 bg-emerald-50 p-4">
+        <p class="text-[10px] font-black uppercase tracking-widest text-emerald-600">3</p>
+        <h3 class="mt-2 text-sm font-black text-slate-900">{% trans "Complete the workshop" %}</h3>
+        <p class="mt-1 text-xs text-slate-600">{% trans "Build the file in Word, then upload the .docx for checking." %}</p>
+      </div>
+      <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">
+        <p class="text-[10px] font-black uppercase tracking-widest text-slate-600">4</p>
+        <h3 class="mt-2 text-sm font-black text-slate-900">{% trans "Unlock the next module" %}</h3>
+        <p class="mt-1 text-xs text-slate-600">{% trans "Progress is locked until every required step in the module passes." %}</p>
       </div>
     </div>
 
@@ -56,7 +79,11 @@
   <section class="grid grid-cols-1 gap-6 lg:grid-cols-12">
     <aside class="lg:col-span-4">
       <div class="rounded-3xl border border-slate-200 bg-slate-50 p-4 shadow-sm">
-        <h2 class="mb-3 text-sm font-black uppercase tracking-widest text-slate-600">{% trans "Steps" %}</h2>
+        <h2 class="mb-3 text-sm font-black uppercase tracking-widest text-slate-600">{% trans "Tutorial Path" %}</h2>
+        <div class="mb-4 rounded-2xl border border-slate-200 bg-white p-4">
+          <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">{% trans "How it works" %}</p>
+          <p class="mt-2 text-sm text-slate-600">{% trans "This path teaches you one module at a time. Follow the steps in order, then move to the next module when the workshop passes." %}</p>
+        </div>
         <div id="steps-list" class="space-y-2"></div>
       </div>
     </aside>

@@ -77,7 +77,7 @@ function renderLessonWorkspace(lesson) {
     }
 
     if (checklistEl) {
-        const lessonDrivenItem = sentences[2] || 'Practice the task inside the lab editor for this lesson.';
+        const lessonDrivenItem = sentences[2] || 'Review the lesson examples and complete the quiz for this lesson.';
         const items = [defaults.checklist[0], lessonDrivenItem, defaults.checklist[2]];
         checklistEl.innerHTML = items.map(item => `
             <li class="flex items-start gap-2">

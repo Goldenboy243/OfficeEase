@@ -161,6 +161,12 @@
           </p>
           {% endfor %}
 
+          <div class="mb-3 -mt-1 flex justify-end">
+            <a href="{% url 'password_reset' %}" class="text-[12px] font-medium text-brand-600 hover:text-brand-700 transition-colors">
+              {% trans "Forgot password?" %}
+            </a>
+          </div>
+
           <button type="submit" class="w-full py-3 mt-1 mb-[13px] bg-gradient-to-br from-brand-700 to-brand-500
                          text-white rounded-[10px] text-[14.5px] font-semibold tracking-[0.2px]
                          hover:opacity-90 hover:-translate-y-px active:translate-y-0

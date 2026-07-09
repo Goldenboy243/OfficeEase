@@ -15,6 +15,7 @@
     .accordion-content.open { max-height: 500px; padding-bottom: 1rem; }
     .slide-canvas { background: white; border: 2px solid #e5e7eb; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
     .slide-notes { background: #f9fafb; border-top: 1px solid #e5e7eb; font-family: monospace; font-size: 12px; }
+    .course-progress-track { height: 0.75rem; background: #e2e8f0; border-radius: 9999px; overflow: hidden; }
 </style>
 {% endblock %}
 
@@ -28,6 +29,16 @@
             <span id="overall-progress" class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
                 0 of {{ modules|length }} Modules complete
             </span>
+        </div>
+
+        <div class="mb-6 rounded-2xl border border-orange-100 bg-white p-4 shadow-sm">
+            <div class="mb-2 flex items-center justify-between gap-3">
+                <span class="text-[10px] font-black uppercase tracking-widest text-orange-600">{% trans "Lesson Progress" %}</span>
+                <span id="course-progress-text" class="text-[10px] font-bold uppercase tracking-widest text-slate-400">0 of 0 steps complete</span>
+            </div>
+            <div class="course-progress-track">
+                <div id="course-progress-bar" class="h-full w-0 rounded-full bg-gradient-to-r from-orange-500 to-rose-500 transition-all duration-300"></div>
+            </div>
         </div>
 
         <div class="space-y-4">
@@ -108,22 +119,28 @@
                     </div>
                 </div>
                 
-                <div class="mb-12 rounded-2xl border border-orange-100 bg-orange-50 p-6 shadow-sm">
-                    <div class="flex items-center gap-3">
-                        <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-600 text-white">
-                            <i class="fa-solid fa-file-powerpoint text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-black text-slate-900">{% trans "PowerPoint Practice Removed" %}</h3>
-                            <p class="text-sm text-slate-600">{% trans "Focus on the lesson content and quiz below. Slide practice can be added later as a separate workshop if needed." %}</p>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Quiz Section -->
                 <div class="bg-orange-50 rounded-3xl p-8 border border-orange-100 shadow-sm">
                     <div id="quiz-container" class="space-y-3 mb-8"></div>
                     <button onclick="checkAllAnswers()" class="w-full bg-slate-900 text-white py-5 rounded-2xl font-black text-lg hover:bg-orange-600 transition-all" >{% trans "Submit Answers" %}</button>
+                </div>
+
+                <div id="workshop-panel" class="mt-6 rounded-3xl border border-orange-100 bg-orange-50 p-8 shadow-sm">
+                    <div class="mb-4 flex items-center justify-between gap-3">
+                        <div>
+                            <p class="text-[10px] font-black uppercase tracking-widest text-orange-600">{% trans "Workshop" %}</p>
+                            <h3 class="mt-2 text-2xl font-black text-slate-900">{% trans "PowerPoint Workshop" %}</h3>
+                        </div>
+                        <span id="workshop-status" class="rounded-full bg-white px-3 py-1 text-[10px] font-black uppercase tracking-widest text-orange-700 shadow-sm">{% trans "Locked" %}</span>
+                    </div>
+                    <p id="workshop-note" class="text-sm text-slate-600"></p>
+                    <p id="workshop-prompt" class="mt-4 rounded-2xl border border-orange-100 bg-white p-4 text-sm font-semibold text-slate-700"></p>
+                    <textarea id="workshop-response" rows="6" class="mt-4 w-full rounded-2xl border border-orange-200 bg-white p-4 text-sm text-slate-700 shadow-sm focus:border-orange-400 focus:outline-none" placeholder="{% trans 'Describe your slide plan here...' %}"></textarea>
+                    <div class="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                        <p class="text-xs font-semibold uppercase tracking-widest text-slate-500">{% trans "Write 30+ words to complete the workshop." %}</p>
+                        <button id="workshop-submit" onclick="completeWorkshop()" class="rounded-xl bg-orange-600 px-5 py-3 text-sm font-bold text-white hover:bg-orange-700 transition-all">{% trans "Complete Workshop" %}</button>
+                    </div>
+                    <p id="workshop-feedback" class="mt-4 text-sm font-medium text-slate-700"></p>
                 </div>
             </div>
         </section>
@@ -162,12 +179,19 @@
     ];
 </script>
 
-<script src="{% static 'accounts/course_logic.js' %}?v=20260708"></script>
+<script src="{% static 'accounts/course_logic.js' %}?v=20260708-2"></script>
 
 <script>
     // Initialize first lesson
     if (dbLessons.length > 0) {
-        loadLesson(0);
+        loadLesson(Math.min((function () {
+            for (let i = 0; i < dbLessons.length; i += 1) {
+                if (!completedLessons.includes(dbLessons[i].id)) {
+                    return i;
+                }
+            }
+            return dbLessons.length - 1;
+        })(), dbLessons.length - 1));
     } else {
         document.getElementById('lesson-title').innerText = "No Lessons Added Yet";
     }

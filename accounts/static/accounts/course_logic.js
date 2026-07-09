@@ -1,6 +1,80 @@
 // tracking variables
 let currentIdx = 0;
 let completedLessons = []; // Stores IDs of finished lessons
+let workshopCompleted = false;
+
+function getCourseStorageKey() {
+    return `officeease-course-progress-${getCourseType()}`;
+}
+
+function loadProgressState() {
+    try {
+        const raw = localStorage.getItem(getCourseStorageKey());
+        if (!raw) return;
+
+        const state = JSON.parse(raw);
+        if (Array.isArray(state.completedLessons)) {
+            completedLessons = state.completedLessons.filter(id => dbLessons.some(lesson => lesson.id === id));
+        }
+        workshopCompleted = Boolean(state.workshopCompleted);
+    } catch (error) {
+        completedLessons = [];
+        workshopCompleted = false;
+    }
+}
+
+function saveProgressState() {
+    try {
+        localStorage.setItem(getCourseStorageKey(), JSON.stringify({
+            completedLessons,
+            workshopCompleted,
+        }));
+    } catch (error) {
+        // Ignore storage failures in private browsing or disabled storage modes.
+    }
+}
+
+function getFirstIncompleteLessonIndex() {
+    for (let i = 0; i < dbLessons.length; i += 1) {
+        if (!completedLessons.includes(dbLessons[i].id)) {
+            return i;
+        }
+    }
+    return dbLessons.length;
+}
+
+function isLessonAccessible(index) {
+    return index <= getFirstIncompleteLessonIndex();
+}
+
+function isWorkshopUnlocked() {
+    return dbLessons.length > 0 && getFirstIncompleteLessonIndex() === dbLessons.length;
+}
+
+function getWorkshopDefaults(type) {
+    const defaults = {
+        word: {
+            title: 'Word Workshop',
+            note: 'Draft a short document plan, then describe how you would format the heading, body, and a short list in Word.',
+            prompt: 'Write at least 30 words describing a simple Word document you would create for a real task.',
+            minWords: 30,
+        },
+        excel: {
+            title: 'Excel Workshop',
+            note: 'Plan a small worksheet that uses data, formatting, and one formula to help you make a decision.',
+            prompt: 'Write at least 30 words describing a worksheet you would build, including one formula you would use.',
+            minWords: 30,
+        },
+        powerpoint: {
+            title: 'PowerPoint Workshop',
+            note: 'Outline a simple presentation and explain how you would use slide layout, text, and visuals.',
+            prompt: 'Write at least 30 words describing a presentation you would design and how you would structure the slides.',
+            minWords: 30,
+        },
+    };
+
+    return defaults[type] || defaults.word;
+}
 
 function stripHtml(input) {
     const tmp = document.createElement('div');
@@ -51,6 +125,63 @@ function getDefaultContentByCourse(type) {
     return defaults[type] || defaults.word;
 }
 
+function updateProgressUI() {
+    const progressText = document.getElementById('course-progress-text');
+    const progressBar = document.getElementById('course-progress-bar');
+    const totalSteps = dbLessons.length + 1;
+    const completedSteps = completedLessons.length + (workshopCompleted ? 1 : 0);
+    const percent = totalSteps === 0 ? 0 : Math.round((completedSteps / totalSteps) * 100);
+
+    if (progressText) {
+        progressText.innerText = `${completedSteps} of ${totalSteps} steps complete`;
+    }
+
+    if (progressBar) {
+        progressBar.style.width = `${percent}%`;
+    }
+}
+
+function renderWorkshopPanel() {
+    const panel = document.getElementById('workshop-panel');
+    if (!panel) return;
+
+    const defaults = getWorkshopDefaults(getCourseType());
+    const noteEl = document.getElementById('workshop-note');
+    const promptEl = document.getElementById('workshop-prompt');
+    const statusEl = document.getElementById('workshop-status');
+    const responseEl = document.getElementById('workshop-response');
+    const submitBtn = document.getElementById('workshop-submit');
+
+    panel.classList.toggle('hidden', !isWorkshopUnlocked());
+
+    if (noteEl) noteEl.innerText = defaults.note;
+    if (promptEl) promptEl.innerText = defaults.prompt;
+
+    const unlocked = isWorkshopUnlocked();
+
+    if (statusEl) {
+        statusEl.innerText = workshopCompleted
+            ? 'Workshop completed.'
+            : unlocked
+                ? 'Workshop unlocked.'
+                : 'Complete every lesson to unlock the workshop.';
+    }
+
+    if (responseEl && workshopCompleted && !responseEl.value) {
+        responseEl.value = localStorage.getItem(`${getCourseStorageKey()}-workshop-response`) || '';
+    }
+
+    if (submitBtn) {
+        submitBtn.disabled = !unlocked || workshopCompleted;
+        submitBtn.classList.toggle('opacity-50', !unlocked || workshopCompleted);
+        submitBtn.classList.toggle('cursor-not-allowed', !unlocked || workshopCompleted);
+    }
+
+    if (responseEl) {
+        responseEl.disabled = !unlocked || workshopCompleted;
+    }
+}
+
 function renderLessonWorkspace(lesson) {
     const theoryText = stripHtml(lesson.theory);
     const sentences = theoryText
@@ -90,6 +221,7 @@ function renderLessonWorkspace(lesson) {
 
 function loadLesson(idx) {
     if (idx < 0 || idx >= dbLessons.length) return;
+    if (!isLessonAccessible(idx)) return;
     
     currentIdx = idx;
     const l = dbLessons[idx];
@@ -123,6 +255,8 @@ function loadLesson(idx) {
     }
     
     updateUI();
+    renderWorkshopPanel();
+    updateProgressUI();
 }
 
 function updateUI() {
@@ -131,6 +265,11 @@ function updateUI() {
         const icon = document.getElementById(`check-${l.id}`);
         
         if (!btn) return;
+        const accessible = isLessonAccessible(i);
+
+        btn.disabled = !accessible;
+        btn.classList.toggle('opacity-50', !accessible);
+        btn.classList.toggle('cursor-not-allowed', !accessible);
 
         // Highlight active lesson
         if (i === currentIdx) {
@@ -150,6 +289,7 @@ function updateUI() {
     });
 
     calculateProgress();
+    renderWorkshopPanel();
 }
 
 function calculateProgress() {
@@ -206,6 +346,8 @@ function updateOverallProgress() {
     if (overallText) {
         overallText.innerText = `${completedModulesCount} of ${totalModules} Modules complete`;
     }
+
+    updateProgressUI();
 }
 
 function checkAllAnswers() {
@@ -220,6 +362,7 @@ function checkAllAnswers() {
     if (wrong.length === 0) {
         if (!completedLessons.includes(l.id)) {
             completedLessons.push(l.id);
+            saveProgressState();
         }
         document.getElementById('feedback-correct').classList.remove('hidden');
         updateUI();
@@ -232,8 +375,15 @@ function checkAllAnswers() {
 function moveToNextLesson() {
     closeFeedback();
     if (currentIdx < dbLessons.length - 1) {
-        loadLesson(currentIdx + 1);
+        const nextIndex = Math.min(currentIdx + 1, getFirstIncompleteLessonIndex());
+        loadLesson(nextIndex);
         window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+    }
+
+    const workshopSection = document.getElementById('workshop-panel');
+    if (workshopSection && isWorkshopUnlocked()) {
+        workshopSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 }
 
@@ -250,5 +400,39 @@ function closeFeedback() {
 
 function jumpToLessonById(id) {
     const idx = dbLessons.findIndex(l => l.id === id);
-    if (idx !== -1) loadLesson(idx);
+    if (idx !== -1 && isLessonAccessible(idx)) loadLesson(idx);
 }
+
+function completeWorkshop() {
+    const responseEl = document.getElementById('workshop-response');
+    const feedbackEl = document.getElementById('workshop-feedback');
+    const submitBtn = document.getElementById('workshop-submit');
+    const defaults = getWorkshopDefaults(getCourseType());
+    const response = (responseEl && responseEl.value || '').trim();
+    const wordCount = response ? response.split(/\s+/).length : 0;
+
+    if (!isWorkshopUnlocked()) {
+        if (feedbackEl) feedbackEl.innerText = 'Complete every lesson before starting the workshop.';
+        return;
+    }
+
+    if (wordCount < defaults.minWords) {
+        if (feedbackEl) feedbackEl.innerText = `Write at least ${defaults.minWords} words before submitting your workshop.`;
+        return;
+    }
+
+    workshopCompleted = true;
+    if (feedbackEl) feedbackEl.innerText = 'Workshop completed. Great work.';
+    if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+    }
+    if (responseEl) {
+        responseEl.disabled = true;
+    }
+    localStorage.setItem(`${getCourseStorageKey()}-workshop-response`, response);
+    saveProgressState();
+    updateProgressUI();
+}
+
+loadProgressState();

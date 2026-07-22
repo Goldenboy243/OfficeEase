@@ -6,7 +6,7 @@
   if (!steps.length) return;
 
   const els = {
-    moduleSelect: document.getElementById('module-select'),
+    moduleSelect: document.getElementById('module-select'), 
     stepsList: document.getElementById('steps-list'),
     stepBadge: document.getElementById('step-badge'),
     stepTitle: document.getElementById('step-title'),

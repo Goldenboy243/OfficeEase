@@ -2,15 +2,10 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout, get_user_model
-
 from .forms import RegisterForm, LoginForm
 from .models import Profile
 
-
-
 User = get_user_model()
-
-
 
 def auth(request):
     """Handle GET and POST for login and registration.
@@ -81,7 +76,6 @@ def auth(request):
     }
     return render(request, 'accounts/auth.html', context)
 
-
 def check_email(request):
     """AJAX endpoint to see if an email is already registered."""
     email = request.GET.get('email', '').strip()
@@ -90,9 +84,8 @@ def check_email(request):
         exists = User.objects.filter(email__iexact=email).exists()
     return JsonResponse({'exists': exists})
 
-
 def logout_view(request):
     logout(request)
     # messages.info(request, 'You have been signed out.')
     return redirect('home')
-
+

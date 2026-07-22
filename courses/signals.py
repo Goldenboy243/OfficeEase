@@ -70,7 +70,7 @@ def bootstrap_module_structure(sender, instance, created, **kwargs):
     if instance.topics.exists():
         return
 
-    with transaction.atomic():
+    def create_structure():
         topic = Topic.objects.create(
             module=instance,
             title=f"{instance.title} Learning Path",
@@ -124,3 +124,5 @@ def bootstrap_module_structure(sender, instance, created, **kwargs):
             order=5,
             is_required=True,
         )
+
+    transaction.on_commit(create_structure)

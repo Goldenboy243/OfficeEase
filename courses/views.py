@@ -22,7 +22,7 @@ from .models import (
 )
 
 def word_course(request):
-    return structured_word_course(request)
+    return structured_course(request, 1)
 
 def excel_course(request):
     # Fetch modules and prefetch their lessons to keep it fast

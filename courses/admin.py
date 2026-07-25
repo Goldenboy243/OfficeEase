@@ -25,7 +25,7 @@ class LessonAdmin(TranslationAdmin):
     list_filter = ('module',)
 
 
-class StepInline(admin.TabularInline):
+class StepInline(admin.StackedInline):
     model = Step
     extra = 1
     fields = (
@@ -35,6 +35,8 @@ class StepInline(admin.TabularInline):
         'quiz_question',
         'quiz_option_1',
         'quiz_option_2',
+        'quiz_option_3',
+        'quiz_option_4',
         'quiz_correct_answer',
         'workshop_required_text',
         'workshop_min_words',
@@ -47,6 +49,9 @@ class TopicAdmin(admin.ModelAdmin):
     list_display = ('title', 'module', 'order', 'is_published')
     list_filter = ('module__course', 'module', 'is_published')
     inlines = [StepInline]
+
+    class Media:
+        js = ('courses/js/admin_step_inline.js',)
 
 
 class ValidationRuleInline(admin.TabularInline):

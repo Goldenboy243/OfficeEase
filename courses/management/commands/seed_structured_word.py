@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 
-from courses.models import Course, Module, Step, Topic
+from courses.models import Course, Module, Step, Topic, UserStepProgress, WorkshopSubmission, PracticeSubmission
 
 
 class Command(BaseCommand):
@@ -23,6 +23,8 @@ class Command(BaseCommand):
                 quiz_question=mcq['question'],
                 quiz_option_1=mcq['option_1'],
                 quiz_option_2=mcq['option_2'],
+                quiz_option_3=mcq.get('option_3', ''),
+                quiz_option_4=mcq.get('option_4', ''),
                 quiz_correct_answer=mcq['correct'],
                 content="",
                 order=order,
@@ -78,6 +80,8 @@ class Command(BaseCommand):
                 quiz_question=fallback['question'],
                 quiz_option_1=fallback['option_1'],
                 quiz_option_2=fallback['option_2'],
+                quiz_option_3=fallback.get('option_3', ''),
+                quiz_option_4=fallback.get('option_4', ''),
                 quiz_correct_answer=fallback['correct'],
                 content="",
                 order=next_order,
@@ -105,6 +109,10 @@ class Command(BaseCommand):
             },
         )
 
+        UserStepProgress.objects.filter(step__topic__module__course=course).delete()
+        WorkshopSubmission.objects.filter(step__topic__module__course=course).delete()
+        PracticeSubmission.objects.filter(step__topic__module__course=course).delete()
+
         Module.objects.filter(course=course).delete()
 
         self._create_module_path(
@@ -125,6 +133,8 @@ class Command(BaseCommand):
                     'question': 'What is the primary purpose of Microsoft Word?',
                     'option_1': 'To create and format documents',
                     'option_2': 'To edit videos',
+                    'option_3': 'To write software code',
+                    'option_4': 'To manage database servers',
                     'correct': '0',
                 },
                 {
@@ -132,6 +142,8 @@ class Command(BaseCommand):
                     'question': 'Which area contains tabs like Home, Insert, and Layout?',
                     'option_1': 'Status bar',
                     'option_2': 'Ribbon',
+                    'option_3': 'Scrollbar',
+                    'option_4': 'Title bar',
                     'correct': '1',
                 },
             ],
@@ -159,6 +171,8 @@ class Command(BaseCommand):
                     'question': 'Which tab is most used for basic text formatting?',
                     'option_1': 'Home',
                     'option_2': 'Review',
+                    'option_3': 'View',
+                    'option_4': 'Help',
                     'correct': '0',
                 },
                 {
@@ -166,6 +180,8 @@ class Command(BaseCommand):
                     'question': 'Which option controls distance between text lines?',
                     'option_1': 'Line spacing',
                     'option_2': 'Zoom level',
+                    'option_3': 'Margin width',
+                    'option_4': 'Font style',
                     'correct': '0',
                 },
             ],
@@ -193,6 +209,8 @@ class Command(BaseCommand):
                     'question': 'Where do you change margins and orientation?',
                     'option_1': 'Layout tab',
                     'option_2': 'References tab',
+                    'option_3': 'View tab',
+                    'option_4': 'Mailings tab',
                     'correct': '0',
                 },
                 {
@@ -200,6 +218,8 @@ class Command(BaseCommand):
                     'question': 'What is a main benefit of tables in Word?',
                     'option_1': 'They store videos',
                     'option_2': 'They organize data clearly',
+                    'option_3': 'They execute Python code',
+                    'option_4': 'They auto-send emails',
                     'correct': '1',
                 },
             ],

@@ -67,10 +67,9 @@ def bootstrap_module_structure(sender, instance, created, **kwargs):
     if not created:
         return
 
-    if instance.topics.exists():
-        return
-
     def create_structure():
+        if instance.topics.exists():
+            return
         topic = Topic.objects.create(
             module=instance,
             title=f"{instance.title} Learning Path",
@@ -101,6 +100,8 @@ def bootstrap_module_structure(sender, instance, created, **kwargs):
             quiz_question="Write your first checkpoint question.",
             quiz_option_1="Option A",
             quiz_option_2="Option B",
+            quiz_option_3="Option C",
+            quiz_option_4="Option D",
             quiz_correct_answer='0',
             order=3,
             is_required=True,
@@ -112,6 +113,8 @@ def bootstrap_module_structure(sender, instance, created, **kwargs):
             quiz_question="Write your second checkpoint question.",
             quiz_option_1="Option A",
             quiz_option_2="Option B",
+            quiz_option_3="Option C",
+            quiz_option_4="Option D",
             quiz_correct_answer='0',
             order=4,
             is_required=True,

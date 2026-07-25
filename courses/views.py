@@ -161,7 +161,14 @@ def structured_course(request, course_id):
                 'status': status,
                 'quiz': {
                     'question': step.quiz_question,
-                    'options': [step.quiz_option_1, step.quiz_option_2],
+                    'options': [
+                        opt for opt in [
+                            step.quiz_option_1,
+                            step.quiz_option_2,
+                            step.quiz_option_3,
+                            step.quiz_option_4,
+                        ] if opt
+                    ],
                 },
                 'workshop': {
                     'required_text': step.workshop_required_text,
@@ -206,9 +213,6 @@ def structured_powerpoint_course(request):
 def complete_theory_step(request, step_id):
     step = get_object_or_404(Step, id=step_id)
 
-    if step.step_type == Step.PRACTICE:
-        return JsonResponse({'ok': False, 'error': 'Practice IDE steps are disabled in the current curriculum.'}, status=400)
-
     if step.step_type not in [Step.THEORY, Step.QUIZ]:
         return JsonResponse({'ok': False, 'error': 'Unsupported step type.'}, status=400)
 
@@ -218,7 +222,7 @@ def complete_theory_step(request, step_id):
 
     if step.step_type == Step.QUIZ:
         selected_option = request.POST.get('selected_option', '').strip()
-        if selected_option not in ['0', '1']:
+        if selected_option not in ['0', '1', '2', '3']:
             return JsonResponse({'ok': False, 'error': 'Please choose one answer before continuing.'}, status=400)
         if not step.quiz_correct_answer or selected_option != step.quiz_correct_answer:
             return JsonResponse({'ok': False, 'error': 'Incorrect answer. Please review and try again.'}, status=400)

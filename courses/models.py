@@ -68,15 +68,20 @@ class Topic(models.Model):
 
 class Step(models.Model):
     THEORY = "theory"
-    PRACTICE = "practice"
     QUIZ = "quiz"
     WORKSHOP = "workshop"
 
     STEP_TYPE_CHOICES = [
         (THEORY, "Theory"),
-        (PRACTICE, "Practice"),
         (QUIZ, "Quiz"),
         (WORKSHOP, "Workshop"),
+    ]
+
+    CORRECT_ANSWER_CHOICES = [
+        ('0', 'Option 1'),
+        ('1', 'Option 2'),
+        ('2', 'Option 3'),
+        ('3', 'Option 4'),
     ]
 
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE, related_name="steps")
@@ -86,9 +91,11 @@ class Step(models.Model):
     quiz_question = models.CharField(max_length=500, blank=True)
     quiz_option_1 = models.CharField(max_length=200, blank=True)
     quiz_option_2 = models.CharField(max_length=200, blank=True)
+    quiz_option_3 = models.CharField(max_length=200, blank=True)
+    quiz_option_4 = models.CharField(max_length=200, blank=True)
     quiz_correct_answer = models.CharField(
         max_length=1,
-        choices=[('0', 'Option 1'), ('1', 'Option 2')],
+        choices=CORRECT_ANSWER_CHOICES,
         blank=True,
         default='',
     )

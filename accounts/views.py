@@ -6,7 +6,7 @@ from .forms import RegisterForm, LoginForm
 from .models import Profile
 
 User = get_user_model()
-
+# push test comment
 def auth(request):
     """Handle GET and POST for login and registration.
 

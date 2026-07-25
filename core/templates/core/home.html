@@ -10,11 +10,34 @@
 <section class="max-w-7xl mx-auto mt-10 px-10 min-h-[85vh] flex items-center overflow-visible pb-20">
     <div class="flex flex-col lg:flex-row items-center gap-16 w-full">
       <div class="lg:w-1/2">
-        <h1 class="text-5xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight font-sans text-slate-900 mb-10" >
+        <!-- <h1 class="text-5xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight font-sans text-slate-900 mb-10" >
           <span class="block animate-typing delay-1 mb-2">{% trans "Learn" %}</span>
           <span class="block animate-typing delay-2 text-blue-600 mb-2">{% trans "Microsoft Office" %}</span>
           <span class="block animate-typing delay-3">{% trans "the Easy Way" %}</span>
+        </h1> -->
+        {% get_current_language as LANGUAGE_CODE %}
+
+        {% if LANGUAGE_CODE == "en" %}
+        <h1 class="hero-title text-5xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight font-sans text-slate-900 mb-10">
+            <span class="animate-typing delay-1 mb-2">Learn</span>
+            <span class=" animate-typing delay-2 text-blue-600 mb-2">Microsoft Office</span>
+            <span class="animate-typing delay-3">the Easy Way</span>
         </h1>
+
+        {% elif LANGUAGE_CODE == "fr" %}
+        <h1 class="hero-title text-5xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight font-sans text-slate-900 mb-10">
+            <span class="block animate-typing delay-1 mb-2">Apprenez</span>
+            <span class="block animate-typing delay-2 text-blue-600 mb-2">Microsoft Office</span>
+            <span class="block animate-typing delay-3">Facilement</span>
+        </h1>
+
+        {% elif LANGUAGE_CODE == "my" %}
+        <h1 class="hero-title text-5xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight font-sans text-slate-900 mb-10">
+            <span class="block animate-typing delay-1 text-blue-600 mb-2">Microsoft Office ကို</span>
+            <span class="block animate-typing delay-2 mb-2">လွယ်ကူစွာ</span>
+            <span class="block animate-typing delay-3">သင်ယူပါ</span>
+        </h1>
+        {% endif %}
 
         <div class="animate-together">
           <p class="mt-6 text-lg max-w-xl text-slate-600" >{% trans "Clear lessons, simple language, and structured steps — with local language support — to help you master MS Office with confidence." %}</p>

@@ -92,7 +92,7 @@ msgstr "ဆိုင်းအင်လုပ်ခြင်း"
 
 #: .\accounts\templates\accounts\auth.html:247
 msgid "or continue with"
-msgstr "သို့မဟုတ် ဆက်လုပ်ပါ။"
+msgstr "သို့မဟုတ်"
 
 #: .\accounts\templates\accounts\auth.html:282
 msgid "Hello,<br/>Welcome!"

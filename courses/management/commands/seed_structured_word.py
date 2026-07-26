@@ -1,4 +1,5 @@
 from django.core.management.base import BaseCommand
+from django.db import transaction
 
 from courses.models import Course, Module, Step, Topic, UserStepProgress, WorkshopSubmission, PracticeSubmission
 
@@ -47,7 +48,7 @@ class Command(BaseCommand):
             topic.title = f"{title} Learning Path"
             topic.order = 1
             topic.is_published = True
-            topic.save(update_fields=['title', 'order', 'is_published'])
+            topic.save()
 
         topic.steps.all().delete()
 
@@ -100,6 +101,7 @@ class Command(BaseCommand):
             is_required=True,
         )
 
+    @transaction.atomic
     def handle(self, *args, **options):
         course, _ = Course.objects.get_or_create(
             name='Microsoft Word',

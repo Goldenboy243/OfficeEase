@@ -1,0 +1,8 @@
+# Core web framework
+Django>=6.0.2,<6.1
+
+# Translation support used by the course models/admin
+django-modeltranslation>=0.18,<0.19
+
+# Translation helper used by the existing management scripts and signals
+deep-translator>=1.11,<2.0

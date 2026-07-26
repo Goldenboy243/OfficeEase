@@ -198,7 +198,7 @@ msgstr ""
 
 #: .\core\templates\core\AboutUs.html:106
 msgid "Word"
-msgstr "शब्द"
+msgstr "Word"
 
 #: .\core\templates\core\AboutUs.html:107
 msgid "Documentation"
